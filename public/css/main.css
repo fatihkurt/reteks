@@ -6,6 +6,21 @@ html {
     line-height: 1.4;
 }
 
+body {
+    font-family : 'Ubuntu', sans-serif;
+}
+    
+a {
+}
+a:link,a:active,a:visited, a:hover {
+    color: #111;
+    text-decoration: none;
+}
+ 
+a:active {
+    color: #333;
+}
+
 ::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;
@@ -52,102 +67,16 @@ textarea {
 }
 
 
-/* ===== Initializr Styles ==================================================
-   Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
-   ========================================================================== */
 
-body {
-    font: 16px/26px Helvetica, Helvetica Neue, Arial;
+input[type="text"] {
+  padding: 10px;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
 }
-
-.wrapper {
-    width: 90%;
-    margin: 0 5%;
-}
-
-/* ===================
-    ALL: Orange Theme
-   =================== */
-
-.header-container {
-    border-bottom: 20px solid #e44d26;
-}
-
-.footer-container,
-.main aside {
-    border-top: 20px solid #e44d26;
-}
-
-.header-container,
-.footer-container,
-.main aside {
-    background: #f16529;
-}
-
-.title {
-    color: white;
-}
-
-/* ==============
-    MOBILE: Menu
-   ============== */
-
-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-nav a {
-    display: block;
-    margin-bottom: 10px;
-    padding: 15px 0;
-
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-
-    color: white;
-    background: #e44d26;
-}
-
-nav a:hover,
-nav a:visited {
-    color: white;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* ==============
-    MOBILE: Main
-   ============== */
-
-.main {
-    padding: 30px 0;
-}
-
-.main article h1 {
-    font-size: 2em;
-}
-
-.main aside {
-    color: white;
-    padding: 0px 5% 10px;
-}
-
-.footer-container footer {
-    color: white;
-    padding: 20px 0;
-}
-
-/* ===============
-    ALL: IE Fixes
-   =============== */
-
-.ie7 .title {
-    padding-top: 20px;
+input[type="text"]:focus,
+input[type="text"].focus {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
 }
 
 /* ==========================================================================
@@ -155,109 +84,312 @@ nav a:hover {
    ========================================================================== */
 
 
+.wrapper {
+    width: 1060px;
+    margin: 0 auto;
+}
+
+
+.header-container {
+    background: #ffffff;
+    margin-bottom: 35px;
+    border-top: solid 5px;
+    border-color: #e20a16;
+}
+
+header, nav {
+    height: 150px;
+}
+
+.header-container .logo {
+    float: left;
+    width: 110px;
+    height: 110px;
+    margin-top: 40px;
+}
+
+    .logo a {
+        background: url(../img/logo.png) no-repeat; 
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+    }
+
+.header-container .site-tools {
+    float: right;
+    margin-top: 20px;
+}
+
+    .search-input {
+        
+        margin: 0px 20px;
+        
+    }
+
+nav {
+    
+}
+
+nav ul.menu {
+    float: right;
+    
+    width: 80%;
+    margin: 50px 0 0 0;
+    
+    height: 40px;
+    background: url(../img/nav_bg_temp.png) center bottom no-repeat;
+}
+
+nav ul.menu li {
+    float: left;
+    list-style: none;
+    width: 14%;
+    
+    font-size: 15px;
+    color: rgb(17, 16, 19);
+    font-weight: bold;
+}
+
+    .menu li.ml4 {
+        width: 150px;
+    }
 
 
 
 
 
+/* Main Area */
+
+.main-container, .footer-container {
+    
+    background: #e9e9e9;
+}
 
 
+.main .banner {
+    margin-bottom: 20px;
+}
 
+.middle-content, middle-right {
+    margin-bottom: 50px;
+}
 
+.middle-content {
+    float : left;
+    width: 755px;
+}
 
+.middle-content .m-row {
 
+    float: left;
+}
 
+    .m-item {
+        position: relative;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 60px;
+        width: 135px;
+    }
+
+    .m-badget {
+        position: absolute;
+
+        width: 115px;
+        height: 130px;
+
+        bottom: -60px;
+        left: 0px;
+    }
+    
+    .m-badget .goto {
+        
+        margin-top: 50px;
+        margin-left: 10px;
+    }
+    
+    .goto a {
+        color: #fff;
+        line-height: 1.1em;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .goto a.detail {
+        background: url(../img/right_arrow.png) right center no-repeat;
+        font-size: 13px;
+        font-weight: normal;
+        padding-right: 20px;
+    }
+
+    .m5 {
+        margin-right: 0px;
+    }
+
+    .mb1 {
+        background: #f7605b;
+    }
+
+    .mb2 {
+        background: #16a6dd;
+    }
+
+    .mb3 {
+        background: #7d47c7;
+    }
+
+    .mb4 {
+        background: #ffb400;
+    }
+
+    .mb5 {
+        background: #219e95;
+    }
+    
+
+.extra-content {
+    float: left;
+    background: url(../img/m_company_bg.png) right  no-repeat;
+    padding-bottom: 30px;
+}
+    .company-present-img {
+        
+        float: left;
+        width: 40%;
+    }
+        
+    .company-info {
+        float: left;
+        width: 60%;
+        padding-top: 20px;
+    }
+    
+    .company-info p, 
+    .company-info h2, 
+    .company-info h3, 
+    .btn-holder {
+
+        padding: 0px 5px 0px 20px;
+        font-size: 14px;
+    }
+    
+    .company-info h2 {
+
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 1.6em;
+        color: #e20a16;
+        margin: 0px;
+    }
+    
+    .company-info h3 {
+        font-size: 14px;
+        line-height: 1.7em;
+        color: #222;
+        margin : 0px;
+    }
+    
+    .btn-holder {
+        
+        margin-top: 30px;
+    }
+    
+    .btn-devam {
+        display: inline-block;
+        background: url(../img/btn_devam.png) no-repeat;
+        width: 110px;
+        height: 40px;
+    }
+    
+    
+    
+
+.middle-right {
+    float :right;
+
+    width: 285px;
+    margin-left: 20px;
+}
+
+    .right-col {
+        
+        margin-bottom: 20px;
+    }
+    
+    .news {
+        position: relative;
+        background: #fff;
+        height: 180px;
+        padding: 25px 5px 5px 25px;
+    }
+    .news .r-header {
+        font-size: 16px;
+        color: #e20a16;
+        font-weight: bold;
+        line-height: 1.5;
+        margin: 0px;
+        margin-bottom: 25px;
+    }
+    
+    .news label {
+        font-size: 12px;
+        color: rgb(148, 148, 148);
+        line-height: 1.9em;
+    }
+    
+    .news h3 {
+        font-size: 14px;
+        color: rgb(36, 35, 38);
+        font-weight: bold;
+        line-height: 1.5em;
+        margin: 0px;   
+    }
+    
+    .news p {
+        font-size: 14px;
+        color: rgb(36, 35, 38);
+        line-height: 1.5em;
+    }
+    
+    .news .arrows {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        display: inline-block;;
+        background: url(../img/arrows.png) no-repeat;
+        width: 30px;
+        height: 75px;
+        background-size: 80%;
+        cursor: pointer;
+    }
+    
+    
+footer {
+    background: #666;
+    height: 70px;
+}
+
+    .copyright {
+        padding: 30px 20px 0 20px;
+        font-size: 14px;
+        color: #fff;
+        line-height: 1.5em;
+        text-align: left;
+        float: left;
+    }
 
 /* ==========================================================================
    Media Queries
    ========================================================================== */
 
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 35em) {
 
-/* ====================
-    INTERMEDIATE: Menu
-   ==================== */
-
-    nav a {
-        float: left;
-        width: 27%;
-        margin: 0 1.7%;
-        padding: 25px 2%;
-        margin-bottom: 0;
-    }
-
-    nav li:first-child a {
-        margin-left: 0;
-    }
-
-    nav li:last-child a {
-        margin-right: 0;
-    }
-
-/* ========================
-    INTERMEDIATE: IE Fixes
-   ======================== */
-
-    nav ul li {
-        display: inline;
-    }
-
-    .oldie nav a {
-        margin: 0 0.7%;
-    }
 }
 
-@media only screen and (min-width: 768px) {
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
 
-/* ====================
-    WIDE: CSS3 Effects
-   ==================== */
-
-    .header-container,
-    .main aside {
-        -webkit-box-shadow: 0 5px 10px #aaa;
-           -moz-box-shadow: 0 5px 10px #aaa;
-                box-shadow: 0 5px 10px #aaa;
-    }
-
-/* ============
-    WIDE: Menu
-   ============ */
-
-    .title {
-        float: left;
-    }
-
-    nav {
-        float: right;
-        width: 38%;
-    }
-
-/* ============
-    WIDE: Main
-   ============ */
-
-    .main article {
-        float: left;
-        width: 57%;
-    }
-
-    .main aside {
-        float: right;
-        width: 28%;
-    }
-}
-
-@media only screen and (min-width: 1140px) {
-
-/* ===============
-    Maximal Width
-   =============== */
-
-    .wrapper {
-        width: 1026px; /* 1140px - 10% for margins */
-        margin: 0 auto;
-    }
 }
 
 /* ==========================================================================
@@ -307,6 +439,11 @@ nav a:hover {
 .clearfix {
     *zoom: 1;
 }
+
+.mt30 {margin-top: 30px;}
+
+.f-right {float: right;}
+.f-left {float: left;}
 
 /* ==========================================================================
    Print styles
