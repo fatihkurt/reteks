@@ -1,5 +1,9 @@
 <?php
 
+$app->config(array(
+    'languages' => ['tr', 'en'],
+    'languages.default' => 'tr',
+));
 
 // Only invoked if mode is "production"
 $app->configureMode('production', function () use ($app) {

@@ -1,7 +1,14 @@
 <?php
 
 
-$app->get('/', function() use($app) {
+$app->get('/', $initLanguage, function() use($app) {
 
-    $app->render('index.twig', array('title' => 'Sahara'));
+
+    $app->response->redirect('/foo', 303);
+});
+
+
+$app->get('(/:lang)', $initLanguage, function() use($app) {
+
+    $app->render('index.twig');
 });

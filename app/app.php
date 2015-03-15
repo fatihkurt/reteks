@@ -11,9 +11,11 @@ $app = new \Slim\Slim([
 ]);
 
 
+include APP_DIR . 'config.php';
+
 include APP_DIR . 'services.php';
 
-include APP_DIR . 'config.php';
+include APP_DIR . 'plugins.php';
 
 include APP_DIR . 'routes.php';
 
