@@ -127,11 +127,15 @@ header, nav {
     .social-hub {
         margin-top: 6px;
     }
+    
+    .search-hub {
+        margin: 0px 20px;
+    }
 
     .search-input {
-        
         margin: 0px 20px;
-        
+        background: url(../img/icon_search.png) 95% center no-repeat;
+        width: 230px;
     }
 
 nav {
