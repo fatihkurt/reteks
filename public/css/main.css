@@ -304,22 +304,25 @@ nav ul.menu li {
         
         float: left;
         width: 40%;
+        height: 250px;
     }
         
     .company-info {
         float: left;
         width: 60%;
-        padding-top: 20px;
+        padding: 0px;
+        margin: 0px;
     }
     
     .company-info p, 
     .company-info h2, 
-    .company-info h3, 
-    .btn-holder {
+    .company-info h3 {
 
-        padding: 0px 5px 0px 20px;
         font-size: 14px;
+        padding: 0px 5px 0px 20px;
     }
+    
+    
     
     .company-info h2 {
 
@@ -328,6 +331,7 @@ nav ul.menu li {
         line-height: 1.6em;
         color: #e20a16;
         margin: 0px;
+        margin-top: 20px;
     }
     
     .company-info h3 {
@@ -337,16 +341,32 @@ nav ul.menu li {
         margin : 0px;
     }
     
-    .btn-holder {
-        
-        margin-top: 30px;
-    }
     
-    .btn-devam {
-        display: inline-block;
-        background: url(../img/btn_devam.png) no-repeat;
+    .company-info p {
+        font-size: 14px;
+        color: rgb(37, 37, 37);
+        line-height: 1.7em;
+    }
+
+    .btn-holder {
+        margin-left: 20px;
+        
         width: 110px;
         height: 40px;
+        
+        background: url(../img/btn_devam.png) no-repeat;
+    }
+
+    a.btn-devam {
+        float: left;
+        padding-left: 16px;
+        width: 94px;
+        
+        line-height: 40px;
+        
+        font-size: 14px;
+        color: #fff;
+        font-weight: bold;
     }
     
     
