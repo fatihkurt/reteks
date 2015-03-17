@@ -343,12 +343,13 @@ nav ul.menu li {
     
     
     .company-info p {
-        font-size: 14px;
+        font-size: 13px;
         color: rgb(37, 37, 37);
         line-height: 1.7em;
     }
 
     .btn-holder {
+        margin-top: 20px;
         margin-left: 20px;
         
         width: 110px;
@@ -407,7 +408,7 @@ nav ul.menu li {
     
     .news h4 {
         font-size: 14px;
-        color: rgb(36, 35, 38);
+        color: rgb(37, 37, 37);
         font-weight: bold;
         line-height: 1.5em;
         margin: 0px;   
@@ -415,7 +416,7 @@ nav ul.menu li {
     
     .news p {
         font-size: 14px;
-        color: rgb(36, 35, 38);
+        color: rgb(37, 37, 37);
         line-height: 1.5em;
         margin: 10px 0;
     }
