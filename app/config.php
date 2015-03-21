@@ -9,7 +9,8 @@ $app->config(array(
 $app->configureMode('production', function () use ($app) {
     $app->config(array(
         'log.enable'=> true,
-        'debug'     => false
+        'debug'     => false,
+        'database'  => []
     ));
 });
 
@@ -18,6 +19,13 @@ $app->configureMode('production', function () use ($app) {
 $app->configureMode('development', function () use ($app) {
     $app->config(array(
         'log.enable'=> false,
-        'debug'     => true
+        'debug'     => true,
+        'database'  => [
+        	'host' => 'localhost',
+        	'name' => 'reteks_db', 
+        	'user' => 'root',
+        	'pass' => '123',
+        	'port' => 3306
+        ],
     ));
 });

@@ -9,10 +9,7 @@ $app->get('/', function() use($app) {
 });
 
 
-$app->get('(/:lang)', $initLanguage, function() use($app) {
-
-    $app->render('index.twig');
-});
+$app->get('(/:lang)', $initLanguage, '\App\Controller\IndexController:index');
 
 
 $app->get('(/:lang)/:title', $initLanguage, function() use($app) {

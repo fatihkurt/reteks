@@ -9,11 +9,10 @@ $initLanguage = function(\Slim\Route $route) {
 
     if (! in_array($lang, $app->config('languages'))) {
 
-        $app->flash('error', 'Login required');
+        // @TODO log
+        //$app->flash('error', 'Parametre hatası');
 
-        $defaultLang = $app->getLang;
-
-        $app->redirect("/$defaultLang/");
+        $app->redirect("/$app->getLang/");
     }
 
     // load ini file

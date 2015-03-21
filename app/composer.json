@@ -2,6 +2,13 @@
     "require": {
         "slim/slim": "2.*",
         "slim/views" : "*",
-        "twig/twig": "~1.0"
+        "twig/twig": "~1.0",
+        "illuminate/database": "5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Model\\": "model/",
+            "App\\Controller\\": "controller/"            
+        }
     }
 }
