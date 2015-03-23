@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 
-class ControllerBase
+abstract class ControllerBase
 {
     protected $app;
     protected $lang;

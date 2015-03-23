@@ -25,3 +25,17 @@ $initLanguage = function(\Slim\Route $route) {
 
     $_SESSION['lang'] = $lang;
 };
+
+
+
+
+$authenticateForRole = function ($role = 'admin') {
+    return function () use ($role) {
+        $user = User::fetchFromDatabaseSomehow();
+        if ( $user->belongsToRole($role) === false ) {
+            $app = \Slim\Slim::getInstance();
+            $app->flash('error', 'Login required');
+            $app->redirect('/login');
+        }
+    };
+};

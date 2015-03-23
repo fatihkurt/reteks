@@ -9,7 +9,7 @@ class IndexController extends ControllerBase
 
         $news = \App\Model\News::find(1)
                     ->select('id')
-                    ->orderBy('start_date')
+                    ->orderBy('start_date', 'desc')
                     ->with(['contents' =>function($q)  {
 
                         $q->select('description', 'title', 'seo_url');
@@ -19,7 +19,7 @@ class IndexController extends ControllerBase
                     ->take(5)
                     ->get();
 
-        $this->app->render('index.twig',[
+        $this->app->render('index.twig', [
 
             'news'  => $news,
         ]);

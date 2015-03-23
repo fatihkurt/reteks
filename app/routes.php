@@ -1,6 +1,20 @@
 <?php
 
 
+
+//************ Login ************//
+
+$app->get('/login',  '\App\Controller\AuthController:login')->name('login');
+$app->post('/login', '\App\Controller\AuthController:postLogin');
+$app->get('/logout', '\App\Controller\AuthController:logout')->name('logout');
+
+
+
+
+//*********** Admin ************//
+
+
+
 $app->get('/', function() use($app) {
 
     $lang = $app->getLang;
@@ -9,7 +23,7 @@ $app->get('/', function() use($app) {
 });
 
 
-$app->get('(/:lang)', $initLanguage, '\App\Controller\IndexController:index');
+$app->get('(/:lang)', $initLanguage, '\App\Controller\IndexController:index')->name('index');
 
 
 $app->get('(/:lang)/:title', $initLanguage, function() use($app) {
@@ -24,3 +38,8 @@ $app->get('(/:lang)/news/:title', $initLanguage, function() use($app) {
     $app->render('news.twig');
 
 })->name('news');
+
+
+
+
+
