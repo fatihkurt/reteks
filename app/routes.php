@@ -5,7 +5,7 @@
 //************ Login ************//
 
 $app->get('/login',  '\App\Controller\AuthController:login')->name('login');
-$app->post('/login', '\App\Controller\AuthController:postLogin');
+$app->post('/login', '\App\Controller\AuthController:auth');
 $app->get('/logout', '\App\Controller\AuthController:logout')->name('logout');
 
 
@@ -13,7 +13,11 @@ $app->get('/logout', '\App\Controller\AuthController:logout')->name('logout');
 
 //*********** Admin ************//
 
+$app->get('/admin',  '\App\Controller\AdminController:index')->name('admin');
 
+
+
+//*********** Anasafa ************//
 
 $app->get('/', function() use($app) {
 

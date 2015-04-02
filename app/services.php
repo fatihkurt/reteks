@@ -19,7 +19,7 @@ $app->add(new \Slim\Middleware\SessionCookie(array(
     'secure'    => false,
     'httponly'  => false,
     'name'      => 'slim_session',
-    'secret'    => 'RTex123.',
+    'secret'    => 'J?6Y^NCvqEBgc\.)',
     'cipher'    => MCRYPT_RIJNDAEL_256,
     'cipher_mode'=> MCRYPT_MODE_CBC
 )));

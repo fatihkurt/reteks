@@ -6,6 +6,33 @@
  */
 $(function()
 {
+    
+    $('#login_btn').click(function() {
+        
+        $('#login_msg').html("");
+        
+        $.ajax({
+            url : '/login',
+            type: 'POST',
+            dataType: 'json',
+            data: $('form').serialize(),
+            success: function(resp) {
+                
+                $('#login_msg').html(resp.message);
+             
+                if (resp.success == true) {
+                    
+                    location.reload();
+                }
+            }
+        });
+        
+        return false;
+        
+    });
+    
+    
+    
     // check placeholder browser support
     if (!Modernizr.input.placeholder)
     {
