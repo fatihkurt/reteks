@@ -1,14 +1,15 @@
 <?php
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App;
 
-class adminController extends ControllerBase
+class ControllerBase extends App\Controller\ControllerBase
 {
 
 
-    public function index()
+    public function __construct()
     {
+        parent::__construct();
 
         if ($this->sessionGet(self::USER_LOGIN_KEY) == false) {
 
@@ -16,11 +17,6 @@ class adminController extends ControllerBase
 
             $this->app->response->redirect('login');
         }
-
-        $this->app->render('admin/index.twig',[
-
-
-        ]);
     }
 
 

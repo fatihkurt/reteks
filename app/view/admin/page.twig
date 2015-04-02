@@ -1,0 +1,37 @@
+{% extends "layout/admin.layout.twig" %}
+
+
+{% block content %}
+
+
+
+<table class="table">
+      <caption><h3>Sayfalar</h3></caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Sayfa Adı</th>
+          <th>Sayfa Adı (2. Dil)</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      
+      
+      <tbody>
+        {% for index,page in pages %}
+        <tr>
+          <th scope="row">{{ index+1 }}</th>
+          <td><a href="/{{ page.contents[0].lang }}/{{ page.contents[0].seo_url }}" target="_blank">{{ page.contents[0].title }}</a></td>
+          <td><a href="/{{ page.contents[1].lang }}/{{ page.contents[1].seo_url }}" target="_blank">{{ page.contents[1].title }}</a></td>
+          <td><a href="#" class="btn btn-success" >Düzenle</a></td>
+          <td><a href="#" class="btn btn-danger" >Sil</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      
+      
+    </table>
+
+
+{% endblock %}

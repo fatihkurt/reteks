@@ -2,14 +2,14 @@
 
 namespace App\Model;
 
-class News extends \Illuminate\Database\Eloquent\Model
+class Page extends \Illuminate\Database\Eloquent\Model
 {
 
-    protected $table = 'news';
+    protected $table = 'page';
 
     public function contents() {
 
-        return $this->hasMany('App\Model\NewsTranslation');
+        return $this->hasMany('App\Model\PageTranslation', 'page_id');
     }
 
 
