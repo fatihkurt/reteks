@@ -1,6 +1,8 @@
 <?php
 
-define('APP_DIR', __DIR__ . '/../app/');
+define('PUB_DIR', __DIR__ . '/');
+define('APP_DIR', PUB_DIR . '../app/');
+
 
 $app = include (APP_DIR . 'app.php');
 

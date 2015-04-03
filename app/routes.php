@@ -21,6 +21,10 @@ $app->group('/admin', function () use ($app) {
     $app->get('/',  '\App\Controller\Admin\IndexController:index')->name('admin');
 
     $app->get('/page',  '\App\Controller\Admin\PageController:index');
+    $app->get('/page/new',  '\App\Controller\Admin\PageController:create');
+    $app->get('/page/:id',  '\App\Controller\Admin\PageController:edit');
+
+    $app->post('/page/save',  '\App\Controller\Admin\PageController:save');
 
 });
 

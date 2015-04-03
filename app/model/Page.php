@@ -7,6 +7,8 @@ class Page extends \Illuminate\Database\Eloquent\Model
 
     protected $table = 'page';
 
+    protected $guarded = array('id');
+
     public function contents() {
 
         return $this->hasMany('App\Model\PageTranslation', 'page_id');

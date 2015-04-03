@@ -24,7 +24,7 @@
           <th scope="row">{{ index+1 }}</th>
           <td><a href="/{{ page.contents[0].lang }}/{{ page.contents[0].seo_url }}" target="_blank">{{ page.contents[0].title }}</a></td>
           <td><a href="/{{ page.contents[1].lang }}/{{ page.contents[1].seo_url }}" target="_blank">{{ page.contents[1].title }}</a></td>
-          <td><a href="#" class="btn btn-success" >Düzenle</a></td>
+          <td><a href="/admin/page/{{ page.id }}" class="btn btn-success" >Düzenle</a></td>
           <td><a href="#" class="btn btn-danger" >Sil</a></td>
         </tr>
         {% endfor %}

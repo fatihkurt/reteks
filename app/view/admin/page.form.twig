@@ -1,0 +1,77 @@
+{% extends "layout/admin.layout.twig" %}
+{% block content %}
+<form id="page_form" action="/admin/page/save" method="POST" enctype="multipart/form-data">
+    <div class="panel-group" id="accordion">
+        {% for index,lang in langs %}
+        <input type="hidden" name="contents[{{ index }}][id]" value="{{ id }}" />
+        <input type="hidden" name="contents[{{ index }}][lang]" value="{{ lang }}" />
+        <div class="panel panel-default" style="margin-top: 5px;">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ index }}">{{ lang|upper }} :: {{ page.contents[index].title }}</a>
+                </h4>
+            </div>
+            <div id="collapse{{ index }}" class="panel-collapse collapse out">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="">Başlık</label>
+                        <input name="contents[{{ index }}][title]" type="text" class="form-control" placeholder="Başlık" value="{{ page.contents[index].title }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="">Seo Url</label>
+                        <input name="contents[{{ index }}][seo_url]" type="text" class="form-control" placeholder="Seo" value="{{ page.contents[index].seo_url }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="">Seo Açıklama</label>
+                        <textarea name="contents[{{ index }}][description]" class="form-control"  name="description">{{ page.contents[index].description }}</textarea>
+                        <p class="help-block"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="">İçerik</label>
+                        <textarea name="contents[{{ index }}][content]" class="form-control" name="content">{{ page.contents[index].content }}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseGenel">Genel Bilgiler</a>
+                </h4>
+            </div>
+            <div id="collapseGenel" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="">Sıra No</label>
+                        <input name="ordernum" type="number" class="form-control" placeholder="Sıra No" value="{{ page.ordernum }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="">Aktif</label>
+                        <input name="status" type="checkbox" class="form-control" value="1" {% if page.status %}checked="checked"{% endif %} />
+                    </div>
+                    <div class="form-group">
+                        <label for="bigInputFile">Büyük Resim</label>
+                        {% if page.image1 != '' %}
+                        <img src="/upload/page/{{ page.image1 }}" class="thumbnail" style="height: 100px;" />
+                        {% endif %}
+                        <input name="image1" class="form-control" placeholder="Lütfen resim dosyası seçiniz" type="file" id="bigInputFile">
+                        <p class="help-block">1100px genişliğinde jpg veya png uzantılı resim seçiniz.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="smallInputFile">Anasayfa Resim</label>
+                        {% if page.image2 != '' %}
+                        <img src="/upload/page/{{ page.image2 }}" class="thumbnail" style="height: 100px;" />
+                        {% endif %}
+                        <input name="image2" class="form-control" type="file" id="smallInputFile">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>
+            <input type="submit" id="save_form" class="btn btn-primary" value="Kaydet" />
+        </h3>
+        <input type="hidden" name="id" value="{{ page.id }}" />
+    </div>
+</form>
+{% endblock %}

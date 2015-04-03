@@ -7,10 +7,15 @@ class PageTranslation extends \Illuminate\Database\Eloquent\Model
 
     protected $table = 'page_translation';
 
+    public $timestamps = false;
+
     protected $touches = ['page'];
 
 
-    public function news()
+    protected $guarded = array('id', 'page_id');
+
+
+    public function page()
     {
         return $this->belongsTo('App\Model\Page');
     }
