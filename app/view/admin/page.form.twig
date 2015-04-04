@@ -11,7 +11,7 @@
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ index }}">{{ lang|upper }} :: {{ page.contents[index].title }}</a>
                 </h4>
             </div>
-            <div id="collapse{{ index }}" class="panel-collapse collapse out">
+            <div id="collapse{{ index }}" class="panel-collapse collapse {% if tab == lang %}in{%else%}out{% endif %}">
                 <div class="panel-body">
                     <div class="form-group">
                         <label for="">Başlık</label>
@@ -69,7 +69,11 @@
             </div>
         </div>
         <h3>
-            <input type="submit" id="save_form" class="btn btn-primary" value="Kaydet" />
+            <input type="submit" id="save_btn" class="btn btn-primary" value="Kaydet" />
+            
+            {% if page.id > 0 %}
+            <input type="button" id="delete_btn" class="btn btn-danger" value="Sil" />
+            {% endif %}
         </h3>
         <input type="hidden" name="id" value="{{ page.id }}" />
     </div>

@@ -41,13 +41,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/page">Sayfalar {{ router.getName() }}</a>
+                    <a href="/admin/page" {% if menu_item == 'page' %}class="active"{% endif %}>Sayfalar</a>
                 </li>
                 <li>
-                    <a href="/admin/news">Haberler</a>
+                    <a href="/admin/news" {% if menu_item == 'news' %}class="active"{% endif %}>Haberler</a>
                 </li>
                 <li>
-                    <a href="/admin/setting">Ayarlar</a>
+                    <a href="/admin/setting" {% if menu_item == 'setting' %}class="active"{% endif %}>Ayarlar</a>
                 </li>
                 <li>
                     <a href="/logout">Çıkış</a>

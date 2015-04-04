@@ -26,6 +26,22 @@ class PageController extends App\Controller\Admin\ControllerBase
     }
 
 
+    public function delete() {
+
+        $id = $this->app->request->delete('id');
+
+        $success = false;
+
+        if ($id > 0 && $page = Page::find($id)) {
+
+            $success = $page->delete();
+
+            $this->app->flash('success', 'Silme işlemi başarıyla gerçekleştirildi.');
+        }
+
+        $this->jsonResponse($success);
+    }
+
 
     public function edit($id) {
 
@@ -36,11 +52,12 @@ class PageController extends App\Controller\Admin\ControllerBase
             return $this->app->response->redirect('/admin/page');
         }
 
-        $this->app->render('admin/page.form.twig', [
-
+        $this->app->render('admin/page.form.twig',
+        [
             'menu_item' => 'page',
-            'page' => $page,
-            'langs' => $this->app->config('languages'),
+            'tab'       => $this->app->request->get('tab'),
+            'page'      => $page,
+            'langs'     => $this->app->config('languages'),
             'footer_js' => ['vendor/jquery/jquery.form.min.js', 'admin/page.js']
         ]);
     }

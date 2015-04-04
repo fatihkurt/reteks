@@ -25,6 +25,7 @@ $app->group('/admin', function () use ($app) {
     $app->get('/page/:id',  '\App\Controller\Admin\PageController:edit');
 
     $app->post('/page/save',  '\App\Controller\Admin\PageController:save');
+    $app->delete('/page/delete',  '\App\Controller\Admin\PageController:delete');
 
 });
 

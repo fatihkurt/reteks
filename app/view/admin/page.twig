@@ -12,7 +12,8 @@
           <th>#</th>
           <th>Sayfa Adı</th>
           <th>Sayfa Adı (2. Dil)</th>
-          <th></th>
+          <th>Sayfa Url</th>
+          <th>Sayfa Url  (2. Dil)</th>
           <th></th>
         </tr>
       </thead>
@@ -22,11 +23,19 @@
         {% for index,page in pages %}
         <tr>
           <th scope="row">{{ index+1 }}</th>
-          <td><a href="/{{ page.contents[0].lang }}/{{ page.contents[0].seo_url }}" target="_blank">{{ page.contents[0].title }}</a></td>
-          <td><a href="/{{ page.contents[1].lang }}/{{ page.contents[1].seo_url }}" target="_blank">{{ page.contents[1].title }}</a></td>
+          <td><a href="/admin/page/{{ page.id }}?tab=tr">{{ page.contents[0].title }}</a></td>
+          <td><a href="/admin/page/{{ page.id }}?tab=en">{{ page.contents[1].title }}</a></td>
+          <td><a href="/{{ page.contents[0].lang }}/{{ page.contents[0].seo_url }}" target="_blank">{{ page.contents[0].seo_url }}</a></td>
+          <td><a href="/{{ page.contents[1].lang }}/{{ page.contents[1].seo_url }}" target="_blank">{{ page.contents[1].seo_url }}</a></td>
           <td><a href="/admin/page/{{ page.id }}" class="btn btn-success" >Düzenle</a></td>
-          <td><a href="#" class="btn btn-danger" >Sil</a></td>
         </tr>
+        
+        {% else %}
+        
+        <tr>
+          <td colspan="6">Kayıt bulunamadı. Eklemek için <a href="/admin/page/new">tıklayın.</a></th>
+        </tr>
+        
         {% endfor %}
       </tbody>
       
