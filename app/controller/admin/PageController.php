@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App,
     App\Model\Page,
+    App\Model\PageCategory,
     App\Model\PageTranslation,
     App\Plugin\AjaxResponse;
 
@@ -14,14 +15,25 @@ class PageController extends App\Controller\Admin\ControllerBase
 
     public function index() {
 
-        $pages = Page::with('contents')
+        $selectedCategory = $this->app->request->get('cat');
+
+        $pages = Page::where(function($q) use($selectedCategory) {
+
+                if ($selectedCategory > 0) {
+
+                    $q->where('category_id', '=', $selectedCategory);
+                }
+            })
+            ->with('contents')
             ->orderBy('ordernum')
             ->get();
 
         $this->app->render('admin/page.twig', [
 
             'menu_item' => 'page',
-            'pages' => $pages,
+            'pages'     => $pages,
+            'categories'=> PageCategory::all(),
+            'category'  => $selectedCategory,
         ]);
     }
 
@@ -43,8 +55,10 @@ class PageController extends App\Controller\Admin\ControllerBase
     }
 
 
-    public function edit($id) {
+    public function edit($id, $page=null) {
 
+        $page = $page
+            or
         $page = Page::with('contents')->find($id);
 
         if ($page == null) {
@@ -57,6 +71,7 @@ class PageController extends App\Controller\Admin\ControllerBase
             'menu_item' => 'page',
             'tab'       => $this->app->request->get('tab'),
             'page'      => $page,
+            'categories'=> PageCategory::all(),
             'langs'     => $this->app->config('languages'),
             'footer_js' => ['vendor/jquery/jquery.form.min.js', 'admin/page.js']
         ]);
@@ -64,12 +79,7 @@ class PageController extends App\Controller\Admin\ControllerBase
 
     public function create() {
 
-        $this->app->render('admin/page.form.twig', [
-
-            'menu_item' => 'page',
-            'page' => new Page,
-            'langs' => $this->app->config('languages'),
-        ]);
+        $this->edit(null, new Page);
     }
 
 
@@ -79,6 +89,7 @@ class PageController extends App\Controller\Admin\ControllerBase
 
         $page = Page::firstOrCreate(['id' => $data['id']]);
 
+        $page->category_id = $data['category_id'];
         $page->ordernum = $data['ordernum'];
         $page->status   = isset($data['status']) ? 1 : 0;
 

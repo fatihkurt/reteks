@@ -3,10 +3,18 @@
 
 {% block content %}
 
-
-
 <table class="table">
-      <caption><h3>Sayfalar</h3></caption>
+      <caption>
+      <h3>Sayfalar
+      <div class="pull-right">    
+        <select onchange="location.href= '?cat=' + this.value; return false; " name="category" class="form-control">
+            <option value="">Filtrelemek için seçiniz..</option>
+            {% for cat in categories %}
+            <option value="{{ cat.id }}" {% if category==cat.id %}selected{% endif %}>{{ cat.name }}</option>
+            {% endfor %}
+        </select>
+    </div></h3>
+    </caption>
       <thead>
         <tr>
           <th>#</th>
@@ -17,8 +25,7 @@
           <th></th>
         </tr>
       </thead>
-      
-      
+
       <tbody>
         {% for index,page in pages %}
         <tr>
@@ -38,9 +45,5 @@
         
         {% endfor %}
       </tbody>
-      
-      
     </table>
-
-
 {% endblock %}

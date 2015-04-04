@@ -43,6 +43,15 @@
             <div id="collapseGenel" class="panel-collapse collapse in">
                 <div class="panel-body">
                     <div class="form-group">
+                        <label for="">Menü</label>
+                        <select name="category_id" class="form-control">
+                            <option value="">Menü seçiniz..</option>
+                            {% for cat in categories %}
+                            <option value="{{ cat.id }}" {% if page.category_id==cat.id %}selected{% endif %}>{{ cat.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="">Sıra No</label>
                         <input name="ordernum" type="number" class="form-control" placeholder="Sıra No" value="{{ page.ordernum }}" />
                     </div>
