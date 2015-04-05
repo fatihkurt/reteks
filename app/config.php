@@ -10,7 +10,13 @@ $app->configureMode('production', function () use ($app) {
     $app->config(array(
         'log.enable'=> true,
         'debug'     => false,
-        'database'  => []
+        'database'  => [
+            'host' => 'localhost',
+        	'name' => 'reteks_db',
+        	'user' => 'root',
+        	'pass' => 'zagreb14',
+        	'port' => 3306
+        ]
     ));
 });
 
@@ -22,7 +28,7 @@ $app->configureMode('development', function () use ($app) {
         'debug'     => true,
         'database'  => [
         	'host' => 'localhost',
-        	'name' => 'reteks_db', 
+        	'name' => 'reteks_db',
         	'user' => 'root',
         	'pass' => '123',
         	'port' => 3306
