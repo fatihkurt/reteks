@@ -27,6 +27,13 @@ $app->group('/admin', function () use ($app) {
     $app->post('/page/save',  '\App\Controller\Admin\PageController:save');
     $app->delete('/page/delete',  '\App\Controller\Admin\PageController:delete');
 
+
+    $app->get('/news',  '\App\Controller\Admin\NewsController:index');
+    $app->get('/news/new',  '\App\Controller\Admin\NewsController:create');
+    $app->get('/news/:id',  '\App\Controller\Admin\NewsController:edit');
+
+    $app->post('/news/save',  '\App\Controller\Admin\NewsController:save');
+    $app->delete('/news/delete',  '\App\Controller\Admin\NewsController:delete');
 });
 
 

@@ -1,0 +1,75 @@
+{% extends "layout/admin.layout.twig" %}
+{% block content %}
+<form id="news_form" action="/admin/news/save" method="POST" enctype="multipart/form-data">
+    <div class="panel-group" id="accordion">
+        {% for index,lang in langs %}
+        <input type="hidden" name="contents[{{ index }}][id]" value="{{ id }}" />
+        <input type="hidden" name="contents[{{ index }}][lang]" value="{{ lang }}" />
+        <div class="panel panel-default" style="margin-top: 5px;">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ index }}">{{ lang|upper }} :: {{ news.contents[index].title }}</a>
+                </h4>
+            </div>
+            <div id="collapse{{ index }}" class="panel-collapse collapse {% if tab == lang %}in{%else%}out{% endif %}">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="">Başlık</label>
+                        <input name="contents[{{ index }}][title]" type="text" class="form-control" placeholder="Başlık" value="{{ news.contents[index].title }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="">Seo Url</label>
+                        <input name="contents[{{ index }}][seo_url]" type="text" class="form-control" placeholder="Seo" value="{{ news.contents[index].seo_url }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="">Seo Açıklama</label>
+                        <textarea name="contents[{{ index }}][description]" class="form-control"  name="description">{{ news.contents[index].description }}</textarea>
+                        <p class="help-block"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="">İçerik</label>
+                        <textarea name="contents[{{ index }}][content]" class="form-control" id="content_{{ lang }}" name="content">{{ news.contents[index].content }}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseGenel">Genel Bilgiler</a>
+                </h4>
+            </div>
+            <div id="collapseGenel" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="bigInputFile">Resim</label>
+                        {% if news.image != '' %}
+                        <img src="/upload/news/{{ news.image }}" class="thumbnail" style="height: 100px;" />
+                        {% endif %}
+                        <input name="image" class="form-control" placeholder="Lütfen resim dosyası seçiniz" type="file" id="bigInputFile">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="">Yayınlanma Tarihi</label>
+                        <input name="start_date" id="start_date" class="form-control" id="content_{{ lang }}" value="{{ news.start_date|date('d.m.Y H:i') }}" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="">Yayından Kaldırılma Tarihi</label>
+                        <input name="end_date" id="end_date" class="form-control" id="content_{{ lang }}" value="{% if news.end_date > 0 %}{{ news.end_date|date('d.m.Y H:i') }}{% endif %}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>
+            <input type="submit" id="save_btn" class="btn btn-primary" value="Kaydet" />
+            
+            {% if news.id > 0 %}
+            <input type="button" id="delete_btn" class="btn btn-danger" value="Sil" />
+            {% endif %}
+        </h3>
+        <input type="hidden" name="id" value="{{ news.id }}" />
+    </div>
+</form>
+{% endblock %}

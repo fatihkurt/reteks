@@ -14,6 +14,7 @@
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-datetimepicker.min.css" />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="/css/admin.css" />
@@ -81,12 +82,17 @@
     <!-- jQuery -->
     <script src="/js/vendor/jquery/jquery-1.11.2.min.js"></script>
     
-    {% for asset in footer_js %}
-    <script src="/js/{{ asset }}"></script>
-    {% endfor %}
+    <!-- Moment.js -->
+    <script src="/js/vendor/moment/moment.js"></script>
+    <script src="/js/vendor/moment/moment.locale.tr.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/vendor/bootstrap/bootstrap-datetimepicker.min.js"></script>
+    
+    {% for asset in footer_js %}
+    <script src="/js/{{ asset }}"></script>
+    {% endfor %}
 
     <!-- Menu Toggle Script -->
     <script>

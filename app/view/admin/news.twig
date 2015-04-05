@@ -1,0 +1,41 @@
+{% extends "layout/admin.layout.twig" %}
+
+
+{% block content %}
+
+<table class="table">
+      <caption>
+      <h3>Haberler</h3>
+    </caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Haber Başlığı</th>
+          <th>Haber Başlığı (2. Dil)</th>
+          <th>Haber Url</th>
+          <th>Haber Url  (2. Dil)</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for index,news in items %}
+        <tr>
+          <th scope="row">{{ index+1 }}</th>
+          <td><a href="/admin/news/{{ news.id }}?tab=tr">{{ news.contents[0].title }}</a></td>
+          <td><a href="/admin/news/{{ news.id }}?tab=en">{{ news.contents[1].title }}</a></td>
+          <td><a href="/{{ news.contents[0].lang }}/{{ news.contents[0].seo_url }}" target="_blank">{{ news.contents[0].seo_url }}</a></td>
+          <td><a href="/{{ news.contents[1].lang }}/{{ news.contents[1].seo_url }}" target="_blank">{{ news.contents[1].seo_url }}</a></td>
+          <td><a href="/admin/news/{{ news.id }}" class="btn btn-success" >Düzenle</a></td>
+        </tr>
+        
+        {% else %}
+        
+        <tr>
+          <td colspan="6">Kayıt bulunamadı. Eklemek için <a href="/admin/news/new">tıklayın.</a></th>
+        </tr>
+        
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}
