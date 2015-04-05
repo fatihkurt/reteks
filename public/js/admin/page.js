@@ -1,6 +1,11 @@
 
 $(function() { 
     
+    
+    CKEDITOR.replace('content_tr', {
+        "language": "tr"
+    });
+    
 
     
     $('#page_form').ajaxForm(function(resp) { 

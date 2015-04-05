@@ -73,7 +73,7 @@ class PageController extends App\Controller\Admin\ControllerBase
             'page'      => $page,
             'categories'=> PageCategory::all(),
             'langs'     => $this->app->config('languages'),
-            'footer_js' => ['vendor/jquery/jquery.form.min.js', 'admin/page.js']
+            'footer_js' => ['vendor/jquery/jquery.form.min.js', 'ckeditor/ckeditor.js', 'admin/page.js']
         ]);
     }
 
