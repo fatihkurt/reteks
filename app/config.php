@@ -13,8 +13,8 @@ $app->configureMode('production', function () use ($app) {
         'database'  => [
             'host' => '127.0.0.1',
         	'name' => 'reteks_db',
-        	'user' => 'reteks',
-        	'pass' => 'kux8zAJE',
+        	'user' => 'root',
+        	'pass' => 'zagreb14',
         	'port' => 3306
         ]
     ));
