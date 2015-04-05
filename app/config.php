@@ -11,10 +11,10 @@ $app->configureMode('production', function () use ($app) {
         'log.enable'=> true,
         'debug'     => false,
         'database'  => [
-            'host' => 'localhost',
+            'host' => '127.0.0.1',
         	'name' => 'reteks_db',
-        	'user' => 'root',
-        	'pass' => 'zagreb14',
+        	'user' => 'reteks',
+        	'pass' => 'kux8zAJE',
         	'port' => 3306
         ]
     ));
