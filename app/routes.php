@@ -34,6 +34,13 @@ $app->group('/admin', function () use ($app) {
 
     $app->post('/news/save',  '\App\Controller\Admin\NewsController:save');
     $app->delete('/news/delete',  '\App\Controller\Admin\NewsController:delete');
+
+    $app->get('/category',  '\App\Controller\Admin\PageCategoryController:index');
+    $app->get('/category/new',  '\App\Controller\Admin\PageCategoryController:create');
+    $app->get('/category/:id',  '\App\Controller\Admin\PageCategoryController:edit');
+
+    $app->post('/category/save',  '\App\Controller\Admin\PageCategoryController:save');
+    $app->delete('/category/delete',  '\App\Controller\Admin\PageCategoryController:delete');
 });
 
 

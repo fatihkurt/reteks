@@ -7,6 +7,10 @@ class PageCategory extends \Illuminate\Database\Eloquent\Model
 
     protected $table = 'page_category';
 
+    protected $guarded = array('id');
+
+    public $timestamps = false;
+
     public function pages() {
 
         return $this->hasMany('App\Model\Page', 'category_id');

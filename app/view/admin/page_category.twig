@@ -1,0 +1,41 @@
+{% extends "layout/admin.layout.twig" %}
+
+
+{% block content %}
+
+<table class="table">
+      <caption>
+      <h3>Kategoriler</h3>
+    </caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Kategori Adı (TR)</th>
+          <th>Kategori Adı (EN)</th>
+          <th>Default Sayfa</th>
+          <th>Sıra No</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for index,category in categories %}
+        <tr>
+          <th scope="row">{{ index+1 }}</th>
+          <td><a href="/admin/category/{{ category.id }}">{{ category.name_tr }}</a></td>
+          <td><a href="/admin/category/{{ category.id }}">{{ category.name_en }}</a></td>
+          <td>{{ category.default_page_id }}</td>
+          <td>{{ category.ordernum }}</td>
+          <td><a href="/admin/category/{{ category.id }}" class="btn btn-success" >Düzenle</a></td>
+        </tr>
+        
+        {% else %}
+        
+        <tr>
+          <td colspan="6">Kayıt bulunamadı. Eklemek için <a href="/admin/category/new">tıklayın.</a></th>
+        </tr>
+        
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

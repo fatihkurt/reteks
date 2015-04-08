@@ -1,0 +1,48 @@
+{% extends "layout/admin.layout.twig" %}
+
+{% block content %}
+<form id="category_form" action="/admin/category/save" method="POST">
+    
+    <div class="panel panel-default" style="margin-top: 5px;">
+            <div class="panel-heading">
+                <h4 class="panel-title">Kategori Bilgileri</h4>
+            </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="">İsim (TR)</label>
+                        <input name="name_tr" type="text" class="form-control" placeholder="İsim" value="{{ category.name_tr }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="">İsim (EN)</label>
+                        <input name="name_en" type="text" class="form-control" placeholder="İsim" value="{{ category.name_en }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ön Tanımlı Sayfa</label>
+                        <select name="default_page_id" class="form-control">
+                            <option value="">Sayfa seçiniz..</option>
+                                {% for page in category.pages %}
+                            <option value="{{ page.id }}" {% if category.default_page_id==page.category_id %}selected{% endif %}>{{ page.contents[0].title ~ ' | ' ~ page.contents[1].title }}</option>
+                                {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Sıra No (EN)</label>
+                        <input name="ordernum" type="number" class="form-control" placeholder="Sıra No" value="{{ category.ordernum }}" />
+                    </div>
+                </div>
+        </div>
+    
+    
+    
+        <h3>
+            <input type="submit" id="save_btn" class="btn btn-primary" value="Kaydet" />
+            
+            {% if category.id > 0 %}
+            <input type="button" id="delete_btn" class="btn btn-danger" value="Sil" />
+            {% endif %}
+        </h3>
+        <input type="hidden" name="id" value="{{ category.id }}" />
+    </div>
+</form>
+{% endblock %}
