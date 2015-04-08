@@ -18,15 +18,7 @@
                 </div>
             </div>
 
-            <ul class="menu">
-                <li class="ml1"><a href="/">{{ T.menu_mainpage }}</a></li>
-                <li class="ml2"><a href="#">{{ T.menu_company }}</a></li>
-                <li class="ml3"><a href="#">{{ T.menu_production }}</a></li>
-                <li class="ml4"><a href="#">{{ T.menu_sales }}</a></li>
-                <li class="ml5"><a href="#">{{ T.menu_news }}</a></li>
-                <li class="ml6"><a href="#">{{ T.menu_hr }}</a></li>
-                <li class="ml7"><a href="#">{{ T.menu_contact }}</a></li>
-            </ul>
+            {% include 'partial/menu.twig' %}
         </nav>
     </header>
 </div>

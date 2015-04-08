@@ -20,32 +20,23 @@ abstract class ControllerBase
         $this->lang = $this->app->getLang;
 
         $this->app->view->setData('lang', $this->lang);
+        $this->app->view->setData('menu', $this->getMenuCategories());
     }
 
 
-    /*
-     * @params $step has name,url keys
-     *
-     */
-    protected function breadjump(array $steps) {
+    function getMenuCategories() {
 
-        $breadJumpHtml = $this->breadJumpStepHtml([
-            'url' => '/' . $this->lang,
-            'name'=> 'Anasayfa'
-        ]);
+        $menus = [];
 
-        foreach ($steps as $step) {
+        foreach (\App\Model\PageCategory::orderBy('ordernum')->get() as $cat) {
 
-            $breadJumpHtml .= self::BREADJUMP_SEP . $this->breadJumpStepHtml($step);
+            $menus[] = [
+                'name' => $cat->{"name_$this->lang"},
+                'link' => '/' . $this->lang . '/' . $cat->defaultPage($this->lang)->seo_url
+            ];
         }
 
-        return $breadJumpHtml;
-    }
-
-
-    private function breadJumpStepHtml(array $step) {
-
-        return '<a href="' . $step['url'] . '">' . $step['name'] . '</a>';
+        return $menus;
     }
 
 

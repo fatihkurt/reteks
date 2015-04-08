@@ -22,9 +22,7 @@ class PageController extends ControllerBase
 
         $category = $page->page->category;
 
-
-
-        $breadjump[] = ['name' => $category->name, 'url' => $category->defaultPage($lang)->seo_url];
+        $breadjump[] = ['name' => $category->{"name_$this->lang"}, 'url' => $category->defaultPage($lang)->seo_url];
 
         if ($page->page_id != $category->default_page_id) {
 

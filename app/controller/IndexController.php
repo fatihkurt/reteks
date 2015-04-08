@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 
+use App;
+
 class IndexController extends ControllerBase
 {
 

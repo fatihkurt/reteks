@@ -1,0 +1,8 @@
+<ul class="menu">
+                <li class="ml1"><a href="/">{{ T.menu_mainpage }}</a></li>
+                
+                {% for i in 0..5 %}
+
+                    <li class="ml{{ i+2 }}"><a href="{{ menu[i].link }}">{{ menu[i].name }}</a></li>
+                {% endfor %}
+            </ul>
