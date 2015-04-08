@@ -19,4 +19,10 @@ class Page extends \Illuminate\Database\Eloquent\Model
 
         $this->contents()->where('lang', '=', $lang)->first();
     }
+
+
+    public function category()
+    {
+        return $this->belongsTo('App\Model\PageCategory', 'category_id', 'id');
+    }
 }

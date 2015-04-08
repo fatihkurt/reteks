@@ -1,0 +1,8 @@
+<div class="breadjump">
+
+<a href="/{{ lang }}">Anasayfa</a>
+
+{% for step in breadjump  %}
+   > <a href="{{ step.url }}">{{ step.name }}</a>
+{% endfor %}
+</div>

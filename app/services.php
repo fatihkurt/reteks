@@ -24,6 +24,10 @@ $app->add(new \Slim\Middleware\SessionCookie(array(
     'cipher_mode'=> MCRYPT_MODE_CBC
 )));
 
+// $app->error(function (\Exception $e) use ($app) {
+
+//     //var_dump($app);
+// });
 
 $app->getLang = function() use($app){
 

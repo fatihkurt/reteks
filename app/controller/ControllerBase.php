@@ -9,6 +9,8 @@ abstract class ControllerBase
 
     CONST USER_LOGIN_KEY = 'lU_743';
 
+    CONST BREADJUMP_SEP = ' > ';
+
 
     public function __construct() {
 
@@ -16,7 +18,36 @@ abstract class ControllerBase
         $this->app = \Slim\Slim::getInstance();
 
         $this->lang = $this->app->getLang;
+
+        $this->app->view->setData('lang', $this->lang);
     }
+
+
+    /*
+     * @params $step has name,url keys
+     *
+     */
+    protected function breadjump(array $steps) {
+
+        $breadJumpHtml = $this->breadJumpStepHtml([
+            'url' => '/' . $this->lang,
+            'name'=> 'Anasayfa'
+        ]);
+
+        foreach ($steps as $step) {
+
+            $breadJumpHtml .= self::BREADJUMP_SEP . $this->breadJumpStepHtml($step);
+        }
+
+        return $breadJumpHtml;
+    }
+
+
+    private function breadJumpStepHtml(array $step) {
+
+        return '<a href="' . $step['url'] . '">' . $step['name'] . '</a>';
+    }
+
 
     protected function sessionGet($key) {
 

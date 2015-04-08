@@ -10,16 +10,32 @@ class PageController extends ControllerBase
 
     public function index($lang, $seoUrl) {
 
-        $page = PageTranslation::
-                    select('id', 'title', 'description', 'content')
+        $page = PageTranslation::with('page')
                     ->where('lang', '=', $lang)
                     ->where('seo_url', '=', $seoUrl)
-                    //->take(1)
                     ->first();
 
-        $this->app->render('/page/index.twig', [
+        if ($page->page->status == 0) {
 
-            'page'  => $page,
+            return $this->app->notFound();
+        }
+
+        $category = $page->page->category;
+
+
+        $breadjump[] = ['name' => $category->name, 'url' => $category->defaultPage($lang)->seo_url];
+
+        if ($page->page_id != $category->default_page_id) {
+
+            $breadjump[] = ['name' => $page->title, 'url' => $page->seo_url];
+        }
+
+
+        $this->app->render('/page.twig', [
+
+            'item'  => $page,
+            'category' => $category,
+            'breadjump' => $breadjump
         ]);
     }
 }

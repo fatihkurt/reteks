@@ -1,0 +1,21 @@
+{% extends "layout/main.layout.twig" %}
+
+
+{% block content %}
+
+        {% if item.page.image1 != '' %}
+        <div class="banner">
+            <img src="/upload/page/{{ item.page.image1 }}" />
+        </div>
+        {% endif %}
+
+        <div class="middle-content">
+        
+            <div>{% include 'partial/breadjump.twig' %}</div>
+
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.content }}</p>
+
+        </div> <!-- #middle-content -->
+
+{% endblock %}

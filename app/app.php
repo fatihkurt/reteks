@@ -2,9 +2,10 @@
 
 require 'vendor/autoload.php';
 
+
 $app = new \Slim\Slim([
     'debug'         => true,
-    'mode'          => isset($_SERVER['env']) ? $_SERVER['env'] :  'production',
+    'mode'          => isset($_SERVER['APPLICATION_ENV']) ? $_SERVER['APPLICATION_ENV'] :  'production',
     'view'          => new \Slim\Views\Twig(),
     'templates.path'=> APP_DIR . 'view',
     'cache.path'    => APP_DIR . 'cache',

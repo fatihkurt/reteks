@@ -17,6 +17,6 @@ class PageTranslation extends \Illuminate\Database\Eloquent\Model
 
     public function page()
     {
-        return $this->belongsTo('App\Model\Page');
+        return $this->belongsTo('App\Model\Page', 'page_id', 'id');
     }
 }

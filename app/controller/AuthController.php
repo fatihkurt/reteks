@@ -19,7 +19,7 @@ class AuthController extends ControllerBase
             $this->app->response->redirect('admin');
         }
 
-        $this->app->render('login/login.twig');
+        $this->app->render('admin/login.twig');
     }
 
 
