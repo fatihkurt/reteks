@@ -588,10 +588,10 @@ nav ul.menu li {
     
 /* Contact */
 
-    .contact-info{
-      font-size: 14px;
-      margin-top: 20px;
-    }
+.contact-info{
+  font-size: 14px;
+  margin-top: 20px;
+}
     
     .c-title {
         font-size: 14px;
@@ -627,6 +627,49 @@ nav ul.menu li {
     .c-map {
         margin-top: 20px;
     }
+    
+    
+.contact-form {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+    .form-row {
+        margin-bottom: 20px;
+    }
+
+    .form-row label{
+      font-size: 14px;
+      line-height: 1.571;
+    }
+    
+
+    .form-item {
+        font-size: 16px;
+        border-style: solid;
+        padding: 12px;
+        border-width: 1px;
+        border-color: #dedede;
+        color: #222222;
+        width: 96%;
+    }
+    
+    .form-required {
+          font-size: 12px;
+          color: rgba(66, 75, 81, .5);
+          color: rgba(66, 75, 81);
+          line-height: 1.8;
+        }
+    
+    .form-btn {
+        background: #D80C0C;
+        padding: 8px 22px;
+        color: #fff;
+        float: right;
+        border: none;
+        font-size: 16px;
+    }
+    
     
 footer {
     background: #666;

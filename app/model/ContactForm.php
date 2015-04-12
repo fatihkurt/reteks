@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class ContactFormCategory extends \Illuminate\Database\Eloquent\Model
+class ContactForm extends \Illuminate\Database\Eloquent\Model
 {
 
     protected $table = 'contact_form';

@@ -17,7 +17,36 @@
 
                 {% include 'partial/breadjump.twig' %}
 
+                <div class="contact-form">
                 
+                    <form action="">
+                    <div class="form-row">
+                        <label for="fname">{{ T.form_name }}*</label>
+                        <input class="form-item" type="text" name="name" value="" id="fname" />
+                    </div>
+                    <div class="form-row">
+                        <label for="fname">{{ T.form_gsm }}*</label>
+                        <input class="form-item" type="text" name="gsm" value="" id="fgsm" />
+                    </div>
+                    <div class="form-row">
+                        <label for="fmail">{{ T.form_mail }}*</label>
+                        <input class="form-item" type="text" name="email" value="" id="fmail" />
+                    </div>
+                    <div class="form-row">
+                        <label for="fsubject">{{ T.form_subject }}</label>
+                        <input class="form-item" type="text" name="subject" value="" id="fsubject" />
+                    </div>
+                    <div class="form-row">
+                        <label for="fmessage">{{ T.form_name }}*</label>
+                        <textarea class="form-item" name="message" value="" id="fmessage"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-required">* {{ T.form_required }}</div>
+                        <button type="button" class="form-btn">{{ T.form_send }}</button>
+                    </div>
+                    </form>
+                </div>
 
             </div>
 

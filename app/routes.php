@@ -63,6 +63,9 @@ $app->get('(/:lang)/:title', $initLanguage, '\App\Controller\PageController:inde
 $app->get('(/:lang)/:title/:title2', $initLanguage, '\App\Controller\PageController:index')->name('page');
 
 
+$app->post('/contact/form', '\App\Controller\ContactController:save');
+
+
 
 
 

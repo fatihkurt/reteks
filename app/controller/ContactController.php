@@ -3,10 +3,12 @@ namespace App\Controller;
 
 
 use App,
-    App\Model\Contact;
+    App\Model\ContactForm;
 
 class ContactController extends ControllerBase
 {
+
+    use App\Plugin\AjaxResponse;
 
     public function form($lang, $seoUrl, $page) {
 
@@ -33,5 +35,57 @@ class ContactController extends ControllerBase
                 ['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]
             ]
         ]);
+    }
+
+
+    public function save() {
+
+        $data = $this->app->request->post();
+
+        $required = ['name', 'gsm', 'email', 'message'];
+
+        $pass = true;
+
+        foreach ($required as $field) {
+
+            if (empty($data[$field])) {
+
+                $pass = false;
+            }
+        }
+
+        if ($pass == false) {
+
+            $this->msg = $this->app->getLang == 'tr' ? 'Lütfen zorunlu alanları doldurunuz.' : 'Please fill required fields.' ;
+
+            return $this->jsonResponse(false);
+        }
+
+
+        try {
+            $this->msg = $this->app->getLang == 'tr'
+                    ? 'Mesajınız başarıyla gönderilmiştir.'
+                    : 'Your message has been send successfully.';
+
+            $contact = new ContactForm;
+
+            $contact->name = $data['name'];
+            $contact->gsm = $data['gsm'];
+            $contact->email = $data['email'];
+            $contact->subject = $data['subject'];
+            $contact->message = $data['message'];
+            $contact->sess_id = session_id();
+            $contact->ip_addr = $this->app->request->getIp();
+
+            $success = $contact->save($data);
+        }
+        catch (\Exception $e) {
+
+            $success = false;
+
+            $this->msg = $e->getMessage();
+        }
+
+        $this->jsonResponse($success);
     }
 }
