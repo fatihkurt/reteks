@@ -26,6 +26,7 @@ class IndexController extends ControllerBase
         $this->app->render('index.twig', [
 
             'news'  => $news,
+            'footer_js' => ['main.js'],
         ]);
     }
 }

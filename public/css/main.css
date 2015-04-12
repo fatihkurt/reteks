@@ -84,6 +84,7 @@ input[type="text"].focus {
    ========================================================================== */
 
 
+
 .wrapper {
     width: 1060px;
     margin: 0 auto;
@@ -208,6 +209,60 @@ nav ul.menu li {
 
 
 /* Main Area */
+
+.main-banner { position: relative; overflow: auto; display:none; }
+.main-banner ul { margin: 0px; padding: 0px; }
+    .main-banner li { list-style: none; }
+        .main-banner ul li { float: left; }
+        
+            .banner-inner {
+                position: relative;
+            }
+            
+            .banner-text {
+                    width: 500px;
+                  font-size: 56px;
+                  font-family: "Ubuntu";
+                  color: rgb(245, 245, 245);
+                  line-height: 1.032;
+                  text-align: left;
+                  text-shadow: 0px 5px 73px rgba(0, 1, 1, 0.75);
+                  position: absolute;
+                  left: 80px;
+                  top: 130px;
+                  z-index: 999;
+                }
+        
+        .slidesjs-pagination {
+            position: absolute;
+            top: 310px;
+            left: 80px;
+            z-index: 999;
+        }
+        
+        .slidesjs-pagination li {
+        
+          margin-right: 10px;
+        }
+        
+        .slidesjs-pagination a {
+        
+          font-size: 22px;
+          color: rgb(245, 245, 245);
+          font-weight: bold;
+          line-height: 2.909;
+          padding-bottom: 5px;
+        }
+        .slidesjs-pagination a:before {
+        
+          content: '0';
+        }
+        .slidesjs-pagination a.active {
+        
+          border-bottom: 4px solid #fff;
+        }
+        
+
 
 .main-container, .footer-container {
     
@@ -593,6 +648,11 @@ nav ul.menu li {
   margin-top: 20px;
 }
     
+    .contact-text {
+        margin-bottom: 20px;
+        float: left;
+    }
+    
     .c-title {
         font-size: 14px;
         margin-top: 40px;
@@ -656,8 +716,8 @@ nav ul.menu li {
     
     .form-required {
           font-size: 12px;
-          color: rgba(66, 75, 81, .5);
-          color: rgba(66, 75, 81);
+          color: rgba(216, 12, 12, 0.502);
+          color: rgba(216, 12, 12);
           line-height: 1.8;
         }
     

@@ -1,6 +1,15 @@
 
 $(function() {
     
+    $('.main-banner').slidesjs({
+        width: 1060,
+        height: 450,
+        navigation: {
+            active: false,
+            effect: "slide"
+          }
+      });
+    
     
     $('.contact-form .form-btn').click(function() {
         
