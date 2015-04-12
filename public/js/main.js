@@ -10,6 +10,18 @@ $(function() {
           }
       });
     
+    $('.news-slider').slidesjs({
+        width: 1060,
+        height: 450,
+        navigation: {
+            active: false,
+            effect: "fade"
+        },
+        pagination: {
+            active: false
+        }
+    });
+    
     
     $('.contact-form .form-btn').click(function() {
         

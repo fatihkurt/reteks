@@ -89,10 +89,19 @@
             
             <div class="right-col news">
                 <div class="r-header">{{ T.news }}</div>
-                <span class="arrows"></span>
-                <label>01.03.2014</label>
-                <h4>RE GRUP BAŞKANI TUSKON'U ZİYARET ETTİ</h4>
-                <p>Türkiye İşadamları ve Sanayiciler Konfederasyonu (TUSKON) tarafından...</p>
+                
+                
+                <div class="news-slider">
+                <a class="arrows-up slidesjs-previous slidesjs-navigation"></a>
+                <a class="arrows-down slidesjs-next slidesjs-navigation"></a>
+                {% for item in news %}
+                <div>
+                <label>{{ item.start_date|date("d.m.Y") }}</label>
+                <h4>{{ item.content.title }}</h4>
+                <p>{{ item.content.content }}</p>
+                </div>
+                {% endfor %}
+                </div>
             </div>
         
             <div class="right-col">

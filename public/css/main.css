@@ -210,7 +210,7 @@ nav ul.menu li {
 
 /* Main Area */
 
-.main-banner { position: relative; overflow: auto; display:none; }
+.main-banner { position: relative; overflow: auto;  }
 .main-banner ul { margin: 0px; padding: 0px; }
     .main-banner li { list-style: none; }
         .main-banner ul li { float: left; }
@@ -476,15 +476,26 @@ nav ul.menu li {
         margin: 10px 0;
     }
     
-    .news .arrows {
+    .news .arrows-up {
         position: absolute;
         right: 20px;
         top: 20px;
         display: inline-block;;
-        background: url(../img/arrows.png) no-repeat;
+        background: url(../img/arrows.png) 0px 0px no-repeat;
         width: 30px;
-        height: 75px;
-        background-size: 80%;
+        height: 27px;
+        background-size: 90%;
+        cursor: pointer;
+    }
+    .news .arrows-down {
+        position: absolute;
+        right: 20px;
+        top: 50px;
+        display: inline-block;;
+        background: url(../img/arrows.png) 0px 100% no-repeat;
+        width: 30px;
+        height: 27px;
+        background-size: 90%;
         cursor: pointer;
     }
     
