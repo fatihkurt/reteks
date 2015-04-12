@@ -1,0 +1,31 @@
+{% extends "layout/main.layout.twig" %}
+
+
+{% block content %}
+
+        {% if content.page.image1 != '' %}
+        <div class="banner">
+            <img src="/upload/page/{{ content.page.image1 }}" />
+        </div>
+        {% endif %}
+
+        <div class="news-content">
+                <h3 class="page-title">{{ content.title|upper }}</h3>
+
+                {% include 'partial/breadjump.twig' %}
+
+
+                    <ul class="news-list">
+                    {% for news in items %}
+                        <li>
+                            <div class="news-item-arrow"><img src="/img/news_rarrow.png" /></div>
+                            <div class="news-item">
+                                <h4><a href="/{{ lang }}/{{ content.seo_url }}/{{ news.content.seo_url }}">{{ news.content.title }}</a></h4>
+                                <div class="news-date">{{ news.start_date }}</div>
+                                <p><a href="/{{ lang }}/{{ content.seo_url }}/{{ news.content.seo_url }}">{{ news.content.content|raw }}</a></p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                    </ul>
+        </div>
+{% endblock %}

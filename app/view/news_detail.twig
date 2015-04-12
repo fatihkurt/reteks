@@ -1,0 +1,28 @@
+{% extends "layout/main.layout.twig" %}
+
+
+{% block content %}
+
+        {% if content.page.image1 != '' %}
+        <div class="banner">
+            <img src="/upload/page/{{ content.page.image1 }}" />
+        </div>
+        {% endif %}
+
+        <div class="news-content">
+                <h3 class="page-title">{{ content.title|upper }}</h3>
+
+                {% include 'partial/breadjump.twig' %}
+
+                <div class="news-detail">
+                    <p class="news-text">
+                    
+                        <img class="news-detail-image" src="/upload/news/{{ item.news.image }}" />
+                        
+                        <h4 class="news-detail-title">{{ item.title }}</h4>
+
+                        {{ item.content|raw }}
+                    </p>
+                </div>
+        </div>
+{% endblock %}

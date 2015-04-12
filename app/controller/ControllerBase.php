@@ -9,8 +9,6 @@ abstract class ControllerBase
 
     CONST USER_LOGIN_KEY = 'lU_743';
 
-    CONST BREADJUMP_SEP = ' > ';
-
 
     public function __construct() {
 

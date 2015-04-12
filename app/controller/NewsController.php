@@ -3,23 +3,59 @@ namespace App\Controller;
 
 
 use App,
-    App\Model\PageTranslation;
+    App\Model\News,
+    App\Model\NewsTranslation;
 
-class PageController extends ControllerBase
+class NewsController extends ControllerBase
 {
 
-    public function index($lang, $seoUrl) {
+    public function index($lang, $page) {
 
-        $page = PageTranslation::
-                    select('id', 'title', 'description', 'content')
-                    ->where('lang', '=', $lang)
+        $news = News::with('contents')
+                    ->orderBy('start_date', 'desc')
+                    ->get();
+
+
+        foreach ($news as &$item) {
+
+            foreach ($item->contents as $content) {
+
+                if ($content->lang == $this->lang) {
+                    $item->content = $content;
+                    unset($item->contents);
+                    break;
+                }
+            }
+        }
+
+        $this->app->render('news.twig', [
+
+            'items'     => $news,
+            'content'   => $page,
+            'breadjump' => [['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]]
+        ]);
+    }
+
+
+    public function detail($lang, $seoUrl, $page) {
+
+        $news = NewsTranslation::with('news')
+                    ->where('lang', '=', $this->lang)
                     ->where('seo_url', '=', $seoUrl)
-                    //->take(1)
                     ->first();
 
-        $this->app->render('/page/index.twig', [
+        if (strtotime($news->news->end_date) < time() || strtotime($news->news->start_date) > time()) {
 
-            'page'  => $page,
+            return $this->app->notFound();
+        }
+
+        var_dump($news->title);
+
+        $this->app->render('news_detail.twig', [
+
+            'item'     => $news,
+            'content'   => $page,
+            'breadjump' => [['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]]
         ]);
     }
 }

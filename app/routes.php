@@ -60,13 +60,10 @@ $app->get('(/:lang)/', $initLanguage, '\App\Controller\IndexController:index')->
 
 
 $app->get('(/:lang)/:title', $initLanguage, '\App\Controller\PageController:index')->name('page');
+$app->get('(/:lang)/:title/:title2', $initLanguage, '\App\Controller\PageController:index')->name('page');
 
 
-$app->get('(/:lang)/news/:title', $initLanguage, function() use($app) {
 
-    $app->render('news.twig');
-
-})->name('news');
 
 
 

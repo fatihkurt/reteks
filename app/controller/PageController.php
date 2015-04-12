@@ -3,38 +3,68 @@ namespace App\Controller;
 
 
 use App,
-    App\Model\PageTranslation;
+    App\Model\Page,
+    App\Model\PageCategory,
+    App\Model\PageTranslation,
+    App\Controller\NewsController,
+    App\Controller\ContactController;
 
 class PageController extends ControllerBase
 {
 
-    public function index($lang, $seoUrl) {
+    public function index($lang, $seoUrl, $seoUrl2='') {
 
         $page = PageTranslation::with('page')
                     ->where('lang', '=', $lang)
                     ->where('seo_url', '=', $seoUrl)
                     ->first();
 
-        if ($page->page->status == 0) {
+        if ($page == null || $page->page->status == 0) {
 
             return $this->app->notFound();
         }
 
-        $category = $page->page->category;
+        if ($page->page->module != '') {
 
-        $breadjump[] = ['name' => $category->{"name_$this->lang"}, 'url' => $category->defaultPage($lang)->seo_url];
+            $moduleD = explode(':', $page->page->module);
 
-        if ($page->page_id != $category->default_page_id) {
+            $moduleName = 'App\Controller\\' . $moduleD[0] . 'Controller';
+            $actionName = isset($moduleD[1]) ? $moduleD[1] : 'index';
 
-            $breadjump[] = ['name' => $page->title, 'url' => $page->seo_url];
+            if ($page->page->module == 'News') {
+
+                $controller = new NewsController;
+
+                if ($seoUrl2 != '') {
+                    return $controller->detail($lang, $seoUrl2, $page);
+                }
+                else {
+                    return $controller->index($lang, $page);
+                }
+            }
+            else {
+
+                $e = 'ContactController';
+
+                $controller = new $moduleName;
+
+                return $controller->{$actionName}($lang, $seoUrl2, $page);
+            }
         }
 
+        $category = $page->page->category;
+
+        $categoryPages = Page::with('contents')->where('category_id', '=', $category->id)->get();
 
         $this->app->render('/page.twig', [
 
-            'item'  => $page,
-            'category' => $category,
-            'breadjump' => $breadjump
+            'item'      => $page,
+            'category'  => $category,
+            'cpages'    => $category->pages,
+            'breadjump' => [
+                ['name' => $category->{"name_$this->lang"}, 'link' => ''],
+                ['name' => $page->title, 'link' => "/$this->lang/" . $page->seo_url]
+            ]
         ]);
     }
 }

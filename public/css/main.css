@@ -434,6 +434,200 @@ nav ul.menu li {
     }
     
     
+ 
+ 
+ 
+ /* Inner Pages */
+ .page-content {
+    background: #FFF;
+    min-height: 200px;
+    padding: 30px;
+ }
+ 
+ .page-title {
+    font-size: 20px;
+    font-family: "Ubuntu";
+    color: rgb(226, 10, 22);
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 10px 0;
+ }
+ 
+    .breadjump {
+        font-size: 12px;
+        margin-top:7px;
+        color: rgb(36, 35, 38);
+        line-height: 0.5;
+    }
+    
+    .breadjump .current {
+        color: #E20A16;
+    }
+    
+    
+     .page-text {
+          font-size: 14px;
+          color: #222;
+          line-height: 1.7;
+    }
+    
+    .page-list {
+        margin-left: 0;
+        padding: 0;
+        height: auto !important;
+    }
+    
+    .page-list ul {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    .page-list ul li {
+        list-style-image:url("../img/rarrow_list.png");
+        list-style-position: inside;
+        font-size: 15px;
+        line-height: 1;
+        padding: 15px 0;
+        padding-left: 24px;
+    }
+    
+    .page-list ul li a {
+        color: #222;
+        margin-left: 6px;
+    }
+    
+    .page-list ul li.s-cpage a {
+        color: #fff;
+    }
+    
+    .page-list ul li.s-cpage {
+        background: #e20a16;
+        color: #fff;
+        list-style-image:url("../img/rarrow_list_current.png");        
+    }
+    
+    
+    
+/* Newspage */
+
+.news-content {
+    
+    
+    background: #fff;
+    padding: 30px;
+    min-height: 300px;
+}
+
+    ul.news-list {
+        margin : 20px 0px;
+        padding: 0px;
+    }
+
+    ul.news-list li {
+        list-style: none;
+        width: 100%;
+        float: left;
+    }
+    
+    .news-item-arrow {
+    
+        float: left;
+    }
+    
+    .news-item {
+        float:left;
+        padding-left: 10px;
+    }
+    
+    .news-list h4 {
+        font-size: 14px;
+        color: #222;
+        font-weight: bold;
+        line-height: 1.5;
+        margin: 0px;
+    }
+    
+    .news-date {
+      font-size: 12px;
+      color: #999;
+      line-height: 1.9;
+    }
+    
+    .news-list p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    
+    
+    
+    .news-detail {
+        margin-top: 30px;
+        min-height: 500px;
+    }
+    
+    .news-detail-title {
+        
+    }
+    
+    .news-detail-image {
+        float: left;
+        width: 320px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .news-text {
+
+      font-size: 14px;
+      line-height: 1.7;
+        
+    }
+    
+    
+    
+/* Contact */
+
+    .contact-info{
+      font-size: 14px;
+      margin-top: 20px;
+    }
+    
+    .c-title {
+        font-size: 14px;
+        margin-top: 40px;
+    }
+    
+    .c-address{
+        float: left;
+        width: 100%;
+        padding-left: 20px;
+        background: url(../img/c_address.png) left no-repeat;
+        margin-bottom: 10px;
+    }
+    
+    
+    .c-tel {
+        float: left;
+        
+        padding-left: 20px;
+        background: url(../img/c_tel.png) left no-repeat;
+        width: 40%;
+    }
+    
+    .c-fax {
+        float: left;
+        
+        padding-left: 20px;
+        background: url(../img/c_fax.png) left no-repeat;
+        
+        width: 40%;
+    }
+    
+    .c-map {
+        margin-top: 20px;
+    }
+    
 footer {
     background: #666;
     height: 70px;

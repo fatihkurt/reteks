@@ -73,7 +73,7 @@ class PageController extends App\Controller\Admin\ControllerBase
             'page'      => $page,
             'categories'=> PageCategory::all(),
             'langs'     => $this->app->config('languages'),
-            'footer_js' => ['vendor/jquery/jquery.form.min.js', 'ckeditor/ckeditor.js', 'admin/page.js']
+            'footer_js' => ['vendor/jquery/jquery.form.min.js', 'ckeditor/ckeditor.js', 'ckeditor/adapters/jquery.js', 'admin/page.js']
         ]);
     }
 
@@ -87,11 +87,13 @@ class PageController extends App\Controller\Admin\ControllerBase
 
         $data = $this->app->request->post();
 
-        $page = Page::firstOrCreate(['id' => $data['id']]);
+        $page = Page::firstOrNew(['id' => $data['id'], 'category_id' => $data['category_id']]);
 
         $page->category_id = $data['category_id'];
         $page->ordernum = $data['ordernum'];
         $page->status   = isset($data['status']) ? 1 : 0;
+
+        $page->save();
 
         foreach ($data['contents'] as $index=>$content) {
 
@@ -99,10 +101,10 @@ class PageController extends App\Controller\Admin\ControllerBase
 
             $pageContent->page_id   = $page->id;
             $pageContent->lang      = $content['lang'];
-            $pageContent->title     = $content['title'];
+            $pageContent->title     = html_entity_decode($content['title']);
             $pageContent->seo_url   = $content['seo_url'];
-            $pageContent->description= $content['description'];
-            $pageContent->content   = $content['content'];
+            $pageContent->description= html_entity_decode($content['description']);
+            $pageContent->content   = html_entity_decode($content['content']);
 
             if (! $pageContent->save()) {
 

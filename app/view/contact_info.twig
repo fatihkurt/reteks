@@ -1,0 +1,65 @@
+{% extends "layout/main.layout.twig" %}
+
+
+{% block content %}
+
+        {% if item.page.image1 != '' %}
+        <div class="banner">
+            <img src="/upload/page/{{ item.page.image1 }}" />
+        </div>
+        {% endif %}
+
+        <div class="middle-content">
+            
+            <div class="page-content">
+        
+                <h3 class="page-title">{{ item.title|upper }}</h3>
+
+                {% include 'partial/breadjump.twig' %}
+
+                <div class="contact-info">
+                
+                    <h3 class="c-title">Merkez Fabrika</h3>
+                    <div class="c-address">Mahmutbey Merkez Mh. Atlas Cd. No:2 Bağcılar / İstanbul</div>
+                    <div class="c-tel">Tel: 0 (212) 445 09 33</div>
+                    <div class="c-fax">Fax: 0 (212) 445 18 19</div>
+                    
+                    <div class="c-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385396.60596766684!2d29.012179500000002!3d41.0053215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabadcaa14341f%3A0x9b88199ebf2d6e42!2sReteks+Tekstil!5e0!3m2!1str!2s!4v1428838998155" width="600" height="450" frameborder="0" style="border:0"></iframe>
+                    </div>
+                
+                    <h3 class="c-title">Düzce Fabrika</h3>
+                    <div class="c-address">Uzunmustafa Mah. Fatih Cad. D-100 Karayolu Üzeri Düzce</div>
+                    <div class="c-tel">Tel: 0 (380) 524 30 77 </div>
+                    <div class="c-fax">Fax: 0 (380) 524 30 78</div>
+                    
+                    <div class="c-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385396.60596766684!2d29.012179500000002!3d41.0053215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabadcaa14341f%3A0x9b88199ebf2d6e42!2sReteks+Tekstil!5e0!3m2!1str!2s!4v1428838998155" width="600" height="450" frameborder="0" style="border:0"></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- #middle-content -->
+        
+        <div class="middle-right">
+            
+            <div class="right-col news page-list">
+                <ul>
+                    {% for cpage in cpages %}
+                    <li {% if item.page_id == cpage.id  %}class="s-cpage"{% endif %}>
+                        <a href="/{{lang}}/{{ cpage.content(lang).seo_url }}">{{ cpage.content(lang).title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        
+            <div class="right-col">
+                <img src="../img/video_preview.png" />
+            </div>
+            
+            <div class="right-col">
+                <img src="../img/ebulten.png" />
+            </div>
+        </div>
+
+{% endblock %}

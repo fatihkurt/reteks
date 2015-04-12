@@ -1,5 +1,7 @@
 <?php
 
+$app->contentType('text/html; charset=utf-8');
+
 $view = $app->view();
 
 $view->parserOptions = array(
@@ -10,6 +12,7 @@ $view->parserOptions = array(
 $view->parserExtensions = array(
     new \Slim\Views\TwigExtension(),
 );
+
 
 
 $app->add(new \Slim\Middleware\SessionCookie(array(
@@ -35,27 +38,35 @@ $app->getLang = function() use($app){
 };
 
 
-//initialize orm
-use \Illuminate;
-use Illuminate\Database\Capsule\Manager as Capsule;
+$app->container->singleton('db', function() use ($app) {
 
-$capsule = new Capsule;
+    //initialize orm
 
-$dbConf = $app->config('database');
+    $capsule = new \Illuminate\Database\Capsule\Manager;
 
-$capsule->addConnection([
-    'driver'    => 'mysql',
-    'host'      => $dbConf['host'],
-    'database'  => $dbConf['name'],
-    'username'  => $dbConf['user'],
-    'password'  => $dbConf['pass'],
-    'charset'   => 'utf8',
-    'collation' => 'utf8_unicode_ci',
-    'prefix'    => '',
-]);
+    $dbConf = $app->config('database');
 
-// Make this Capsule instance available globally via static methods... (optional)
-$capsule->setAsGlobal();
+    $capsule->addConnection([
+        'driver'    => 'mysql',
+        'host'      => $dbConf['host'],
+        'database'  => $dbConf['name'],
+        'username'  => $dbConf['user'],
+        'password'  => $dbConf['pass'],
+        'charset'   => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+        'prefix'    => '',
+    ]);
 
-// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
-$capsule->bootEloquent();
+    // Make this Capsule instance available globally via static methods... (optional)
+    $capsule->setAsGlobal();
+
+    // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
+    $capsule->bootEloquent();
+
+    //$capsule->setFetchMode(PDO::FETCH_OBJ);
+
+    return $capsule->getConnection();
+});
+
+
+$app->db->statement("SET NAMES utf8");

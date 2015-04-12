@@ -1,6 +1,6 @@
 {% extends "layout/admin.layout.twig" %}
 {% block content %}
-<form id="page_form" action="/admin/page/save" method="POST" enctype="multipart/form-data">
+<form id="page_form" action="/admin/page/save" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
     <div class="panel-group" id="accordion">
         {% for index,lang in langs %}
         <input type="hidden" name="contents[{{ index }}][id]" value="{{ id }}" />
@@ -23,12 +23,12 @@
                     </div>
                     <div class="form-group">
                         <label for="">Seo Açıklama</label>
-                        <textarea name="contents[{{ index }}][description]" class="form-control"  name="description">{{ page.contents[index].description }}</textarea>
+                        <textarea name="contents[{{ index }}][description]" class="form-control">{{ page.contents[index].description }}</textarea>
                         <p class="help-block"></p>
                     </div>
                     <div class="form-group">
                         <label for="">İçerik</label>
-                        <textarea name="contents[{{ index }}][content]" class="form-control" id="content_{{ lang }}" name="content">{{ page.contents[index].content }}</textarea>
+                        <textarea name="contents[{{ index }}][content]" class="form-control editor">{{ page.contents[index].content }}</textarea>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                         <select name="category_id" class="form-control">
                             <option value="">Menü seçiniz..</option>
                             {% for cat in categories %}
-                            <option value="{{ cat.id }}" {% if page.category_id==cat.id %}selected{% endif %}>{{ cat.name }}</option>
+                            <option value="{{ cat.id }}" {% if page.category_id==cat.id %}selected{% endif %}>{{ cat.getName('tr') }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -65,7 +65,7 @@
                         <img src="/upload/page/{{ page.image1 }}" class="thumbnail" style="height: 100px;" />
                         {% endif %}
                         <input name="image1" class="form-control" placeholder="Lütfen resim dosyası seçiniz" type="file" id="bigInputFile">
-                        <p class="help-block">1100px genişliğinde jpg veya png uzantılı resim seçiniz.</p>
+                        <p class="help-block">1100 piksel genişliğinde jpg veya png uzantılı resim seçiniz.</p>
                     </div>
                     <div class="form-group">
                         <label for="smallInputFile">Anasayfa Resim</label>

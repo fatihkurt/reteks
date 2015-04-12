@@ -78,7 +78,7 @@ class NewsController extends App\Controller\Admin\ControllerBase
         $news = News::firstOrCreate(['id' => $data['id']]);
 
         $news->start_date   = date('Y-m-d H:i:s', strtotime($data['start_date']));
-        $news->end_date     = date('Y-m-d H:i:s', strtotime($data['start_date']));
+        $news->end_date     = date('Y-m-d H:i:s', strtotime($data['end_date']));
 
         foreach ($data['contents'] as $index=>$content) {
 

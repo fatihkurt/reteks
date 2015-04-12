@@ -7,7 +7,7 @@ class Page extends \Illuminate\Database\Eloquent\Model
 
     protected $table = 'page';
 
-    protected $guarded = array('id');
+    protected $guarded = array('id', 'category_id');
 
     public function contents() {
 
@@ -17,7 +17,7 @@ class Page extends \Illuminate\Database\Eloquent\Model
 
     public function content($lang) {
 
-        $this->contents()->where('lang', '=', $lang)->first();
+        return $this->contents()->where('lang', '=', $lang)->first();
     }
 
 
