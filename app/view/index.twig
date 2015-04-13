@@ -21,51 +21,21 @@
         
         <div class="middle-content">
             <div class="m-row">
-            <div class="m1 m-item">
-                <img src="/img/m1.png" />
-                <div class="m-badget mb1">
+            
+            {% for idx,page in pages %}
+            
+                <div class="m{{ idx + 1 }} m-item">
+                <img src="/upload/page/{{ page.image2 }}" />
+                <div class="m-badget mb{{ idx + 1 }}">
                     <div class="goto">
-                        <a href="#">KONFEKSİYON</a> <br />
-                        <a href="#" class="detail">{{ T.detail_info }}</a>
+                        <a href="/{{ lang ~ '/' ~ page.content(lang).seo_url }}">{{ page.content(lang).title }}</a> <br />
+                        <a href="/{{ lang ~ '/' ~ page.content(lang).seo_url }}" class="detail">{{ T.detail_info }}</a>
                     </div>
                 </div>
             </div>
-            <div class="m-item m2">
-                <img src="/img/m2.png" />
-                <div class="m-badget mb2">
-                    <div class="goto">
-                        <a href="#">BASKI</a> <br />
-                        <a href="#" class="detail">{{ T.detail_info }}</a>
-                    </div>
-                </div>
-            </div>
-            <div class="m-item m3">
-                <img src="/img/m3.png" />
-                <div class="m-badget mb3">
-                    <div class="goto">
-                        <a href="#">ÖRME</a> <br />
-                        <a href="#" class="detail">{{ T.detail_info }}</a>
-                    </div>
-                </div>
-            </div>
-            <div class="m-item m4">
-                <img src="/img/m4.png" />
-                <div class="m-badget mb4">
-                    <div class="goto">
-                        <a href="#">NAKIŞ</a> <br />
-                        <a href="#" class="detail">{{ T.detail_info }}</a>
-                    </div>
-                </div>
-            </div>
-            <div class="m-item m5">
-                <img src="/img/m5.png" />
-                <div class="m-badget mb5">
-                    <div class="goto">
-                        <a href="#">YIKAMA</a> <br />
-                        <a href="#" class="detail">{{ T.detail_info }}</a>
-                    </div>
-                </div>
-            </div>
+            
+            {% endfor %}
+
         </div>
             
             <div class="m-row mt30">

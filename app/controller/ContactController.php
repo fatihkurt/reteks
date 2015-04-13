@@ -19,7 +19,8 @@ class ContactController extends ControllerBase
             'breadjump' => [
                 ['name' => $page->page->category->getName($this->lang), 'link' => ""],
                 ['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]
-            ]
+            ],
+            'footer_js' => ['main.js'],
         ]);
     }
 

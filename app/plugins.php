@@ -19,7 +19,7 @@ $initLanguage = function(\Slim\Route $route) {
     // @TODO cache results
     $section = $route->getName() ?: 'main';
 
-    $translateD = parse_ini_file(APP_DIR . "locale/$lang/main.ini");
+    $translateD = parse_ini_file(APP_DIR . "locale/$lang.ini");
 
     $app->view()->setData('T', $translateD);
 
