@@ -500,7 +500,51 @@ nav ul.menu li {
     }
     
     
+    
+    .ebulten {
+        height: 130px;
+        padding: 0px;
+        background: #E20A16;
+    }
+    
+    .ebulten .ebulten-inner {
+        padding: 20px;
+    }
  
+ 
+    .ebulten-title {
+      font-size: 15px;
+      color: #F5F5F5;
+      font-weight: bold;
+      margin: 5px 0;
+      padding: 0px;
+    }
+    
+    .ebulten-text {
+        font-size: 13px;
+        color: #F5F5F5;
+        margin-bottom: 10px;
+    }
+    
+    .ebulten-input {
+        padding: 11px;
+        width: 137px;
+        font-size: 13px;
+        border: none;
+        margin-right: 10px;
+    }
+    
+    .right-col .ebulten-btn {
+        float: right;
+        font-size: 12px;
+        color: #E20A16;
+        font-weight: bold;
+        width: 55px;
+        padding: 10px;
+        display: inline-block;
+        background: #fff url(../img/br_arrow.gif) no-repeat 60px center;
+    }
+    
  
  
  /* Inner Pages */

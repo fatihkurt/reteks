@@ -16,16 +16,11 @@ $initLanguage = function(\Slim\Route $route) {
     }
 
     // load ini file
-    // @TODO cache results
-    $section = $route->getName() ?: 'main';
 
-    $translateD = parse_ini_file(APP_DIR . "locale/$lang.ini");
-
-    $app->view()->setData('T', $translateD);
+    $app->view()->setData('T', $app->t);
 
     $_SESSION['lang'] = $lang;
 };
-
 
 
 

@@ -38,6 +38,16 @@ $app->getLang = function() use($app){
 };
 
 
+$app->container->singleton('t', function() use ($app) {
+
+    $lang = $app->getLang;
+
+    // @TODO cache results
+
+    return parse_ini_file(APP_DIR . "locale/$lang.ini");
+});
+
+
 $app->container->singleton('db', function() use ($app) {
 
     //initialize orm

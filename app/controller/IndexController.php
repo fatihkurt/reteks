@@ -3,13 +3,17 @@ namespace App\Controller;
 
 
 use App,
+    App\Plugin\AjaxResponse,
     App\Model\News,
     App\Model\Page,
     App\Model\PageTranslation,
+    App\Model\Newsletter,
     App\Model\Setting;
 
 class IndexController extends ControllerBase
 {
+
+    use AjaxResponse;
 
     public function index($lang='tr') {
 
@@ -18,8 +22,35 @@ class IndexController extends ControllerBase
 
             'news'  => $this->getNews(),
             'pages' => $this->getPages(),
+            'thePage' => $this->getCompanyPage(),
             'footer_js' => ['main.js'],
         ]);
+    }
+
+
+    public function newsletterSave() {
+
+        $email = $this->app->request->post('email');
+
+        if ($email == '' || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+
+            $success = false;
+
+            $this->msg = $this->app->t['invalid_email'];
+        }
+        else {
+            $newsletter = Newsletter::firstOrCreate(['email' => $email]);
+
+            $newsletter->email   = $email;
+            $newsletter->sess_id = session_id();
+            $newsletter->ip_addr = $this->app->request->getIp();
+
+            $success = $newsletter->save();
+
+            $this->msg = $this->app->t['ebulten_message'];
+        }
+
+        $this->jsonResponse($success);
     }
 
 
@@ -36,6 +67,13 @@ class IndexController extends ControllerBase
         }
 
         return $pages;
+    }
+
+    private function getCompanyPage() {
+
+        $pageId = Setting::find(2)->value;
+
+        return  Page::find($pageId);
     }
 
 

@@ -45,5 +45,35 @@ $(function() {
         });
         
         return false;
+    });
+    
+    
+    $('.ebulten-btn').click(function() {
+        
+        var email = $('.ebulten-input').val();
+        
+        
+        $.ajax({
+            url: '/newsletter/save',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                email: email
+            },
+            success: function(resp) {
+                
+                if (resp.success == false) {
+                    
+                    alert(resp.message);
+                    
+                    $('.ebulten-input').select();
+                }
+                else {
+                    alert(resp.message);
+                }
+            }
+        });
+        
+        return false;
     })
 })

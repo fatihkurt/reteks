@@ -65,6 +65,8 @@ $app->get('(/:lang)/:title/:title2', $initLanguage, '\App\Controller\PageControl
 
 $app->post('/contact/form', '\App\Controller\ContactController:save');
 
+$app->post('/newsletter/save',  '\App\Controller\IndexController:newsletterSave');
+
 
 
 

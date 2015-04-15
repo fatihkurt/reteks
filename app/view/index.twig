@@ -8,12 +8,18 @@
         <div class="banner main-banner">
         
 <div class="banner-inner">
-<img src="/img/banner1.png" />
+<img src="/img/promo_1.jpg" />
 <div class="banner-text">{{ T.banner_text1 }}</div>
 </div>
+
 <div class="banner-inner">
-<img src="/img/banner2.png" />
+<img src="/img/promo_2.jpg" />
 <div class="banner-text">{{ T.banner_text2 }}</div>
+</div>
+
+<div class="banner-inner">
+<img src="/img/promo_3.jpg" />
+<div class="banner-text">{{ T.banner_text3 }}</div>
 </div>
         
             
@@ -45,11 +51,11 @@
 
                         <h2>R & E TEKS</h2>
 
-                        <h3>DENEYİM, ESTETİK, YAKLAŞIM</h3>
+                        <h3>{{ T.company_slogan }}</h3>
 
-                        <p>25 yılı aşkın bilgi birikimi ile 2004 yılında kurulan R&E Teks 7 yıl gibi kısa bir sürede dev bir şirket haline geldi. Örme giyim alanında uzmanlık sahibi olan R&E Teks, R1(Mahmutbey) ve R2 (Düzce) fabrikaları olarak 2 ayrı noktada ve toplamda  600 çalışanıyla aylık 600.00 bin adet üretim gerçekleştirmektedir.</p>
+                        <p>{{ thePage.content(lang).description }}</p>
                    
-                        <div class="btn-holder"><a class="btn-devam" href="#">Devamı</a></div>
+                        <div class="btn-holder"><a class="btn-devam" href="#">{{ T.company_button }}</a></div>
                    </div>
                 </div>
             </div>
@@ -78,8 +84,13 @@
                 <img src="../img/video_preview.png" />
             </div>
             
-            <div class="right-col">
-                <img src="../img/ebulten.png" />
+            <div class="right-col ebulten">
+                <div class="ebulten-inner">
+                    <h4 class="ebulten-title">{{ T.ebulten_title }}</h4>
+                    <div class="ebulten-text">{{ T.ebulten_text }}</div>
+                    <input type="email" class="ebulten-input" placeholder="{{ T.ebulten_email }}" />
+                    <a class="ebulten-btn" href="">{{ T.be_member }}</a>
+                </div>
             </div>
         </div>
 
