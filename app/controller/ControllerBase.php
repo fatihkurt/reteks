@@ -29,6 +29,7 @@ abstract class ControllerBase
         foreach (\App\Model\PageCategory::orderBy('ordernum')->get() as $cat) {
 
             $menus[] = [
+                'id'   => $cat->id,
                 'name' => $cat->{"name_$this->lang"},
                 'link' => '/' . $this->lang . '/' . $cat->defaultPage($this->lang)->seo_url
             ];

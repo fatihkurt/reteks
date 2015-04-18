@@ -50,7 +50,7 @@ class NewsController extends ControllerBase
         }
 
         $this->app->render('news_detail.twig', [
-
+            'menu_id' => 4,
             'item'     => $news,
             'content'   => $page,
             'breadjump' => [['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]]

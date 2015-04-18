@@ -157,7 +157,7 @@ nav ul.menu {
     float: right;
     
     width: 925px;
-    margin: 37px 0 0 0;
+    margin: 20px 0 0 0;
     padding: 0px;
     
     height: 40px;
@@ -179,7 +179,7 @@ nav ul.menu li {
     
     text-align: center;
     
-    padding-bottom: 16px;
+    padding: 16px 0;
     
 
 }
@@ -189,31 +189,57 @@ nav ul.menu li {
         width: 114px;
         margin-left: 0px;
     }
+    .menu li.ml1.active {
+        background: #068d84;
+    }
     .menu li.ml2 {
         border-color: #e20a16;
         width: 130px;
     }
+    .menu li.ml2.active {
+        background: #e20a16;
+    }
     .menu li.ml3 {
         border-color: #c3bcbc;
-        width: 115pxpx;
+        width: 115px;
+    }
+    .menu li.ml3.active {
+        background: #c3bcbc;
     }
     .menu li.ml4 {
         border-color: #0a86e6;
         width: 200px;
     }
+    .menu li.ml4.active {
+        background: #0a86e6;
+    }
     .menu li.ml5 {
         border-color: #7d47c7;
         width: 135px;
     }
+    .menu li.ml5.active {
+        background: #7d47c7;
+    }
     .menu li.ml6 {
         border-color: #fdb709;
         width: 80px;
+    }
+    .menu li.ml6.active {
+        background: #fdb709;
     }
     .menu li.ml7 {
         border-color: #f7605b;
         width: 98px;
         margin-right: 0px;
     }
+    .menu li.ml7.active {
+        background: #f7605b;
+    }
+    
+    .menu .active a {
+        color: #FFF !important;
+    }
+
 
 
 

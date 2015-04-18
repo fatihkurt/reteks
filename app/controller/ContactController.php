@@ -28,7 +28,7 @@ class ContactController extends ControllerBase
     public function info($lang, $seoUrl, $page) {
 
         $this->app->render('contact_info.twig', [
-
+            'menu_id'   => 6,
             'item'      => $page,
             'cpages'    => $page->page->category->pages,
             'breadjump' => [

@@ -72,6 +72,7 @@ class PageController extends ControllerBase
             'seo_title' => $page->title,
             'item'      => $page,
             'category'  => $category,
+            'menu_id'   => $category->id,
             'cpages'    => $cpages,
             'breadjump' => [
                 ['name' => $category->{"name_$this->lang"}, 'link' => ''],
