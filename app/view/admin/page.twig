@@ -5,15 +5,18 @@
 
 <table class="table">
       <caption>
-      <h3>Sayfalar
-      <div class="pull-right">    
-        <select onchange="location.href= '?cat=' + this.value; return false; " name="category" class="form-control">
+
+        <ol class="breadcrumb">
+            <li>Sayfalar</li>
+            <li><select onchange="location.href= '?cat=' + this.value; return false; " name="category">
             <option value="">Filtrelemek için seçiniz..</option>
             {% for cat in categories %}
             <option value="{{ cat.id }}" {% if category==cat.id %}selected{% endif %}>{{ cat.getName('tr') }}</option>
             {% endfor %}
-        </select>
-    </div></h3>
+        </select></li>
+  
+  </ol>
+
     </caption>
       <thead>
         <tr>

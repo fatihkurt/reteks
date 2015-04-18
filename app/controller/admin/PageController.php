@@ -62,6 +62,7 @@ class PageController extends App\Controller\Admin\ControllerBase
             or
         $page = Page
             ::with('contents')
+            ->with('category')
             ->with(['gallery' => function($query) {
                 $query->orderBy('ordernum');
             }])
@@ -93,6 +94,13 @@ class PageController extends App\Controller\Admin\ControllerBase
 
         $data = $this->app->request->post();
 
+        if (! is_numeric($data['category_id'])) {
+
+            $this->message = 'Lütfen kategori seçiniz.';
+
+            return $this->jsonResponse(false);
+        }
+
         $page = Page::firstOrNew(['id' => $data['id'], 'category_id' => $data['category_id']]);
 
         $page->category_id = $data['category_id'];
@@ -108,9 +116,9 @@ class PageController extends App\Controller\Admin\ControllerBase
             $pageContent->page_id   = $page->id;
             $pageContent->lang      = $content['lang'];
             $pageContent->title     = html_entity_decode($content['title']);
-            $pageContent->seo_url   = $content['seo_url'];
-            $pageContent->description= html_entity_decode($content['description']);
+            $pageContent->seo_url   = $this->urlTitle($page->category->getName($content['lang']) . '-'. $pageContent->title);
             $pageContent->content   = html_entity_decode($content['content']);
+            $pageContent->description= $this->seoDesc($pageContent->content);
 
             if (! $pageContent->save()) {
 

@@ -5,14 +5,15 @@
 
 <table class="table">
       <caption>
-      <h3>Kategoriler</h3>
+      <ol class="breadcrumb">
+  <li>Kategoriler</li>
+</ol>
     </caption>
       <thead>
         <tr>
           <th>#</th>
           <th>Kategori Adı (TR)</th>
           <th>Kategori Adı (EN)</th>
-          <th>Default Sayfa</th>
           <th>Sıra No</th>
           <th></th>
         </tr>
@@ -24,7 +25,6 @@
           <th scope="row">{{ index+1 }}</th>
           <td><a href="/admin/category/{{ category.id }}">{{ category.name_tr }}</a></td>
           <td><a href="/admin/category/{{ category.id }}">{{ category.name_en }}</a></td>
-          <td>{{ category.default_page_id }}</td>
           <td>{{ category.ordernum }}</td>
           <td><a href="/admin/category/{{ category.id }}" class="btn btn-success" >Düzenle</a></td>
         </tr>

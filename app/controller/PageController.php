@@ -59,11 +59,20 @@ class PageController extends ControllerBase
 
         $category = $page->page->category;
 
-        $this->app->render('/page.twig', [
+        $cpages = Page::with(['contents' => function($query) use($lang) {
 
+                        $query->where('lang', '=', $lang);
+                    }])
+                    ->where('category_id', '=', $category->id)
+                    ->orderBy('ordernum')
+                    ->get();
+
+        $this->app->render('/page.twig', [
+            'seo_desc'  => $page->description,
+            'seo_title' => $page->title,
             'item'      => $page,
             'category'  => $category,
-            'cpages'    => $category->pages,
+            'cpages'    => $cpages,
             'breadjump' => [
                 ['name' => $category->{"name_$this->lang"}, 'link' => ''],
                 ['name' => $page->title, 'link' => "/$this->lang/" . $page->seo_url]

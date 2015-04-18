@@ -6,6 +6,22 @@ trait AppHelper
 {
 
 
+    function nlKill($string, $replace='') {
+
+        return str_replace(array("\\r\\n", "\\r", "\\n", "\\t"), $replace, $string);
+    }
+
+    function seoDesc($content, $offset=140) {
+
+        $content = strip_tags($this->nlKill($content));
+
+        if (strlen($content) > $offset)
+            $content = substr($content, 0, strpos($content, '.', $offset));
+
+        return $content;
+    }
+
+
 	function urlTitle($str, $replace='-', $lowercase=true, $transConvert=true) {
 
 		$trans = array(

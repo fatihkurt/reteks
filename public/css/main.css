@@ -549,8 +549,9 @@ nav ul.menu li {
  /********* GALERİ : BAŞLA ********/
  
 .gallery-outer {
-    
-    margin-top: 50px;
+    height: 320px;
+    overflow: hidden;
+    margin: 50px 0;
     padding: 0;
 } 
     .g-item {
@@ -564,22 +565,20 @@ nav ul.menu li {
     }
     
     .g1 {
-        width: 250px;
-        height: 420px;
-        margin-right: 30px;
+        width: 270px;
+        margin-right: 20px;
     }
     
     .g2 {
-        height: 200px;
+        height: 170px;
         width: 190px;
         margin-right: 20px;
         margin-bottom: 20px;
     }
     .g3 {
-        height: 200px;
+        height: 170px;
         width: 190px;
         margin-bottom: 20px;
-        
     }
     
     .g4 {

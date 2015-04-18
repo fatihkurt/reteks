@@ -6,6 +6,7 @@ use App;
 class ControllerBase extends App\Controller\ControllerBase
 {
 
+    use App\Plugin\AppHelper;
 
     public function __construct()
     {

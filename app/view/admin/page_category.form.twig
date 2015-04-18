@@ -1,6 +1,12 @@
 {% extends "layout/admin.layout.twig" %}
 
 {% block content %}
+
+<ol class="breadcrumb">
+  <li><a href="/admin/category">Kategoriler</a></li>
+  <li class="active">{{ category.name_tr }}</li>
+</ol>
+
 <form id="category_form" action="/admin/category/save" method="POST">
     
     <div class="panel panel-default" style="margin-top: 5px;">
@@ -15,15 +21,6 @@
                     <div class="form-group">
                         <label for="">İsim (EN)</label>
                         <input name="name_en" type="text" class="form-control" placeholder="İsim" value="{{ category.name_en }}" />
-                    </div>
-                    <div class="form-group">
-                        <label for="">Ön Tanımlı Sayfa</label>
-                        <select name="default_page_id" class="form-control">
-                            <option value="">Sayfa seçiniz..</option>
-                                {% for page in category.pages %}
-                            <option value="{{ page.id }}" {% if category.default_page_id==page.category_id %}selected{% endif %}>{{ page.contents[0].title ~ ' | ' ~ page.contents[1].title }}</option>
-                                {% endfor %}
-                        </select>
                     </div>
 
                     <div class="form-group">

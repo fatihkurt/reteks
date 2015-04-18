@@ -77,7 +77,7 @@ class PageCategoryController extends App\Controller\Admin\ControllerBase
 
         $category->name_tr = $data['name_tr'];
         $category->name_en = $data['name_en'];
-        $category->default_page_id = $data['default_page_id'];
+        //$category->default_page_id = $data['default_page_id'];
         $category->ordernum = $data['ordernum'];
 
         $success = $category->save();

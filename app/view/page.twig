@@ -34,7 +34,7 @@
                 <ul>
                     {% for cpage in cpages %}
                     <li {% if item.page_id == cpage.id  %}class="s-cpage"{% endif %}>
-                        <a href="/{{lang}}/{{ cpage.content(lang).seo_url }}">{{ cpage.content(lang).title }}</a>
+                        <a href="/{{lang}}/{{ cpage.contents[0].seo_url }}">{{ cpage.contents[0].title }}</a>
                     </li>
                     {% endfor %}
                 </ul>

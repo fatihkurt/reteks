@@ -1,8 +1,16 @@
 {% extends "layout/admin.layout.twig" %}
 {% block content %}
+
+
+<ol class="breadcrumb">
+  <li><a href="/admin/page">Sayfalar</a></li>
+  <li><a href="/admin/page?cat={{ page.category.id }}">{{ ucfirst(mb_strtolower(page.category.getName('tr'))) }}</a></li>
+  <li class="active">{{ page.contents[0].title }}</li>
+</ol>
+
+
 <form id="page_form" action="/admin/page/save" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
     <div class="panel-group" id="accordion">
-    
     
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -25,10 +33,6 @@
                         <label for="">Sıra No</label>
                         <input name="ordernum" type="number" class="form-control" placeholder="Sıra No" value="{{ page.ordernum }}" />
                     </div>
-                    <!--div class="form-group">
-                        <label for="">Aktif</label>
-                        <input name="status" type="checkbox" class="form-control" value="1" {% if page.status %}checked="checked"{% endif %} />
-                    </div-->
                     <div class="form-group">
                         <label for="bigInputFile">Büyük Resim</label>
                         {% if page.image1 != '' %}
@@ -65,15 +69,6 @@
                         <input name="contents[{{ index }}][title]" type="text" class="form-control" placeholder="Başlık" value="{{ page.contents[index].title }}" />
                     </div>
                     <div class="form-group">
-                        <label for="">Seo Url</label>
-                        <input name="contents[{{ index }}][seo_url]" type="text" class="form-control" placeholder="Seo" value="{{ page.contents[index].seo_url }}" />
-                    </div>
-                    <div class="form-group">
-                        <label for="">Seo Açıklama</label>
-                        <textarea name="contents[{{ index }}][description]" class="form-control">{{ page.contents[index].description }}</textarea>
-                        <p class="help-block"></p>
-                    </div>
-                    <div class="form-group">
                         <label for="">İçerik</label>
                         <textarea name="contents[{{ index }}][content]" class="form-control editor">{{ page.contents[index].content }}</textarea>
                     </div>
@@ -81,8 +76,8 @@
             </div>
         </div>
         {% endfor %}
-        
-        
+
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -111,8 +106,8 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
         <h3>
             <input type="submit" id="save_btn" class="btn btn-primary" value="Kaydet" />
             

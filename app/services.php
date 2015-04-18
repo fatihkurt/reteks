@@ -11,7 +11,7 @@ $view->parserOptions = array(
 
 $view->parserExtensions = array(
     new \Slim\Views\TwigExtension(),
-    new \Umpirsky\Twig\Extension\PhpFunctionExtension(['mb_strtoupper', 'mb_strtolower'])
+    new \Umpirsky\Twig\Extension\PhpFunctionExtension(['mb_strtoupper', 'mb_strtolower', 'ucfirst'])
 );
 
 
