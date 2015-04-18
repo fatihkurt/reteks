@@ -1,6 +1,6 @@
 <?php
 
-$app->contentType('text/html; charset=utf-8');
+mb_internal_encoding("UTF-8");
 
 $view = $app->view();
 
@@ -11,7 +11,11 @@ $view->parserOptions = array(
 
 $view->parserExtensions = array(
     new \Slim\Views\TwigExtension(),
+    new \Umpirsky\Twig\Extension\PhpFunctionExtension(['mb_strtoupper', 'mb_strtolower'])
 );
+
+
+
 
 
 
@@ -26,6 +30,7 @@ $app->add(new \Slim\Middleware\SessionCookie(array(
     'cipher'    => MCRYPT_RIJNDAEL_256,
     'cipher_mode'=> MCRYPT_MODE_CBC
 )));
+
 
 // $app->error(function (\Exception $e) use ($app) {
 
@@ -80,3 +85,9 @@ $app->container->singleton('db', function() use ($app) {
 
 
 $app->db->statement("SET NAMES utf8");
+
+// $app->contentType('text/html; charset=utf-8');
+// $app->response()->header('Content-Type', 'text/html;charset=utf-8');
+
+header('Content-type: text/html; charset=utf-8');
+

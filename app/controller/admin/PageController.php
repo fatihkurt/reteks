@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App,
     App\Model\Page,
+    App\Model\PageGallery,
     App\Model\PageCategory,
     App\Model\PageTranslation,
     App\Plugin\AjaxResponse;
@@ -59,7 +60,12 @@ class PageController extends App\Controller\Admin\ControllerBase
 
         $page = $page
             or
-        $page = Page::with('contents')->find($id);
+        $page = Page
+            ::with('contents')
+            ->with(['gallery' => function($query) {
+                $query->orderBy('ordernum');
+            }])
+            ->find($id);
 
         if ($page == null) {
 
@@ -91,7 +97,7 @@ class PageController extends App\Controller\Admin\ControllerBase
 
         $page->category_id = $data['category_id'];
         $page->ordernum = $data['ordernum'];
-        $page->status   = isset($data['status']) ? 1 : 0;
+        $page->status   = 1;
 
         $page->save();
 
@@ -136,6 +142,8 @@ class PageController extends App\Controller\Admin\ControllerBase
             }
         }
 
+        $this->saveGallery($page, $data['gallery']);
+
         //$page->contents()->saveMany($pageContent);
 
         $success = $page->save();
@@ -149,7 +157,42 @@ class PageController extends App\Controller\Admin\ControllerBase
 
 
 
-    private function imageUpload($file) {
+    private function saveGallery(& $page, $galleryArr) {
+
+
+        foreach ($galleryArr as $idx=>$galleryD) {
+
+            $gallery = PageGallery::firstOrNew(['id' => $galleryD['id']]);
+
+
+            if (! isset($_FILES["gallery_image$idx"]) && $gallery->image == '') {
+
+                continue;
+            }
+            else
+            if (isset($_FILES["gallery_image$idx"])) {
+
+                $image = $this->imageUpload($_FILES["gallery_image$idx"], 'upload/gallery');
+
+                if (isset($image['error']) && $image['error'] == false) {
+
+                    $this->flash->error($image['error']);
+                    continue;
+                }
+
+                $gallery->image   = $image['name'];;
+            }
+
+            $gallery->page_id = $page->id;
+
+            $gallery->ordernum= $galleryD['order'];
+
+            $gallery->save();
+        }
+    }
+
+
+    private function imageUpload($file, $path='upload/page') {
 
         $img = array();
 
@@ -161,7 +204,7 @@ class PageController extends App\Controller\Admin\ControllerBase
 
                 $name = uniqid('img-'.date('Ymd').'-') . '.' . $validImageTypes[$file['type']];
 
-                $filePath = PUB_DIR . 'upload/page/' . $name;
+                $filePath = PUB_DIR . $path . '/' . $name;
 
                 if (move_uploaded_file($file['tmp_name'],  $filePath) === true) {
 

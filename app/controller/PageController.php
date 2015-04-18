@@ -14,10 +14,15 @@ class PageController extends ControllerBase
 
     public function index($lang, $seoUrl, $seoUrl2='') {
 
-        $page = PageTranslation::with('page')
+        $page = PageTranslation::with(['page' => function($query) {
+                        $query->with(['gallery' => function($query) {
+                            $query->orderBy('ordernum');
+                        }]);
+                    }])
                     ->where('lang', '=', $lang)
                     ->where('seo_url', '=', $seoUrl)
                     ->first();
+
 
         if ($page == null || $page->page->status == 0) {
 
@@ -53,8 +58,6 @@ class PageController extends ControllerBase
         }
 
         $category = $page->page->category;
-
-        $categoryPages = Page::with('contents')->where('category_id', '=', $category->id)->get();
 
         $this->app->render('/page.twig', [
 

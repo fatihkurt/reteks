@@ -1,6 +1,14 @@
 
 $(function() {
     
+    $('.fancybox').fancybox({
+        openEffect  : 'none',
+        closeEffect : 'none',
+        helpers : {
+            media : {}
+        }
+    });
+    
     $('.main-banner').slidesjs({
         width: 1060,
         height: 450,

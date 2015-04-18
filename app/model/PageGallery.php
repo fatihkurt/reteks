@@ -9,6 +9,8 @@ class PageGallery extends \Illuminate\Database\Eloquent\Model
 
     protected $guarded = array('id', 'page_id');
 
+    public $timestamps = false;
+
 
     public function page()
     {

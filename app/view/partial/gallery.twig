@@ -1,0 +1,11 @@
+
+<div class="gallery-outer">
+
+{% for idx,image in gallery %}
+
+    <div class="g-item g{{ idx+1 }}">
+        <a class="fancybox" rel="group" href="/upload/gallery/{{ image.image }}"><img src="/upload/gallery/{{ image.image }}" /></a>
+    </div>
+    
+{% endfor %}
+</div>

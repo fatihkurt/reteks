@@ -3,6 +3,7 @@
         "slim/slim": "2.*",
         "slim/views" : "*",
         "twig/twig": "~1.0",
+        "umpirsky/twig-php-function": "dev-master",
         "illuminate/database": "5.*"
     },
     "autoload": {

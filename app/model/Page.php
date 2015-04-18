@@ -26,7 +26,7 @@ class Page extends \Illuminate\Database\Eloquent\Model
         return $this->belongsTo('App\Model\PageCategory', 'category_id', 'id');
     }
 
-    public function images() {
+    public function gallery() {
 
         return $this->hasMany('App\Model\PageGallery', 'page_id');
     }

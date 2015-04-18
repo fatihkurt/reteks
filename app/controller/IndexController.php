@@ -23,7 +23,6 @@ class IndexController extends ControllerBase
             'news'  => $this->getNews(),
             'pages' => $this->getPages(),
             'thePage' => $this->getCompanyPage(),
-            'footer_js' => ['main.js'],
         ]);
     }
 
