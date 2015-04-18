@@ -832,6 +832,35 @@ nav ul.menu li {
     }
     
     
+    
+/********* 404 ********/
+.notfound-content {
+    text-align: center;
+    background: #fff url(../img/404_bg.png) 25% 50px no-repeat;
+    padding: 80px 30px;
+    min-height: 300px;
+    padding-bottom: 200px;
+}
+
+    .notfound-img-holder {
+        width: 550px;
+        margin: auto;
+        padding: 50px;
+    }
+    
+    notfound-img-holder img {
+        width: 100%;
+    }
+    
+    .notfound-text {
+      font-size: 36px;
+      color: rgb(34, 33, 36);
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    
+    
 footer {
     background: #666;
     height: 70px;

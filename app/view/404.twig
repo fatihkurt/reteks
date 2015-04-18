@@ -1,0 +1,15 @@
+{% extends "layout/main.layout.twig" %}
+
+
+{% block content %}
+<div class="notfound-content">
+    <div class="notfound-img-holder">
+        <img src="/img/404.png" />
+        <p class="notfound-text">{{ T.notfound }}</p>
+        <div>
+            <a href="/{{ lang }}">{{ T.mainpage }}</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -37,6 +37,14 @@ $app->add(new \Slim\Middleware\SessionCookie(array(
 //     //var_dump($app);
 // });
 
+
+$app->notFound(function () use ($app) {
+    $app->render('404.twig', [
+       'footer_js' => ['notfound.js']
+    ]);
+});
+
+
 $app->getLang = function() use($app){
 
     return isset($_SESSION['lang']) ? $_SESSION['lang'] : $app->config('languages.default');

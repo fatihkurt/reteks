@@ -86,9 +86,9 @@ class IndexController extends ControllerBase
     private function getNews() {
 
         $news = News::with('contents')
-        ->orderBy('start_date', 'desc')
-        ->limit(5)
-        ->get();
+            ->orderBy('start_date', 'desc')
+            ->limit(5)
+            ->get();
 
 
         foreach ($news as &$item) {
