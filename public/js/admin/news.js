@@ -2,10 +2,6 @@
 $(function() { 
     
     
-    CKEDITOR.replace('content_tr', {
-        "language": "tr"
-    });
-    
     
     var dateOptions = {
         locale: 'tr',

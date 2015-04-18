@@ -41,7 +41,7 @@ class PageController extends ControllerBase
                 $controller = new NewsController;
 
                 if ($seoUrl2 != '') {
-                    return $controller->detail($lang, $seoUrl2, $page);
+                    return $controller->detail($lang, "$seoUrl/$seoUrl2", $page);
                 }
                 else {
                     return $controller->index($lang, $page);

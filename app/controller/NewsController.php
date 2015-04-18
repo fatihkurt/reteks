@@ -49,8 +49,6 @@ class NewsController extends ControllerBase
             return $this->app->notFound();
         }
 
-        var_dump($news->title);
-
         $this->app->render('news_detail.twig', [
 
             'item'     => $news,

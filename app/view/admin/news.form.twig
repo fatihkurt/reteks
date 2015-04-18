@@ -1,46 +1,20 @@
 {% extends "layout/admin.layout.twig" %}
 {% block content %}
+
+<ol class="breadcrumb">
+  <li><a href="/admin/news">Haberler</a></li>
+  <li class="active">{{ news.contents[0].title }}</li>
+</ol>
+
 <form id="news_form" action="/admin/news/save" method="POST" enctype="multipart/form-data">
     <div class="panel-group" id="accordion">
-        {% for index,lang in langs %}
-        <input type="hidden" name="contents[{{ index }}][id]" value="{{ id }}" />
-        <input type="hidden" name="contents[{{ index }}][lang]" value="{{ lang }}" />
-        <div class="panel panel-default" style="margin-top: 5px;">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ index }}">{{ lang|upper }} :: {{ news.contents[index].title }}</a>
-                </h4>
-            </div>
-            <div id="collapse{{ index }}" class="panel-collapse collapse {% if tab == lang %}in{%else%}out{% endif %}">
-                <div class="panel-body">
-                    <div class="form-group">
-                        <label for="">Başlık</label>
-                        <input name="contents[{{ index }}][title]" type="text" class="form-control" placeholder="Başlık" value="{{ news.contents[index].title }}" />
-                    </div>
-                    <div class="form-group">
-                        <label for="">Seo Url</label>
-                        <input name="contents[{{ index }}][seo_url]" type="text" class="form-control" placeholder="Seo" value="{{ news.contents[index].seo_url }}" />
-                    </div>
-                    <div class="form-group">
-                        <label for="">Seo Açıklama</label>
-                        <textarea name="contents[{{ index }}][description]" class="form-control"  name="description">{{ news.contents[index].description }}</textarea>
-                        <p class="help-block"></p>
-                    </div>
-                    <div class="form-group">
-                        <label for="">İçerik</label>
-                        <textarea name="contents[{{ index }}][content]" class="form-control" id="content_{{ lang }}" name="content">{{ news.contents[index].content }}</textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseGenel">Genel Bilgiler</a>
                 </h4>
             </div>
-            <div id="collapseGenel" class="panel-collapse collapse in">
+            <div id="collapseGenel" class="panel-collapse collapse out">
                 <div class="panel-body">
                     <div class="form-group">
                         <label for="bigInputFile">Resim</label>
@@ -64,6 +38,31 @@
                 </div>
             </div>
         </div>
+        
+        
+        {% for index,lang in langs %}
+        <input type="hidden" name="contents[{{ index }}][id]" value="{{ id }}" />
+        <input type="hidden" name="contents[{{ index }}][lang]" value="{{ lang }}" />
+        <div class="panel panel-default" style="margin-top: 5px;">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ index }}">İçerik - {{ lang|upper }} :: {{ news.contents[index].title }}</a>
+                </h4>
+            </div>
+            <div id="collapse{{ index }}" class="panel-collapse collapse {% if tab == lang %}in{%else%}out{% endif %}">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="">Başlık</label>
+                        <input name="contents[{{ index }}][title]" type="text" class="form-control" placeholder="Başlık" value="{{ news.contents[index].title }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="">İçerik</label>
+                        <textarea name="contents[{{ index }}][content]" class="form-control editor" id="content_{{ lang }}" name="content">{{ news.contents[index].content }}</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
         <h3>
             <input type="submit" id="save_btn" class="btn btn-primary" value="Kaydet" />
             

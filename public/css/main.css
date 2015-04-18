@@ -692,6 +692,7 @@ nav ul.menu li {
     .news-item {
         float:left;
         padding-left: 10px;
+        width: 90%;
     }
     
     .news-list h4 {

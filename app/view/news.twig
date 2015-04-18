@@ -20,9 +20,9 @@
                         <li>
                             <div class="news-item-arrow"><img src="/img/news_rarrow.png" /></div>
                             <div class="news-item">
-                                <h4><a href="/{{ lang }}/{{ content.seo_url }}/{{ news.content.seo_url }}">{{ news.content.title }}</a></h4>
+                                <h4><a href="/{{ lang }}/{{ news.content.seo_url }}">{{ news.content.title }}</a></h4>
                                 <div class="news-date">{{ news.start_date|date("d.m.Y") }}</div>
-                                <p><a href="/{{ lang }}/{{ content.seo_url }}/{{ news.content.seo_url }}">{{ news.content.content|raw }}</a></p>
+                                <p><a href="/{{ lang }}/{{ news.content.seo_url }}">{{ news.content.content|raw }}</a></p>
                             </div>
                         </li>
                     {% endfor %}

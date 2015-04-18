@@ -72,7 +72,13 @@ class IndexController extends ControllerBase
 
         $pageId = Setting::find(2)->value;
 
-        return  Page::find($pageId);
+        $lang = $this->lang;
+
+        return  Page::with([
+            'contents' => function($query) use($lang) {
+                $query->where('lang', '=', $lang);
+            }
+        ])->find($pageId);
     }
 
 

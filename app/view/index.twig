@@ -43,7 +43,7 @@
             {% endfor %}
 
         </div>
-            
+
             <div class="m-row mt30">
                 <div class="extra-content">
                     <img class="company-present-img" src="/img/m_company.png" />
@@ -53,9 +53,9 @@
 
                         <h3>{{ T.company_slogan }}</h3>
 
-                        <p>{{ thePage.content(lang).description }}</p>
+                        <p>{{ substr(strip_tags(thePage.contents[0].content), 0, strpos(strip_tags(thePage.contents[0].content), '.', 300)) }}.</p>
                    
-                        <div class="btn-holder"><a class="btn-devam" href="#">{{ T.company_button }}</a></div>
+                        <div class="btn-holder"><a class="btn-devam" href="/{{ lang }}/{{ thePage.contents[0].seo_url }}">{{ T.company_button }}</a></div>
                    </div>
                 </div>
             </div>
@@ -73,8 +73,8 @@
                 {% for item in news %}
                 <div>
                 <label>{{ item.start_date|date("d.m.Y") }}</label>
-                <h4>{{ item.content.title }}</h4>
-                <p>{{ item.content.content }}</p>
+                <h4><a href="/{{ lang }}/{{ item.content.seo_url }}">{{ item.content.title }}</h4></a>
+                <p>{{ item.content.description }}</p>
                 </div>
                 {% endfor %}
                 </div>

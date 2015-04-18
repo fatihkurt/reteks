@@ -61,7 +61,7 @@ class NewsController extends App\Controller\Admin\ControllerBase
             'menu_item' => 'news',
             'news'      => $news,
             'langs'     => $this->app->config('languages'),
-            'footer_js' => ['vendor/jquery/jquery.form.min.js', 'ckeditor/ckeditor.js', 'admin/news.js']
+            'footer_js' => ['vendor/jquery/jquery.form.min.js', 'ckeditor/ckeditor.js', 'ckeditor/adapters/jquery.js', 'admin/news.js']
         ]);
     }
 
@@ -80,16 +80,21 @@ class NewsController extends App\Controller\Admin\ControllerBase
         $news->start_date   = date('Y-m-d H:i:s', strtotime($data['start_date']));
         $news->end_date     = date('Y-m-d H:i:s', strtotime($data['end_date']));
 
+        $seoCatNames = ['tr' => 'haberler', 'en' => 'news'];
+
         foreach ($data['contents'] as $index=>$content) {
+
+            $seoCatName = $seoCatNames[$content['lang']] ?: 'news';
 
             $newsContent = NewsTranslation::firstOrCreate(['news_id' => $news->id, 'lang' => $content['lang']]);
 
             $newsContent->news_id   = $news->id;
             $newsContent->lang      = $content['lang'];
             $newsContent->title     = $content['title'];
-            $newsContent->seo_url   = $content['seo_url'];
-            $newsContent->description= $content['description'];
-            $newsContent->content   = $content['content'];
+            $newsContent->content   = html_entity_decode($content['content']);
+
+            $newsContent->seo_url   = $seoCatName . '/' . $this->urlTitle($newsContent->title);
+            $newsContent->description= $this->seoDesc($newsContent->content);
 
             if (! $newsContent->save()) {
 
