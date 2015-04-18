@@ -70,6 +70,8 @@ $app->post('/contact/form', '\App\Controller\ContactController:save');
 
 $app->post('/newsletter/save',  '\App\Controller\IndexController:newsletterSave');
 
+$app->post('/search(/:query)',  '\App\Controller\SearchController:index');
+
 
 
 

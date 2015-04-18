@@ -84,7 +84,6 @@ input[type="text"].focus {
    ========================================================================== */
 
 
-
 .wrapper {
     width: 1060px;
     margin: 0 auto;
@@ -134,8 +133,20 @@ header, nav {
     }
 
     .search-input {
-        background: url(../img/icon_search.png) 95% center no-repeat;
         width: 230px;
+    }
+    
+    .selectize-control.single .selectize-input:after,
+    .selectize-control.single .selectize-input.dropdown-active:after {
+        border: none;
+        margin-top: -8px;
+        width: 16px;
+        height: 16px;
+        background: url(../img/icon_search.png) no-repeat;;
+    }
+    
+    .search-input .selectize-dropdown {
+        z-index: 99;
     }
 
 nav {
@@ -836,8 +847,8 @@ nav ul.menu li {
 /********* 404 ********/
 .notfound-content {
     text-align: center;
-    background: #fff url(../img/404_bg.png) 25% 50px no-repeat;
-    padding: 80px 30px;
+    background: #fff url(../img/404_bg.png) 25% 20px no-repeat;
+    padding: 50px 30px;
     min-height: 300px;
     padding-bottom: 200px;
 }

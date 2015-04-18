@@ -8,10 +8,10 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\Model\\": "model/",
-            "App\\Controller\\": "controller/",
-            "App\\Controller\\Admin\\": "controller/admin/",
-            "App\\Plugin\\": "plugin/"
+            "App\\Model\\": "app/model/",
+            "App\\Controller\\": "app/controller/",
+            "App\\Controller\\Admin\\": "app/controller/admin/",
+            "App\\Plugin\\": "app/plugin/"
         }
     }
 }
