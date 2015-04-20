@@ -12,14 +12,14 @@ $initLanguage = function(\Slim\Route $route) {
         // @TODO log
         //$app->flash('error', 'Parametre hatası');
 
-        $app->redirect("/$app->getLang/");
+        $app->redirect("/$app->getLang");
     }
 
-    // load ini file
-
-    $app->view()->setData('T', $app->t);
-
+    // first set session
     $_SESSION['lang'] = $lang;
+
+    // then set translate singleton
+    $app->view()->setData('T', $app->t);
 };
 
 
