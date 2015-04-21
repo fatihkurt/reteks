@@ -1,0 +1,84 @@
+{% extends "layout/main.layout.twig" %}
+
+
+{% block content %}
+
+        {% if item.page.image1 != '' %}
+        <div class="banner">
+            <img src="/upload/page/{{ item.page.image1 }}" />
+        </div>
+        {% endif %}
+
+        <div class="middle-content">
+            
+            <div class="page-content">
+        
+                <h3 class="page-title">{{ item.title|upper }}</h3>
+
+                {% include 'partial/breadjump.twig' %}
+
+                <div class="career-form">
+                
+                    <form action="">
+                    
+                    <div class="section">                    
+                        
+                        <div class="section-header">
+                            <h4 class="section-title">Başvuru Bilgileri</h4>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="fname">{{ T.career_position }}*</label>
+                            <select class="form-item" type="text" name="position_id" value="">
+                            </select>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="section">                    
+                        
+                        <div class="section-header">
+                            <h4 class="section-title">Kişisel Bilgiler</h4>
+                        </div>
+
+                        <div class="form-row half left">
+                            <label for="fname">{{ T.form_name }}*</label>
+                            <input class="form-item" type="text" name="name" value="" />
+                        </div>
+                        
+                        <div class="form-row half right">
+                            <label for="fname">{{ T.career_title }}*</label>
+                            <input class="form-item" type="text" name="title" value="" />
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="form-row">
+                        <div class="form-required">* {{ T.form_required }}</div>
+                        <button type="button" class="form-btn">{{ T.form_send }}</button>
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div> <!-- #middle-content -->
+        
+        <div class="middle-right">
+            
+            <div class="right-col news page-list">
+                <ul>
+                    {% for cpage in cpages %}
+                    <li {% if item.page_id == cpage.id  %}class="s-cpage"{% endif %}>
+                        <a href="/{{lang}}/{{ cpage.content(lang).seo_url }}">{{ cpage.content(lang).title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        
+            {% include 'partial/video_play.twig' %}
+            
+            {% include 'partial/newsletter.twig' %}
+        </div>
+
+{% endblock %}

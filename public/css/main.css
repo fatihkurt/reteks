@@ -870,6 +870,64 @@ nav ul.menu li {
     
     
     
+    
+/********* Careeeeeeer *********/
+.career-form {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.form-row.half {
+    width: 46%;
+    display: inline-block;
+}
+.form-row.left {
+    padding-right: 3%;
+}
+.form-row.right {
+    padding-left: 3%;
+}
+
+.form-row.half .form-item {
+    padding: 3%;
+    with: 94%;
+}
+
+
+.section {
+    margin-bottom: 10px;
+}
+
+    .section-header {
+        position: relative;
+        background-color: rgb(226, 10, 22);
+        padding: 12px 20px;
+        margin-bottom: 10px;
+    }
+    
+    .section-title {
+        padding: 0px;
+        margin: 0px;
+        font-size: 15px;
+        color: #fff;
+    }
+    
+    .career-form  .section-title:after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        margin-top: -3px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 6px 0 6px;
+        border-color: #fff transparent transparent transparent;
+    }
+    
+    
+
 /********* 404 ********/
 .notfound-content {
     text-align: center;

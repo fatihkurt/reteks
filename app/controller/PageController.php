@@ -49,8 +49,6 @@ class PageController extends ControllerBase
             }
             else {
 
-                $e = 'ContactController';
-
                 $controller = new $moduleName;
 
                 return $controller->{$actionName}($lang, $seoUrl2, $page);

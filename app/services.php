@@ -33,8 +33,7 @@ $app->add(new \Slim\Middleware\SessionCookie(array(
 
 
 // $app->error(function (\Exception $e) use ($app) {
-
-//     //var_dump($app);
+//      var_dump($app);
 // });
 
 
@@ -54,6 +53,8 @@ $app->getLang = function() use($app){
 $app->container->singleton('t', function() use ($app) {
 
     $lang = $app->getLang;
+
+    //var_dump($app->router->getCurrentRoute()->getParam('lang'));
 
     // @TODO cache results
 
