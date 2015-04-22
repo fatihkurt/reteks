@@ -888,14 +888,19 @@ nav ul.menu li {
     padding-left: 3%;
 }
 
-.form-row.half .form-item {
+
+.form-row .form-item.half {
     padding: 3%;
-    with: 94%;
+}
+
+.form-row select.form-item {
+    padding: 9px;
+    width:100%;
 }
 
 
 .section {
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
     .section-header {
@@ -911,6 +916,24 @@ nav ul.menu li {
         font-size: 15px;
         color: #fff;
     }
+    
+    .sub-title {
+        background-color: rgb(237, 237, 237);
+        margin: 10px 0;
+        padding: 6px 20px;
+        font-size: 14px;
+        color: rgb(23, 26, 28);
+        font-weight: bold;
+    }
+    
+    .new-language {
+        float: right;
+        font-size: 13px;
+        font-weight: normal;
+        padding-left: 25px;
+        background: url(../img/plus_icon.png) left top no-repeat;
+    }
+    
     
     .career-form  .section-title:after {
         content: ' ';
@@ -1039,9 +1062,79 @@ footer {
 .f-left {float: left;}
 
 /* ==========================================================================
+   Form styles
+   ========================================================================== */
+   
+/*** radio ***/
+input[type=radio].css-checkbox {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+input[type=radio].css-checkbox+label.css-label {
+    padding-left: 25px;
+    height: 16px;
+    display: inline-block;
+    line-height: 16px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 40px;
+}
+label.css-label:last-child {
+    margin-right: 0px !important;
+}
+
+input[type=radio].css-checkbox:checked+label.css-label {
+    background-position: 0 -16px;
+}
+
+label.css-label {
+    background-image:
+        url(http://csscheckbox.com/checkboxes/u/csscheckbox_f945a072ebe51ddf7bc28f91d6899e2e.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*** select ***/
+
+.styled-select select {
+
+
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(../img/select_arrow.png) right 15% no-repeat;
+   }
+   
+   @media screen and (min-width: 0\0) {
+  .styled-select select {
+    background: none;
+    padding: 5px;
+  }
+}
+   
+   .styled-select {
+
+   }
+
+/* ==========================================================================
    Print styles
    ========================================================================== */
-
 @media print {
     *,
     *:before,
