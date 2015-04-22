@@ -54,7 +54,7 @@ class CareerController extends ControllerBase
             $application->sess_id = session_id();
             $application->ip_addr = $this->app->request->getIp();
 
-            $success = $application->save();
+            $success = $application->save(['data' => $data]);
         }
         catch (\Exception $e) {
 
@@ -63,6 +63,15 @@ class CareerController extends ControllerBase
             $this->msg = $e->getMessage();
         }
 
-        $this->jsonResponse($success);
+
+        if ($success == false) {
+
+            $feedback = $application->errors();
+        }
+        else {
+            $feedback = $application->id;
+        }
+
+        $this->jsonResponse($success, $feedback);
     }
 }

@@ -4,7 +4,8 @@
         "slim/views" : "*",
         "twig/twig": "~1.0",
         "umpirsky/twig-php-function": "dev-master",
-        "illuminate/database": "5.*"
+        "illuminate/database": "5.*",
+        "txthinking/validation": "dev-master"
     },
     "autoload": {
         "psr-4": {
