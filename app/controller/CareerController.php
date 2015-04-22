@@ -3,7 +3,10 @@ namespace App\Controller;
 
 
 use App,
-    App\Model\CareerApplication;
+    App\Model\CareerPosition as Position,
+    App\Model\CareerApplication as Application,
+    App\Model\CareerApplicationLanguage,
+    App\Model\CareerApplicationEducation;
 
 class CareerController extends ControllerBase
 {
@@ -13,73 +16,45 @@ class CareerController extends ControllerBase
 
     public function application($lang, $seoUrl, $page) {
 
-        $this->app->render('career_application.twig', [
+        $category = $page->page->category;
 
+        $this->app->render('career_application.twig', [
+            'menu_id'   => $category->id,
             'item'      => $page,
-            'cpages'    => $page->page->category->pages,
+            'cpages'    => $category->pages,
+
+            'positions' => Position::all(),
+
             'breadjump' => [
-                ['name' => $page->page->category->getName($this->lang), 'link' => ""],
+                ['name' => $category->getName($this->lang), 'link' => ""],
                 ['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]
             ],
-            'footer_js' => ['main.js'],
+            'footer_js' => ['main.js', 'vendor/jquery/jquery.form.min.js', 'application.js'],
         ]);
     }
 
-
-    public function info($lang, $seoUrl, $page) {
-
-        $this->app->render('contact_info.twig', [
-            'menu_id'   => 6,
-            'item'      => $page,
-            'cpages'    => $page->page->category->pages,
-            'breadjump' => [
-                ['name' => $page->page->category->getName($this->lang), 'link' => ""],
-                ['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]
-            ]
-        ]);
-    }
 
 
     public function save() {
 
         $data = $this->app->request->post();
 
-        $required = ['name', 'gsm', 'email', 'message'];
-
-        $pass = true;
-
-        foreach ($required as $field) {
-
-            if (empty($data[$field])) {
-
-                $pass = false;
-            }
-        }
-
-        if ($pass == false) {
-
-            $this->msg = $this->app->getLang == 'tr' ? 'Lütfen zorunlu alanları doldurunuz.' : 'Please fill required fields.' ;
-
-            return $this->jsonResponse(false);
-        }
 
 
         try {
-            $this->msg = $this->app->getLang == 'tr'
-                    ? 'Mesajınız başarıyla gönderilmiştir.'
-                    : 'Your message has been send successfully.';
 
-            $contact = new ContactForm;
+            $application = new Application;
 
-            $contact->name = $data['name'];
-            $contact->gsm = $data['gsm'];
-            $contact->email = $data['email'];
-            $contact->subject = $data['subject'];
-            $contact->message = $data['message'];
-            $contact->sess_id = session_id();
-            $contact->ip_addr = $this->app->request->getIp();
+            foreach ($data as $key=>$val) {
 
-            $success = $contact->save($data);
+                if (! is_array($val))
+                $application->{$key} = $val;
+            }
+
+            $application->sess_id = session_id();
+            $application->ip_addr = $this->app->request->getIp();
+
+            $success = $application->save();
         }
         catch (\Exception $e) {
 

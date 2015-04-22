@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class ContactForm extends \Illuminate\Database\Eloquent\Model
+class CareerApplication extends \Illuminate\Database\Eloquent\Model
 {
 
     protected $table = 'career_application';

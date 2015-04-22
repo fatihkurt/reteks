@@ -19,7 +19,7 @@
 
                 <div class="career-form">
                 
-                    <form action="">
+                    <form id="application_form" action="/application/save" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" >
                     
                     <div class="section">
                         <div class="section-header">
@@ -31,6 +31,9 @@
                             <div class="styled-select">
                                 <select class="form-item" type="text" name="position_id" >
                                     <option>{{ T.pick_one }}</option>
+                                    {% for pos in positions %}
+                                    <option value="{{ pos.id }}">{{ pos.getName(lang) }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -111,7 +114,7 @@
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_children_detail }}</label>
-                            <input class="form-item" type="text" name="childiren_detail" value="" />
+                            <input class="form-item" type="text" name="children_detail" value="" />
                         </div>
                         
                         <div class="form-row half left">
@@ -608,7 +611,7 @@
                     <div class="section">
                         <div class="form-row">
                             <div class="form-required">* {{ T.form_required }}</div>
-                            <button type="button" class="form-btn">{{ T.form_send }}</button>
+                            <button type="submit" class="form-btn">{{ T.form_send }}</button>
                         </div>
                     </div>
                     </form>
