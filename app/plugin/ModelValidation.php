@@ -11,16 +11,12 @@ trait ModelValidation
 
     public function save(array $options = array()) {
 
-        if (isset($options['data']) && $this->validate($options['data'])) {
-
-            unset($options['data']);
-
-            return parent::save($options);
-        }
-        else {
+        if (isset($options['data']) && $this->validate($options['data']) == false) {
 
             return false;
         }
+
+        return parent::save($options);
     }
 
     public function validate($data) {
@@ -44,7 +40,8 @@ trait ModelValidation
         return $this->errors;
     }
 
-    private function customMessages() {
+
+    function customMessages() {
 
         $app = \Slim\Slim::getInstance();
 
@@ -52,7 +49,7 @@ trait ModelValidation
 
         $messages = [];
 
-        $validations = ['required'];
+        $validations = ['required', 'min', 'max', 'digits', 'email', 'date'];
 
         foreach ($validations as $val) {
 

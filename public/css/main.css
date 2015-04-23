@@ -79,6 +79,11 @@ input[type="text"].focus {
   box-shadow: 0 0 5px 1px #969696;
 }
 
+.input-err {
+  border: solid 1px #f22 !important;
+  box-shadow: 0 0 5px 1px #C66 !important;
+}
+
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
@@ -896,6 +901,10 @@ nav ul.menu li {
 .form-row select.form-item {
     padding: 9px;
     width:100%;
+}
+
+.form-row select.form-item.third {
+    width: 30%;
 }
 
 

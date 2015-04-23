@@ -5,7 +5,8 @@ namespace App\Model;
 class CareerApplication extends \Illuminate\Database\Eloquent\Model
 {
 
-    use \App\Plugin\ModelValidation;
+    use \App\Plugin\ModelValidation,
+        \App\Plugin\ModelHelper;
 
     protected $table = 'career_application';
 
@@ -14,6 +15,19 @@ class CareerApplication extends \Illuminate\Database\Eloquent\Model
     public $timestamps = true;
 
     protected $rules = array(
-        'name' => 'required|alpha|min:3',
+        'position_id'   => 'required',
+        'name'          => 'required|min:3',
+        'title'         => 'required',
+        'birthplace'    => 'required',
+        'birthdate'     => 'required|date',
+        'nation'        => 'required',
+        'condition'     => 'required',
+        'clean_record'  => 'required',
+        'city'          => 'required',
+        'state'         => 'required',
+        'gsm'           => 'required',
+        'email'         => 'required|email',
+        'tc_number'     => 'digits:11',
+        'driving_licence' => 'required',
     );
 }

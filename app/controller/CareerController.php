@@ -5,8 +5,9 @@ namespace App\Controller;
 use App,
     App\Model\CareerPosition as Position,
     App\Model\CareerApplication as Application,
-    App\Model\CareerApplicationLanguage,
-    App\Model\CareerApplicationEducation;
+    App\Model\CareerApplicationLanguage as ApplicationLanguage,
+    App\Model\CareerApplicationEducation as ApplicationEducation,
+    App\Model\ListLanguage;
 
 class CareerController extends ControllerBase
 {
@@ -39,39 +40,85 @@ class CareerController extends ControllerBase
 
         $data = $this->app->request->post();
 
-
+        $success = false;
 
         try {
 
             $application = new Application;
 
-            foreach ($data as $key=>$val) {
+            $data['birthdate'] = $data['birthdate_year'] . '-' . $data['birthdate_month'] . '-' . $data['birthdate_day'];
 
-                if (! is_array($val))
-                $application->{$key} = $val;
-            }
+            $application->bind($data);
 
             $application->sess_id = session_id();
             $application->ip_addr = $this->app->request->getIp();
 
-            $success = $application->save(['data' => $data]);
+            if ($application->validate($data)) {
+
+                $success = $application->save();
+
+                $feedback = $application->id;
+
+                $this->saveLanguage($application->id, $data['language']);
+
+                $this->saveEducation($application->id, $data['education']);
+
+                $this->msg = $this->app->t['validation.form.success'];
+            }
+            else {
+                $feedback = $application->errors();
+
+                $this->msg = $this->app->t['validation.form.message'];
+            }
         }
         catch (\Exception $e) {
 
-            $success = false;
-
             $this->msg = $e->getMessage();
+
+            $feedback = null;
         }
 
-
-        if ($success == false) {
-
-            $feedback = $application->errors();
-        }
-        else {
-            $feedback = $application->id;
-        }
 
         $this->jsonResponse($success, $feedback);
+    }
+
+
+    private function saveLanguage($applicationId, $languageArr) {
+
+        foreach ($languageArr as $code => $lang) {
+
+            if (! is_numeric($code)) {
+
+                $lang['language_id'] = ListLanguage::where('code', '=', $code)->first()->id;
+            }
+
+            if ($lang['language_id'] > 0) {
+
+                $language = new ApplicationLanguage;
+
+                $lang['application_id'] = $applicationId;
+
+                $language->bind($lang);
+
+                $language->save();
+            }
+        }
+    }
+
+    private function saveEducation($applicationId, $educationArr) {
+
+        foreach ($educationArr as $level => $data) {
+
+            if ($data['level'] > 0) {
+
+                $education = new ApplicationEducation;
+
+                $lang['application_id'] = $applicationId;
+
+                $education->bind($data);
+
+                $education->save();
+            }
+        }
     }
 }

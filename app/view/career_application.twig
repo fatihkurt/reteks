@@ -30,7 +30,7 @@
                             <label for="fname">{{ T.career_position }}*</label>
                             <div class="styled-select">
                                 <select class="form-item" type="text" name="position_id" >
-                                    <option>{{ T.pick_one }}</option>
+                                    <option value="">{{ T.pick_one }}</option>
                                     {% for pos in positions %}
                                     <option value="{{ pos.id }}">{{ pos.getName(lang) }}</option>
                                     {% endfor %}
@@ -62,16 +62,35 @@
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_birthdate }}*</label>
-                            <input class="form-item" type="text" name="birthdate" value="" />
+                            <div class="styled-select">
+                                <select class="form-item third"  name="birthdate_year" >
+                                    <option value="">{{ T.year }}</option>
+                                    {% for year in 1940..2015 %}
+                                    <option value="{{ year }}">{{ year }}</option>
+                                    {% endfor %}
+                                </select>
+                                <select class="form-item third"  name="birthdate_month" >
+                                    <option value="">{{ T.month }}</option>
+                                    {% for month in 1..12 %}
+                                    <option value="{{ month }}">{{ T["month" ~ month] }}</option>
+                                    {% endfor %}
+                                </select>
+                                <select class="form-item third"  name="birthdate_day" >
+                                    <option value="">{{ T.day }}</option>
+                                    {% for day in 1..7 %}
+                                    <option value="{{ day }}">{{ T["day" ~ day] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
                         
                         <div class="form-row half left">
-                            <label for="fname">{{ T.career_nation }}</label>
+                            <label for="fname">{{ T.career_nation }}*</label>
                             <input class="form-item" type="text" name="nation" value="" />
                         </div>
                         
                         <div class="form-row half right">
-                            <label for="fname">{{ T.career_tc_number }}*</label>
+                            <label for="fname">{{ T.career_tc_number }}</label>
                             <input class="form-item" type="text" name="tc_number" value="" />
                         </div>
                         
@@ -93,10 +112,10 @@
                             <label for="fname">{{ T.career_conditon }}*</label>
 
                             <div class="form-row">
-                                <input type="radio" name="conditon" id="radio_evl" class="css-checkbox" value="Evli" >
+                                <input type="radio" name="condition" id="radio_evl" class="css-checkbox" value="Evli" >
                                 <label for="radio_evl" class="css-label">{{ T.career_conditon_couple }}</label>
                                 
-                                <input type="radio" name="conditon" id="radio_bkar" class="css-checkbox" value="Bekar">
+                                <input type="radio" name="condition" id="radio_bkar" class="css-checkbox" value="Bekar">
                                 <label for="radio_bkar" class="css-label">{{ T.career_conditon_single }}</label>
                             </div>
                         </div>
@@ -185,19 +204,13 @@
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_city }}*</label>
                             <div class="styled-select">
-                                <select class="form-item" name="city" >
-                                    <option>{{ T.pick_one }}</option>
-                                </select>
+                                <input class="form-item" type="text" name="city" value="" />
                             </div>
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_state }}*</label>
-                            <div class="styled-select">
-                                <select class="form-item" name="state" >
-                                    <option>{{ T.pick_one }}</option>
-                                </select>
-                            </div>
+                            <input class="form-item" type="text" name="state" value="" />
                         </div>
                         
                         <div class="form-row half left">
@@ -228,7 +241,7 @@
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_reading }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="reading[en]" >
+                                <select class="form-item" name="language[en][reading]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -237,16 +250,16 @@
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_writing }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="writing[en]" >
+                                <select class="form-item" name="language[en][writing]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
                         </div>
                         
                         <div class="form-row half left">
-                            <label for="fname">{{ T.career_speaking }}*</label>
+                            <label for="fname">{{ T.career_speaking }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="speaking[en]" >
+                                <select class="form-item" name="language[en][speaking]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -255,7 +268,7 @@
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_meaning }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="meaning[en]" >
+                                <select class="form-item" name="language[en][meaning]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -267,7 +280,7 @@
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_reading }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="reading[de]" >
+                                <select class="form-item" name="language[de][reading]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -276,16 +289,16 @@
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_writing }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="writing[de]" >
+                                <select class="form-item" name="language[de][writing]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
                         </div>
                         
                         <div class="form-row half left">
-                            <label for="fname">{{ T.career_speaking }}*</label>
+                            <label for="fname">{{ T.career_speaking }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="speaking[de]" >
+                                <select class="form-item" name="language[de][speaking]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -294,7 +307,7 @@
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_meaning }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="meaning[de]" >
+                                <select class="form-item" name="language[de][meaning]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -306,7 +319,7 @@
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_reading }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="reading[ru]" >
+                                <select class="form-item" name="language[ru][reading]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -315,16 +328,16 @@
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_writing }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="writing[ru]" >
+                                <select class="form-item" name="language[ru][writing]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
                         </div>
                         
                         <div class="form-row half left">
-                            <label for="fname">{{ T.career_speaking }}*</label>
+                            <label for="fname">{{ T.career_speaking }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="speaking[ru]" >
+                                <select class="form-item" name="language[ru][speaking]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -345,7 +358,7 @@
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_language_pick }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="language[]" >
+                                <select class="form-item" name="language[][language_id]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -357,7 +370,7 @@
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_reading }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="reading[]" >
+                                <select class="form-item" name="language[][reading]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -366,16 +379,16 @@
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_writing }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="writing[]" >
+                                <select class="form-item" name="language[][writing]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
                         </div>
                         
                         <div class="form-row half left">
-                            <label for="fname">{{ T.career_speaking }}*</label>
+                            <label for="fname">{{ T.career_speaking }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="speaking[]" >
+                                <select class="form-item" name="language[][speaking]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -384,7 +397,7 @@
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_meaning }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="meaning[]" >
+                                <select class="form-item" name="language[][meaning]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
