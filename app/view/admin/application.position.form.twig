@@ -1,0 +1,60 @@
+{% extends "layout/admin.layout.twig" %}
+
+{% block content %}
+
+<ol class="breadcrumb">
+  <li>Başvurular</li>
+  <li><a href="/admin/application/position">Pozisyonlar</a></li>
+  <li class="active">{{ position.name_tr }}</li>
+</ol>
+
+<form id="application_form" action="/admin/application/position/save" method="POST">
+    
+    <div class="panel panel-default" style="margin-top: 5px;">
+            <div class="panel-heading">
+                <h4 class="panel-title">Pozisyon Bilgileri</h4>
+            </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="">İsim (TR)</label>
+                        <input name="name_tr" type="text" class="form-control" placeholder="İsim" value="{{ position.name_tr }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="">İsim (EN)</label>
+                        <input name="name_en" type="text" class="form-control" placeholder="İsim" value="{{ position.name_en }}" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Sıra No</label>
+                        <input name="ordernum" type="number" class="form-control" placeholder="Sıra No" value="{{ position.ordernum }}" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="">Aktif</label>
+                        <input name="status" type="checkbox" class="form-control" value="1" "{% if position.status or position.id == false  %}checked{% endif %}" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="">Detay (TR)</label>
+                        <textarea name="detail_tr" class="form-control editor">{{ position.detail_tr }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Detay (EN)</label>
+                        <textarea name="detail_en" class="form-control editor">{{ position.detail_en }}</textarea>
+                    </div>
+                </div>
+        </div>
+    
+    
+    
+        <h3>
+            <input type="submit" id="save_btn" class="btn btn-primary" value="Kaydet" />
+            
+            {% if position.id > 0 %}
+            <input type="button" id="delete_btn" class="btn btn-danger" value="Sil" />
+            {% endif %}
+        </h3>
+        <input type="hidden" name="id" value="{{ position.id }}" />
+    </div>
+</form>
+{% endblock %}

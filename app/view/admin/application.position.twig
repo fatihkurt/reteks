@@ -1,0 +1,52 @@
+{% extends "layout/admin.layout.twig" %}
+
+
+{% block content %}
+
+<table class="table">
+      <caption>
+
+        <ol class="breadcrumb">
+            <li>Başvuru</li>
+            <li>Pozisyonlar</li>
+        </ol>
+
+    </caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Pozisyon Adı</th>
+          <th>Pozisyon Adı (2. Dil)</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for index,position in positions %}
+        <tr>
+          <th scope="row">{{ index+1 }}</th>
+          <td><a href="/admin/application/position/edit/{{ position.id }}">{{ position.name_tr }}</a></td>
+          <td><a href="/admin/application/position/edit/{{ position.id }}">{{ position.name_en }}</a></td>
+          <td><a href="/admin/position/edit/{{ position.id }}" class="btn btn-success" >Düzenle</a></td>
+          <td></td>
+        </tr>
+        
+        {% else %}
+        
+        <tr>
+          <td colspan="5">Kayıt bulunamadı.</th>
+        </tr>
+        
+        {% endfor %}
+      </tbody>
+      
+      <tfoot>
+      <tr>
+        <td colspan="5">
+            <a class="btn btn-primary" href="/admin/application/position/new">Yeni Pozisyon</a>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+{% endblock %}

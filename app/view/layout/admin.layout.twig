@@ -50,6 +50,13 @@
                 <li>
                     <a href="/admin/news" {% if menu_item == 'news' %}class="active"{% endif %}>Haberler</a>
                 </li>
+                <li>
+                    <a href="#" class="slide-menu {% if menu_item == 'career' %}active{% endif %}">Kariyer</a>
+                    <ul class="inner-menu" {% if menu_item == 'career' %}style="display: block;"{% endif %}>
+                        <li><a href="/admin/application/position">Pozisyon</a></li>
+                        <li><a href="/admin/application">Başvurular</a></li>
+                    </ul>
+                </li>
                 <!--li>
                     <a href="/admin/setting" {% if menu_item == 'setting' %}class="active"{% endif %}>Ayarlar</a>
                 </li-->

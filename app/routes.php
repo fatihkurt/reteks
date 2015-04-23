@@ -41,6 +41,17 @@ $app->group('/admin', function () use ($app) {
 
     $app->post('/category/save',  '\App\Controller\Admin\PageCategoryController:save');
     $app->delete('/category/delete',  '\App\Controller\Admin\PageCategoryController:delete');
+
+
+    $app->get('/application',  '\App\Controller\Admin\CareerController:index');
+    $app->get('/application/form/:id',  '\App\Controller\Admin\CareerController:form');
+
+    $app->get('/application/position',  '\App\Controller\Admin\CareerController:position');
+    $app->get('/application/position/edit/:id',  '\App\Controller\Admin\CareerController:positionEdit');
+    $app->get('/application/position/new',  '\App\Controller\Admin\CareerController:positionNew');
+
+    $app->post('/application/position/save',  '\App\Controller\Admin\CareerController:positionSave');
+    $app->delete('/application/position/delete',  '\App\Controller\Admin\CareerController:positionDelete');
 });
 
 
