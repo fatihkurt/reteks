@@ -358,7 +358,7 @@
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_language_pick }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="language[][language_id]" >
+                                <select class="form-item" name="language[0][language_id]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -370,7 +370,7 @@
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_reading }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="language[][reading]" >
+                                <select class="form-item" name="language[0][reading]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -379,7 +379,7 @@
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_writing }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="language[][writing]" >
+                                <select class="form-item" name="language[0][writing]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -388,7 +388,7 @@
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_speaking }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="language[][speaking]" >
+                                <select class="form-item" name="language[0][speaking]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -397,7 +397,7 @@
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_meaning }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="language[][meaning]" >
+                                <select class="form-item" name="language[0][meaning]" >
                                     <option>{{ T.pick_one }}</option>
                                 </select>
                             </div>
@@ -411,34 +411,36 @@
                             <h4 class="section-title">{{ T.career_graduate_title }}</h4>
                         </div>
                         
+                        <input type="hidden" name="education[5][level]" value="{{ T.career_graduate_title }}" />
+                        
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_school }}</label>
-                            <input class="form-item" type="text" name="education[][school]" value="" />
+                            <input class="form-item" type="text" name="education[5][school]" value="" />
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_faculty }}</label>
-                            <input class="form-item" type="text" name="education[][faculty]" value="" />
+                            <input class="form-item" type="text" name="education[5][faculty]" value="" />
                         </div>
                         
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_education }}</label>
-                            <input class="form-item" type="text" name="education[][department]" value="" />
+                            <input class="form-item" type="text" name="education[5][department]" value="" />
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_education_city }}</label>
-                            <input class="form-item" type="text" name="education[][city]" value="" />
+                            <input class="form-item" type="text" name="education[5][city]" value="" />
                         </div>
                         
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_years }}</label>
-                            <input class="form-item" type="text" name="education[][years]" value="" />
+                            <input class="form-item" type="text" name="education[5][years]" value="" />
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_degree }}</label>
-                            <input class="form-item" type="text" name="education[][degree]" value="" />
+                            <input class="form-item" type="text" name="education[5][degree]" value="" />
                         </div>
                     </div>
                     
@@ -448,34 +450,36 @@
                             <h4 class="section-title">{{ T.career_licence_title }}</h4>
                         </div>
                         
+                        <input type="hidden" name="education[4][level]" value="{{ T.career_licence_title }}" />
+                        
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_school }}</label>
-                            <input class="form-item" type="text" name="education[][school]" value="" />
+                            <input class="form-item" type="text" name="education[4][school]" value="" />
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_faculty }}</label>
-                            <input class="form-item" type="text" name="education[][faculty]" value="" />
+                            <input class="form-item" type="text" name="education[4][faculty]" value="" />
                         </div>
                         
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_education }}</label>
-                            <input class="form-item" type="text" name="education[][department]" value="" />
+                            <input class="form-item" type="text" name="education[4][department]" value="" />
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_education_city }}</label>
-                            <input class="form-item" type="text" name="education[][city]" value="" />
+                            <input class="form-item" type="text" name="education[4][city]" value="" />
                         </div>
                         
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_years }}</label>
-                            <input class="form-item" type="text" name="education[][years]" value="" />
+                            <input class="form-item" type="text" name="education[4][years]" value="" />
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_degree }}</label>
-                            <input class="form-item" type="text" name="education[][degree]" value="" />
+                            <input class="form-item" type="text" name="education[4][degree]" value="" />
                         </div>
                     </div>
                     
@@ -485,34 +489,36 @@
                             <h4 class="section-title">{{ T.career_enterance_title }}</h4>
                         </div>
                         
+                        <input type="hidden" name="education[3][level]" value="{{ T.career_enterance_title }}" />
+                        
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_school }}</label>
-                            <input class="form-item" type="text" name="education[][school]" value="" />
+                            <input class="form-item" type="text" name="education[3][school]" value="" />
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_faculty }}</label>
-                            <input class="form-item" type="text" name="education[][faculty]" value="" />
+                            <input class="form-item" type="text" name="education[3][faculty]" value="" />
                         </div>
                         
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_education }}</label>
-                            <input class="form-item" type="text" name="education[][department]" value="" />
+                            <input class="form-item" type="text" name="education[3][department]" value="" />
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_education_city }}</label>
-                            <input class="form-item" type="text" name="education[][city]" value="" />
+                            <input class="form-item" type="text" name="education[3][city]" value="" />
                         </div>
                         
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_years }}</label>
-                            <input class="form-item" type="text" name="education[][years]" value="" />
+                            <input class="form-item" type="text" name="education[3][years]" value="" />
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_degree }}</label>
-                            <input class="form-item" type="text" name="education[][degree]" value="" />
+                            <input class="form-item" type="text" name="education[3][degree]" value="" />
                         </div>
                     </div>
                     
@@ -522,29 +528,31 @@
                             <h4 class="section-title">{{ T.career_highschool_title }}</h4>
                         </div>
                         
+                        <input type="hidden" name="education[2][level]" value="{{ T.career_highschool_title }}" />
+                        
                         <div class="form-row">
                             <label for="fname">{{ T.career_school }}</label>
-                            <input class="form-item" type="text" name="education[][school]" value="" />
+                            <input class="form-item" type="text" name="education[2][school]" value="" />
                         </div>
                         
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_education }}</label>
-                            <input class="form-item" type="text" name="education[][department]" value="" />
+                            <input class="form-item" type="text" name="education[2][department]" value="" />
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_education_city }}</label>
-                            <input class="form-item" type="text" name="education[][city]" value="" />
+                            <input class="form-item" type="text" name="education[2][city]" value="" />
                         </div>
                         
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_years }}</label>
-                            <input class="form-item" type="text" name="education[][years]" value="" />
+                            <input class="form-item" type="text" name="education[2][years]" value="" />
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_degree }}</label>
-                            <input class="form-item" type="text" name="education[][degree]" value="" />
+                            <input class="form-item" type="text" name="education[2][degree]" value="" />
                         </div>
                     </div>
                     
@@ -554,29 +562,31 @@
                             <h4 class="section-title">{{ T.career_firstschool_title }}</h4>
                         </div>
                         
+                        <input type="hidden" name="education[1][level]" value="{{ T.career_firstschool_title }}" />
+                        
                         <div class="form-row">
                             <label for="fname">{{ T.career_school }}</label>
-                            <input class="form-item" type="text" name="education[][school]" value="" />
+                            <input class="form-item" type="text" name="education[1][school]" value="" />
                         </div>
                         
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_education }}</label>
-                            <input class="form-item" type="text" name="education[][department]" value="" />
+                            <input class="form-item" type="text" name="education[1][department]" value="" />
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_education_city }}</label>
-                            <input class="form-item" type="text" name="education[][city]" value="" />
+                            <input class="form-item" type="text" name="education[1][city]" value="" />
                         </div>
                         
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_years }}</label>
-                            <input class="form-item" type="text" name="education[][years]" value="" />
+                            <input class="form-item" type="text" name="education[1][years]" value="" />
                         </div>
                         
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_degree }}</label>
-                            <input class="form-item" type="text" name="education[][degree]" value="" />
+                            <input class="form-item" type="text" name="education[1][degree]" value="" />
                         </div>
                     </div>
                     

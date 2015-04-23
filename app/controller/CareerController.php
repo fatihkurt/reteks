@@ -109,7 +109,7 @@ class CareerController extends ControllerBase
 
         foreach ($educationArr as $level => $data) {
 
-            if ($data['level'] > 0) {
+            if ($data['school'] != '' || $data['faculty'] != '' ) {
 
                 $education = new ApplicationEducation;
 
