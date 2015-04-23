@@ -3,6 +3,7 @@ namespace App\Controller;
 
 
 use App,
+    App\Model\Page,
     App\Model\CareerPosition as Position,
     App\Model\CareerApplication as Application,
     App\Model\CareerApplicationLanguage as ApplicationLanguage,
@@ -15,6 +16,28 @@ class CareerController extends ControllerBase
     use App\Plugin\AjaxResponse;
 
 
+    public function position($lang, $seoUrl, $page) {
+
+        $category = $page->page->category;
+
+        $this->app->render('career_position.twig', [
+            'menu_id'   => $category->id,
+            'item'      => $page,
+            'cpages'    => $category->pages,
+
+            'positions' => Position::all(),
+
+            'applicarion_url' => Page::where('module', '=', 'Career:application')->first()->content($this->lang)->seo_url,
+
+            'breadjump' => [
+                ['name' => $category->getName($this->lang), 'link' => ""],
+                ['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]
+            ],
+            'footer_js' => ['main.js', 'application.js'],
+        ]);
+    }
+
+
     public function application($lang, $seoUrl, $page) {
 
         $category = $page->page->category;
@@ -23,6 +46,8 @@ class CareerController extends ControllerBase
             'menu_id'   => $category->id,
             'item'      => $page,
             'cpages'    => $category->pages,
+
+            'posId'     => $this->app->request->get('is'),
 
             'positions' => Position::all(),
 

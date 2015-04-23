@@ -21,4 +21,9 @@ class CareerPosition extends \Illuminate\Database\Eloquent\Model
 
         return $this->{"name_$lang"};
     }
+
+    function getDetail($lang) {
+
+        return $this->{"detail_$lang"};
+    }
 }

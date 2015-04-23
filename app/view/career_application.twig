@@ -32,7 +32,7 @@
                                 <select class="form-item" type="text" name="position_id" >
                                     <option value="">{{ T.pick_one }}</option>
                                     {% for pos in positions %}
-                                    <option value="{{ pos.id }}">{{ pos.getName(lang) }}</option>
+                                    <option value="{{ pos.id }}" {% if pos.id == posId %}selected{% endif %}>{{ pos.getName(lang) }}</option>
                                     {% endfor %}
                                 </select>
                             </div>

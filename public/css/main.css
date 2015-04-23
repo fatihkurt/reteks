@@ -873,7 +873,57 @@ nav ul.menu li {
         font-size: 16px;
     }
     
+   
+.position-list {
+    padding: 0px;
+    padding-bottom: 20px;
+    margin-top: 40px;
+    border-bottom: thin solid #ebebeb;
+}
+
+    .position-list li {
+        list-style:  none;
+        position: relative;
+    }
+
+    .position-text  {
+      font-size: 15px;
+      font-family: "Ubuntu";
+      color: rgb(36, 35, 38);
+      line-height: 1.467;
+    }
     
+    .position-firm {
+      font-size: 14px;
+      font-family: "Ubuntu";
+      color: rgb(36, 35, 38);
+      line-height: 1.571;
+    }
+
+    .position-list a.position-detail-btn {
+      font-size: 13px;
+      font-family: "Ubuntu";
+      color: rgba(36, 35, 38, 0.6);
+      text-decoration: underline;
+      line-height: 1.692;
+    }
+    
+    .position-list a.position-btn {
+        position: absolute;
+        right : 20px;
+        top: 30px;
+        background: #e20a16;
+        font-size: 14px;
+        color: #fff;
+        font-weight: bold;
+        padding: 10px 20px;
+    }
+    
+    .position-detail {
+        display: none;
+    }
+
+ 
     
     
 /********* Careeeeeeer *********/

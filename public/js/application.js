@@ -2,7 +2,14 @@
 $(function() {
     
     
-    
+    $('.position-detail-btn').click(function() {
+        
+        $(this).next().slideToggle('fast');
+        
+        $(this).hide();
+        
+        return false;
+    });
     
     
     $('#application_form button[type=submit]').click(function() {
