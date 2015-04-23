@@ -40,6 +40,7 @@ class CareerController extends App\Controller\Admin\ControllerBase
         ]);
     }
 
+
     public function position() {
 
         $positions = Position::orderBy('ordernum')
@@ -101,7 +102,6 @@ class CareerController extends App\Controller\Admin\ControllerBase
     public function positionSave() {
 
         $data = $this->app->request->post();
-
 
         $position = Position::firstOrNew(['id' => $data['id']]);
 

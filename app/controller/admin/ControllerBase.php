@@ -17,7 +17,15 @@ class ControllerBase extends App\Controller\ControllerBase
 
             $this->app->flash('error', 'Login olunuz.');
 
+            $this->sessionSet('return_url', $_SERVER['REQUEST_URI']);
+
             $this->app->response->redirect('/login');
+        }
+        elseif ($url = $this->sessionGet('return_url')) {
+
+            $this->sessionDestroy('return_url');
+
+            $this->app->response->redirect($url);
         }
     }
 }
