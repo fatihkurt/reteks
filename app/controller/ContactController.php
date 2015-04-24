@@ -56,22 +56,20 @@ class ContactController extends ControllerBase
 
         if ($pass == false) {
 
-            $this->msg = $this->app->getLang == 'tr' ? 'Lütfen zorunlu alanları doldurunuz.' : 'Please fill required fields.' ;
+            $this->msg = $this->app->t['contact_required'];
 
             return $this->jsonResponse(false);
         }
 
 
         try {
-            $this->msg = $this->app->getLang == 'tr'
-                    ? 'Mesajınız başarıyla gönderilmiştir.'
-                    : 'Your message has been send successfully.';
+            $this->msg = $this->app->t['contact_success'];
 
             $contact = new ContactForm;
 
-            $contact->name = $data['name'];
-            $contact->gsm = $data['gsm'];
-            $contact->email = $data['email'];
+            $contact->name    = $data['name'];
+            $contact->gsm     = $data['gsm'];
+            $contact->email   = $data['email'];
             $contact->subject = $data['subject'];
             $contact->message = $data['message'];
             $contact->sess_id = session_id();
