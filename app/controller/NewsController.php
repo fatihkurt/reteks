@@ -30,6 +30,7 @@ class NewsController extends ControllerBase
 
         $this->app->render('news.twig', [
 
+            'menu_id'   => $page->page->category_id,
             'items'     => $news,
             'content'   => $page,
             'breadjump' => [['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]]
@@ -50,8 +51,8 @@ class NewsController extends ControllerBase
         }
 
         $this->app->render('news_detail.twig', [
-            'menu_id' => 4,
-            'item'     => $news,
+            'menu_id'   => $page->page->category_id,
+            'item'      => $news,
             'content'   => $page,
             'breadjump' => [['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]]
         ]);

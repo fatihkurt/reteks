@@ -9,15 +9,6 @@ trait ModelValidation
 
     protected $errors;
 
-    public function save(array $options = array()) {
-
-        if (isset($options['data']) && $this->validate($options['data']) == false) {
-
-            return false;
-        }
-
-        return parent::save($options);
-    }
 
     public function validate($data) {
 

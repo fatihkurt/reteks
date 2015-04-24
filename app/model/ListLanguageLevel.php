@@ -2,10 +2,10 @@
 
 namespace App\Model;
 
-class ListLanguage extends \Illuminate\Database\Eloquent\Model
+class ListLanguageLevel extends \Illuminate\Database\Eloquent\Model
 {
 
-    protected $table = 'list_language';
+    protected $table = 'list_language_level';
 
     public $timestamps = false;
 

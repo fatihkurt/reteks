@@ -71,6 +71,7 @@ $(function() {
     $('.news-slider').slidesjs({
         width: 1060,
         height: 450,
+        start: 1,
         navigation: {
             active: false,
             effect: "fade"

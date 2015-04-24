@@ -236,13 +236,19 @@
                             <h4 class="section-title">{{ T.career_language_title }}</h4>
                         </div>
                     
-                        <div class="sub-title">{{ T.career_engilish }}</div>
+                        {% for l in default_languages %}
+                        
+                    
+                        <div class="sub-title">{{ l['title'] }}</div>
                         
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_reading }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="language[en][reading]" >
-                                    <option>{{ T.pick_one }}</option>
+                                <select class="form-item" name="language[{{ l['code'] }}][reading]" >
+                                    <option value="">{{ T.pick_one }}</option>
+                                    {% for level in language_levels %}
+                                    <option>{{ level.getName(lang) }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -250,8 +256,11 @@
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_writing }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="language[en][writing]" >
-                                    <option>{{ T.pick_one }}</option>
+                                <select class="form-item" name="language[{{ l['code'] }}][writing]" >
+                                    <option value="">{{ T.pick_one }}</option>
+                                    {% for level in language_levels %}
+                                    <option>{{ level.getName(lang) }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -259,8 +268,11 @@
                         <div class="form-row half left">
                             <label for="fname">{{ T.career_speaking }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="language[en][speaking]" >
-                                    <option>{{ T.pick_one }}</option>
+                                <select class="form-item" name="language[{{ l['code'] }}][speaking]" >
+                                    <option value="">{{ T.pick_one }}</option>
+                                    {% for level in language_levels %}
+                                    <option>{{ level.getName(lang) }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -268,90 +280,16 @@
                         <div class="form-row half right">
                             <label for="fname">{{ T.career_meaning }}</label>
                             <div class="styled-select">
-                                <select class="form-item" name="language[en][meaning]" >
-                                    <option>{{ T.pick_one }}</option>
-                                </select>
-                            </div>
-                        </div>
-                    
-                    
-                        <div class="sub-title">{{ T.career_german }}</div>
-                        
-                        <div class="form-row half left">
-                            <label for="fname">{{ T.career_reading }}</label>
-                            <div class="styled-select">
-                                <select class="form-item" name="language[de][reading]" >
-                                    <option>{{ T.pick_one }}</option>
+                                <select class="form-item" name="meaning[{{ l['code'] }}]" >
+                                    <option value="">{{ T.pick_one }}</option>
+                                    {% for level in language_levels %}
+                                    <option>{{ level.getName(lang) }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
                         
-                        <div class="form-row half right">
-                            <label for="fname">{{ T.career_writing }}</label>
-                            <div class="styled-select">
-                                <select class="form-item" name="language[de][writing]" >
-                                    <option>{{ T.pick_one }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row half left">
-                            <label for="fname">{{ T.career_speaking }}</label>
-                            <div class="styled-select">
-                                <select class="form-item" name="language[de][speaking]" >
-                                    <option>{{ T.pick_one }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row half right">
-                            <label for="fname">{{ T.career_meaning }}</label>
-                            <div class="styled-select">
-                                <select class="form-item" name="language[de][meaning]" >
-                                    <option>{{ T.pick_one }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                    
-                        <div class="sub-title">{{ T.career_russian }}</div>
-                        
-                        <div class="form-row half left">
-                            <label for="fname">{{ T.career_reading }}</label>
-                            <div class="styled-select">
-                                <select class="form-item" name="language[ru][reading]" >
-                                    <option>{{ T.pick_one }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row half right">
-                            <label for="fname">{{ T.career_writing }}</label>
-                            <div class="styled-select">
-                                <select class="form-item" name="language[ru][writing]" >
-                                    <option>{{ T.pick_one }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row half left">
-                            <label for="fname">{{ T.career_speaking }}</label>
-                            <div class="styled-select">
-                                <select class="form-item" name="language[ru][speaking]" >
-                                    <option>{{ T.pick_one }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row half right">
-                            <label for="fname">{{ T.career_meaning }}</label>
-                            <div class="styled-select">
-                                <select class="form-item" name="meaning[ru]" >
-                                    <option>{{ T.pick_one }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        
+                        {% endfor %}
                     
                         <div class="sub-title">{{ T.career_other_language }}<a href="#" class="new-language">{{ T.career_new_languag }}</a></div>
                         
@@ -360,6 +298,9 @@
                             <div class="styled-select">
                                 <select class="form-item" name="language[0][language_id]" >
                                     <option>{{ T.pick_one }}</option>
+                                    {% for language in languages %}
+                                    <option value="{{ language.id }}">{{ language.getName(lang) }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -371,7 +312,10 @@
                             <label for="fname">{{ T.career_reading }}</label>
                             <div class="styled-select">
                                 <select class="form-item" name="language[0][reading]" >
-                                    <option>{{ T.pick_one }}</option>
+                                    <option value="">{{ T.pick_one }}</option>
+                                    {% for level in language_levels %}
+                                    <option>{{ level.getName(lang) }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -380,7 +324,10 @@
                             <label for="fname">{{ T.career_writing }}</label>
                             <div class="styled-select">
                                 <select class="form-item" name="language[0][writing]" >
-                                    <option>{{ T.pick_one }}</option>
+                                    <option value="">{{ T.pick_one }}</option>
+                                    {% for level in language_levels %}
+                                    <option>{{ level.getName(lang) }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -389,7 +336,10 @@
                             <label for="fname">{{ T.career_speaking }}</label>
                             <div class="styled-select">
                                 <select class="form-item" name="language[0][speaking]" >
-                                    <option>{{ T.pick_one }}</option>
+                                    <option value="">{{ T.pick_one }}</option>
+                                    {% for level in language_levels %}
+                                    <option>{{ level.getName(lang) }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -398,13 +348,14 @@
                             <label for="fname">{{ T.career_meaning }}</label>
                             <div class="styled-select">
                                 <select class="form-item" name="language[0][meaning]" >
-                                    <option>{{ T.pick_one }}</option>
+                                    <option value="">{{ T.pick_one }}</option>
+                                    {% for level in language_levels %}
+                                    <option>{{ level.getName(lang) }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
                     </div>
-                    
-                    
                     
                     <div class="section">
                         <div class="section-header">

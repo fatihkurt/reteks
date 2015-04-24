@@ -74,7 +74,7 @@
                 <div>
                 <label>{{ item.start_date|date("d.m.Y") }}</label>
                 <h4><a href="/{{ lang }}/{{ item.content.seo_url }}">{{ item.content.title }}</h4></a>
-                <p>{{ item.content.description }}</p>
+                <div><p>{{ item.content.description }}</p></div>
                 </div>
                 {% endfor %}
                 </div>

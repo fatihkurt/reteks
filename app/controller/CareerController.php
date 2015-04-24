@@ -8,7 +8,8 @@ use App,
     App\Model\CareerApplication as Application,
     App\Model\CareerApplicationLanguage as ApplicationLanguage,
     App\Model\CareerApplicationEducation as ApplicationEducation,
-    App\Model\ListLanguage;
+    App\Model\ListLanguage,
+    App\Model\ListLanguageLevel;
 
 class CareerController extends ControllerBase
 {
@@ -51,6 +52,16 @@ class CareerController extends ControllerBase
 
             'positions' => Position::all(),
 
+            'languages' => ListLanguage::whereRaw('code NOT IN ("en","de","ru")')->orderBy("name_$this->lang")->get(),
+
+            'language_levels' => ListLanguageLevel::orderBy("level")->get(),
+
+            'default_languages' => [
+                ['code' => 'en', 'title' => $this->app->t['career_engilish']],
+                ['code' => 'de', 'title' => $this->app->t['career_german']],
+                ['code' => 'ru', 'title' => $this->app->t['career_russian']],
+            ],
+
             'breadjump' => [
                 ['name' => $category->getName($this->lang), 'link' => ""],
                 ['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]
@@ -65,42 +76,34 @@ class CareerController extends ControllerBase
 
         $data = $this->app->request->post();
 
-        $success = false;
 
-        try {
+        $application = new Application;
 
-            $application = new Application;
+        $data['birthdate'] = $data['birthdate_year'] . '-' . $data['birthdate_month'] . '-' . $data['birthdate_day'];
 
-            $data['birthdate'] = $data['birthdate_year'] . '-' . $data['birthdate_month'] . '-' . $data['birthdate_day'];
+        $application->bind($data);
 
-            $application->bind($data);
+        $application->sess_id = session_id();
+        $application->ip_addr = $this->app->request->getIp();
 
-            $application->sess_id = session_id();
-            $application->ip_addr = $this->app->request->getIp();
+        if ($application->validate($data)) {
 
-            if ($application->validate($data)) {
+            $success = $application->save();
 
-                $success = $application->save();
+            $feedback = $application->id;
 
-                $feedback = $application->id;
+            $this->saveLanguage($application->id, $data['language']);
 
-                $this->saveLanguage($application->id, $data['language']);
+            $this->saveEducation($application->id, $data['education']);
 
-                $this->saveEducation($application->id, $data['education']);
-
-                $this->msg = $this->app->t['validation.form.success'];
-            }
-            else {
-                $feedback = $application->errors();
-
-                $this->msg = $this->app->t['validation.form.message'];
-            }
+            $this->msg = $this->app->t['validation.form.success'];
         }
-        catch (\Exception $e) {
+        else {
+            $success = false;
 
-            $this->msg = $e->getMessage();
+            $feedback = $application->errors();
 
-            $feedback = null;
+            $this->msg = $this->app->t['validation.form.message'];
         }
 
 
@@ -134,11 +137,11 @@ class CareerController extends ControllerBase
 
         foreach ($educationArr as $level => $data) {
 
-            if ($data['school'] != '' || $data['faculty'] != '' ) {
+            if ($data['school'] != '') {
 
                 $education = new ApplicationEducation;
 
-                $lang['application_id'] = $applicationId;
+                $data['application_id'] = $applicationId;
 
                 $education->bind($data);
 
