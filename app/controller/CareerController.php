@@ -33,7 +33,7 @@ class CareerController extends ControllerBase
                 ['name' => $category->getName($this->lang), 'link' => ""],
                 ['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]
             ],
-            'footer_js' => ['main.js', 'application.js'],
+            'footer_js' => ['application.js'],
         ]);
     }
 
