@@ -77,7 +77,11 @@ class ContactController extends ControllerBase
             $contact->sess_id = session_id();
             $contact->ip_addr = $this->app->request->getIp();
 
-            $success = $contact->save($data);
+            if ($success = $contact->save($data)) {
+
+                $this->sendMail($contact);
+            }
+
         }
         catch (\Exception $e) {
 
@@ -87,5 +91,21 @@ class ContactController extends ControllerBase
         }
 
         $this->jsonResponse($success);
+    }
+
+    private function sendMail(& $contact) {
+
+        $to = 'ik@regrup.com.tr';
+
+        $subject = 'R&T Teks İletişim Formu >> ' . $contact->name . ' iletişim Talebi';
+
+        $message = "
+            İsim : $contact->name <br><br>
+            Gsm : $contact->gsm <br><br>
+            E-posta : $contact->email <br><br>
+            Mesaj Konusu: $contact->subject <br><br>
+            Mesaj : <br><br>$contact->message";
+
+        @mail($to, $subject, $message);
     }
 }

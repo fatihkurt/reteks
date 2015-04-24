@@ -96,6 +96,8 @@ class CareerController extends ControllerBase
 
             $this->saveEducation($application->id, $data['education']);
 
+            $this->sendMail($data);
+
             $this->msg = $this->app->t['validation.form.success'];
         }
         else {
@@ -148,5 +150,18 @@ class CareerController extends ControllerBase
                 $education->save();
             }
         }
+    }
+
+    private function sendMail(& $data) {
+
+        $link = rtrim($_SERVER['SERVER_NAME'], '/') . '/admin/application/form/' . $data['id'];
+
+        $to = 'ik@regrup.com.tr';
+
+        $subject = 'R&T Teks İnternet Başvurusu >> ' . $data['name'] . ' Başvuruda Bulundu';
+
+        $message = 'Başvuru detaylarını görmek için <a href="' . $link . '">tıklayınız</a>.. ';
+
+        @mail($to, $subject, $message);
     }
 }
