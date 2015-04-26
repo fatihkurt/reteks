@@ -14,7 +14,20 @@ $app->configureMode('production', function () use ($app) {
             'host' => '127.0.0.1',
         	'name' => 'reteks_db',
         	'user' => 'reteks',      //reteks //root
-        	'pass' => 'R3734srxAQzfkurt',  //kux8zAJE //zagreb14
+        	'pass' => 'R3734srxAQzfkur',  //kux8zAJE //zagreb14
+        	'port' => 3306
+        ]
+    ));
+});
+$app->configureMode('aws', function () use ($app) {
+    $app->config(array(
+        'log.enable'=> true,
+        'debug'     => false,
+        'database'  => [
+            'host' => '127.0.0.1',
+        	'name' => 'reteks_db',
+        	'user' => 'root',      //reteks //root
+        	'pass' => 'zagreb14',  //kux8zAJE //zagreb14
         	'port' => 3306
         ]
     ));
