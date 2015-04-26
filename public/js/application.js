@@ -25,7 +25,7 @@ $(function() {
             
                 if (resp.message != null) {
         
-                    //alert(resp.message);
+                    alert(resp.message);
                 }
 
                 if (resp.success) {

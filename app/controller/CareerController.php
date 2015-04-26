@@ -86,6 +86,20 @@ class CareerController extends ControllerBase
         $application->sess_id = session_id();
         $application->ip_addr = $this->app->request->getIp();
 
+        if (isset($_FILES['cv'])) {
+
+            $result = $this->cvUpload($_FILES['cv']);
+
+            if (isset($result['error']) && $result['error'] != '') {
+
+                $this->msg = $result['error'];
+
+                return $this->jsonResponse(false);
+            }
+
+            $application->cv_path = '';
+        }
+
         if ($application->validate($data)) {
 
             $success = $application->save();
@@ -163,5 +177,38 @@ class CareerController extends ControllerBase
         $message = 'Başvuru detaylarını görmek için <a href="' . $link . '">tıklayınız</a>.. ';
 
         @mail($to, $subject, $message);
+    }
+
+    private function cvUpload($file, $path='upload/cv') {
+
+        $img = array();
+
+        $validImageTypes = ['application/pdf' => 'pdf', 'image/png' => 'png', 'image/jpeg' => 'jpg', 'application/msword' => 'doc'];
+
+        if ($file['error'] === 0) {
+
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mime = finfo_file($finfo, $file['tmp_name']);
+
+            if (in_array($mime, array_keys($validImageTypes))) {
+
+                $name = uniqid('img-'.date('Ymd').'-') . '.' . $validImageTypes[$file['type']];
+
+                $filePath = PUB_DIR . $path . '/' . $name;
+
+                if (move_uploaded_file($file['tmp_name'],  $filePath) === true) {
+
+                    $img = array('name' => $path . '/' . $name);
+                }
+            }
+            else {
+                $img = array('error' => $this->app->t['career_file_not_valid']);
+            }
+        }
+        else {
+            $img = array('error' => $file['error']);
+        }
+
+        return $img;
     }
 }
