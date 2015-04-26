@@ -88,11 +88,11 @@ class CareerController extends ControllerBase
 
         if (isset($_FILES['cv'])) {
 
-            $result = $this->cvUpload($_FILES['cv']);
+            $cvUpload = $this->cvUpload($_FILES['cv']);
 
-            if (isset($result['error']) && $result['error'] != '') {
+            if (isset($cvUpload['error']) && $result['error'] != '') {
 
-                $this->msg = $result['error'];
+                $this->msg = $cvUpload['error'];
 
                 return $this->jsonResponse(false);
             }
@@ -116,6 +116,9 @@ class CareerController extends ControllerBase
         }
         else {
             $success = false;
+
+            if (isset($cvUpload) && isset($cvUpload['name']))
+                @unlink(PUB_DIR . 'upload/' .  $cvUpload['name']);
 
             $feedback = $application->errors();
 
@@ -198,7 +201,7 @@ class CareerController extends ControllerBase
 
                 if (move_uploaded_file($file['tmp_name'],  $filePath) === true) {
 
-                    $img = array('name' => $path . '/' . $name);
+                    $img = array('name' =>  'cv/' . $name);
                 }
             }
             else {
