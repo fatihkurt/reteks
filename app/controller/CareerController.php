@@ -195,7 +195,7 @@ class CareerController extends ControllerBase
 
             if (in_array($mime, array_keys($validImageTypes))) {
 
-                $name = uniqid('img-'.date('Ymd').'-') . '.' . $validImageTypes[$file['type']];
+                $name = uniqid('cv-'.date('Ymd').'-') . '.' . $validImageTypes[$file['type']];
 
                 $filePath = PUB_DIR . $path . '/' . $name;
 
