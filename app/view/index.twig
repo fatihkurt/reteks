@@ -68,14 +68,14 @@
                 
                 
                 <div class="news-slider">
-                <a class="arrows-up slidesjs-previous slidesjs-navigation"></a>
-                <a class="arrows-down slidesjs-next slidesjs-navigation"></a>
+                    <a class="arrows-up slidesjs-previous slidesjs-navigation"></a>
+                    <a class="arrows-down slidesjs-next slidesjs-navigation"></a>
                 {% for item in news %}
-                <div>
-                <label>{{ item.start_date|date("d.m.Y") }}</label>
-                <h4><a href="/{{ lang }}/{{ item.content.seo_url }}">{{ item.content.title }}</h4></a>
-                <div><p>{{ item.content.description }}</p></div>
-                </div>
+                    <div class="slider-item">
+                        <label>{{ item.start_date|date("d.m.Y") }}</label>
+                        <h4><a href="/{{ lang }}/{{ item.content.seo_url }}">{{ item.content.title }}</h4></a>
+                        <div><p>{{ item.content.content|truncate(50, true, '') }}</p></div>
+                    </div>
                 {% endfor %}
                 </div>
             </div>

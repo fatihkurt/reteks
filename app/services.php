@@ -9,8 +9,11 @@ $view->parserOptions = array(
     'cache' => $app->config('cache.path') . '/twig'
 );
 
+
+
 $view->parserExtensions = array(
     new \Slim\Views\TwigExtension(),
+    new Twig_Extensions_Extension_Text(),
     new \Umpirsky\Twig\Extension\PhpFunctionExtension(['mb_strtoupper', 'mb_strtolower', 'ucfirst', 'substr', 'strpos', 'strip_tags', 'strpos'])
 );
 

@@ -499,19 +499,19 @@ nav ul.menu li {
     }
 
     .btn-holder {
+        
         margin-top: 20px;
         margin-left: 20px;
-        
-        width: 110px;
-        height: 40px;
-        
-        background: url(../img/btn_devam.png) no-repeat;
     }
 
     a.btn-devam {
-        float: left;
-        padding-left: 16px;
-        width: 94px;
+        display: inline-block;
+        background-color: #e20a16;
+        background-image: url(../img/btn_arrow.png);
+        background-repeat: no-repeat;
+        background-position: 85% center;
+        padding-left: 20px;
+        padding-right: 30px;
         
         line-height: 40px;
         
@@ -719,6 +719,12 @@ nav ul.menu li {
           font-size: 14px;
           color: #222;
           line-height: 1.7;
+          padding-top: 20px;
+    }
+    
+    .page-text  ul li{
+          list-style-image: url("../img/rarrow_list.png");
+          margin-bottom: 5px;
     }
     
     .page-list {
@@ -761,11 +767,10 @@ nav ul.menu li {
 /* Newspage */
 
 .news-content {
-    
-    
+
     background: #fff;
     padding: 30px;
-    min-height: 300px;
+    min-height: 500px;
 }
 
     ul.news-list {
@@ -814,7 +819,7 @@ nav ul.menu li {
     
     .news-detail {
         margin-top: 30px;
-        min-height: 500px;
+        padding-bottom: 100px;
     }
     
     .news-detail-title {
@@ -833,6 +838,19 @@ nav ul.menu li {
       font-size: 14px;
       line-height: 1.7;
         
+    }
+    
+    .news-other-link {
+        float: right;
+        color: rgb(226, 10, 22);
+        margin-top: 50px;
+    }
+    
+    .news-other-link a {
+        font-size: 13px;
+        color: rgb(226, 10, 22);
+        background: url(../img/rarrow_list.png) right center no-repeat;
+        padding-right: 20px;
     }
     
     
@@ -897,6 +915,7 @@ nav ul.menu li {
     .form-row label{
       font-size: 14px;
       line-height: 1.571;
+      font-weight: bold;
     }
     
 
@@ -912,10 +931,11 @@ nav ul.menu li {
     
     .form-required {
           font-size: 12px;
-          color: rgba(216, 12, 12, 0.502);
-          color: rgba(216, 12, 12);
+          color: rgba(66, 75, 81, 0.502);
+          color: rgba(66, 75, 81);
           line-height: 1.8;
         }
+    
     
     .form-btn {
         background: #D80C0C;
@@ -1004,6 +1024,7 @@ nav ul.menu li {
 .form-row select.form-item {
     padding: 9px;
     width:100%;
+    border-radius: 0px;
 }
 
 .form-row select.form-item.third {

@@ -47,9 +47,13 @@
                 </ul>
             </div>
         
+            {% if category.block_video %}
             {% include 'partial/video_play.twig' %}
+            {% endif %}
             
+            {% if category.block_newsletter %}
             {% include 'partial/newsletter.twig' %}
+            {% endif %}
         </div>
 
 {% endblock %}

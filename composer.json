@@ -3,6 +3,7 @@
         "slim/slim": "2.*",
         "slim/views" : "*",
         "twig/twig": "~1.0",
+        "twig/extensions": "1.2.*@dev",
         "umpirsky/twig-php-function": "dev-master",
         "illuminate/database": "5.*",
         "txthinking/validation": "dev-master"
