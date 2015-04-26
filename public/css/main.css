@@ -531,9 +531,24 @@ nav ul.menu li {
 }
 
     .right-col {
-        
         margin-bottom: 20px;
     }
+    
+    .video-col {
+        position: relative;
+    }
+    
+    .video-title {
+        font-size: 15px;
+        color: #FFF;
+        font-weight: bold;
+        position: absolute;
+        top: 140px;
+        /* display: block; */
+        text-align: center;
+        width: 100%;
+    }
+    
     
     .news {
         position: relative;
