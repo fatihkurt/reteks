@@ -20,6 +20,8 @@ class IndexController extends ControllerBase
 
         $this->app->render('index.twig', [
 
+            'seo_title' => $this->app->t['main_seo_title'],
+            'seo_desc'  => $this->app->t['main_seo_desc'],
             'news'  => $this->getNews(),
             'pages' => $this->getPages(),
             'thePage' => $this->getCompanyPage(),

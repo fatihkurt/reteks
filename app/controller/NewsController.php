@@ -30,6 +30,8 @@ class NewsController extends ControllerBase
 
         $this->app->render('news.twig', [
 
+            'seo_title' => $this->app->t['news'],
+            'seo_desc'  => '',
             'menu_id'   => $page->page->category_id,
             'items'     => $news,
             'content'   => $page,
@@ -51,6 +53,8 @@ class NewsController extends ControllerBase
         }
 
         $this->app->render('news_detail.twig', [
+            'seo_title' => $page->title,
+            'seo_desc'  => $page->description,
             'menu_id'   => $page->page->category_id,
             'item'      => $news,
             'content'   => $page,

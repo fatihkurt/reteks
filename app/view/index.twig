@@ -51,7 +51,7 @@
 
                         <h2>R & E TEKS</h2>
 
-                        <h3>{{ T.company_slogan }}</h3>
+                        <h3>{{ T.company_slogan|raw }}</h3>
 
                         <p>{{ substr(strip_tags(thePage.contents[0].content), 0, strpos(strip_tags(thePage.contents[0].content), '.', 300)) }}.</p>
                    
