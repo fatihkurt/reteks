@@ -1,7 +1,7 @@
 <?php
 
 // $app->contentType('text/html; charset=utf-8');
-// $app->response()->header('Content-Type', 'text/html;charset=utf-8');
+//$app->response()->header('Content-Type', 'text/html;charset=utf-8');
 
 header('Content-type: text/html; charset=utf-8');
 
@@ -15,6 +15,8 @@ $app = new \Slim\Slim([
     'templates.path'=> APP_DIR . 'view',
     'cache.path'    => APP_DIR . 'cache',
 ]);
+
+$app->contentType('text/html; charset=utf-8');
 
 
 include APP_DIR . 'config.php';

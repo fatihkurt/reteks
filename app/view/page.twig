@@ -9,7 +9,7 @@
             <div class="banner-txt">
                 <div class="banner-caption">
                     {{ category.getName(lang) }}<br>
-                    <div class="banner-caption-sub">{{ item.title }}</div>
+                    <div class="banner-caption-sub">{{ upperTR(item.title) }}</div>
                 </div>
             </div>
             
@@ -20,17 +20,15 @@
 
             <div class="page-content">
         
-                <h3 class="page-title">{{ mb_strtoupper(item.title) }}</h3>
+                <h3 class="page-title">{{ upperTR(item.title) }}</h3>
 
                 {% include 'partial/breadjump.twig' %}
 
                 <div class="page-text">{{ item.content|raw }}</div>
                 
-                
                 {% if item.page.gallery|length > 0 %}
                     {% include 'partial/gallery.twig' with {'gallery' : item.page.gallery} %}
                 {% endif %}
-
             </div>
 
         </div> <!-- #middle-content -->

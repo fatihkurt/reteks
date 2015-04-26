@@ -34,3 +34,19 @@ $authenticateForRole = function ($role = 'admin') {
         }
     };
 };
+
+
+function upperTR($str) {
+    $str = str_replace(array('i', 'ı', 'ü', 'ğ', 'ş', 'ö', 'ç'), array('İ', 'I', 'Ü', 'Ğ', 'Ş', 'Ö', 'Ç'), $str);
+    return strtoupper($str);
+}
+
+function lowerTR($str) {
+    $str = str_replace(array('İ', 'I', 'Ü', 'Ğ', 'Ş', 'Ö', 'Ç'), array('i', 'ı', 'ü', 'ğ', 'ş', 'ö', 'ç'), $str);
+    return strtolower($str);
+}
+
+function upperFirstTR($str) {
+
+    return upperTR(substr($str, 0, 1)) . lowerTR(substr($str, 1));
+}

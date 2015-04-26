@@ -3,6 +3,6 @@
 <a href="/{{ lang }}">{{ T.mainpage }}</a>
 
 {% for idx,step in breadjump  %}
-   <img src="/img/br_arrow.gif" /> <a {% if idx+1 == breadjump|length %}class="current"{% endif %} href="{{ step.link }}">{{ step.name }}</a>
+   <img src="/img/br_arrow.gif" /> <a {% if idx+1 == breadjump|length %}class="current"{% endif %} href="{{ step.link }}">{{ upperFirstTR(step.name) }}</a>
 {% endfor %}
 </div>
