@@ -6,6 +6,13 @@
         {% if item.page.image1 != '' %}
         <div class="banner">
             <img src="/upload/page/{{ item.page.image1 }}" />
+            <div class="banner-txt">
+                <div class="banner-caption">
+                    {{ category.getName(lang) }}<br>
+                    <div class="banner-caption-sub">{{ item.title }}</div>
+                </div>
+            </div>
+            
         </div>
         {% endif %}
 
@@ -17,7 +24,7 @@
 
                 {% include 'partial/breadjump.twig' %}
 
-                <p class="page-text">{{ item.content|raw }}</p>
+                <div class="page-text">{{ item.content|raw }}</div>
                 
                 
                 {% if item.page.gallery|length > 0 %}

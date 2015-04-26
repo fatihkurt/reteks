@@ -15,14 +15,14 @@
                 {% include 'partial/breadjump.twig' %}
 
                 <div class="news-detail">
-                    <p class="news-text">
+                    <div class="news-text">
                     
                         <img class="news-detail-image" src="/upload/news/{{ item.news.image }}" />
                         
                         <h4 class="news-detail-title">{{ item.title }}</h4>
 
                         {{ item.content|raw }}
-                    </p>
+                    </div>
                 </div>
         </div>
 {% endblock %}

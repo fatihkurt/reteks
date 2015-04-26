@@ -22,7 +22,7 @@
                             <div class="news-item">
                                 <h4><a href="/{{ lang }}/{{ news.content.seo_url }}">{{ news.content.title }}</a></h4>
                                 <div class="news-date">{{ news.start_date|date("d.m.Y") }}</div>
-                                <p><a href="/{{ lang }}/{{ news.content.seo_url }}">{{ news.content.content|raw }}</a></p>
+                                <div><a href="/{{ lang }}/{{ news.content.seo_url }}">{{ news.content.content|raw }}</a></div>
                             </div>
                         </li>
                     {% endfor %}

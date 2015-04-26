@@ -1,5 +1,10 @@
 <?php
 
+// $app->contentType('text/html; charset=utf-8');
+// $app->response()->header('Content-Type', 'text/html;charset=utf-8');
+
+header('Content-type: text/html; charset=utf-8');
+
 require '../vendor/autoload.php';
 
 
