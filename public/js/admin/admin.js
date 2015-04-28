@@ -28,6 +28,27 @@ $(function() {
     $('.slide-menu').click(function() {
         
         $(this).next().slideToggle();
+    });
+    
+    
+    var loading = function() {
+        // add the overlay with loading image to the page
+        var over = '<div id="overlay">' +
+            '<img id="loading" src="http://bit.ly/pMtW1K">' +
+            '</div>';
+        $(over).appendTo('body');
+    };
+    
+    var unloading = function() {
+        $('#overlay').remove()
+    }
+    
+    $(document)
+    .ajaxStart(function(){
+        loading();
     })
+    .ajaxStop(function(){
+        unloading();
+    });
     
 });
