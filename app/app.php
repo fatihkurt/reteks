@@ -9,7 +9,7 @@ require '../vendor/autoload.php';
 
 
 $app = new \Slim\Slim([
-    'debug'         => true,
+    'debug'         => isset($_SERVER['APPLICATION_ENV']) && $_SERVER['APPLICATION_ENV'] == 'development',
     'mode'          => isset($_SERVER['APPLICATION_ENV']) ? $_SERVER['APPLICATION_ENV'] :  'production',
     'view'          => new \Slim\Views\Twig(),
     'templates.path'=> APP_DIR . 'view',
