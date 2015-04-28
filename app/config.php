@@ -11,7 +11,7 @@ $app->configureMode('production', function () use ($app) {
         'log.enable'=> true,
         'debug'     => false,
         'database'  => [
-            'host' => '94.73.151.251',
+            'host' => '94.73.149.211',
         	'name' => 'reteks_db',
         	'user' => 'reteks',      //reteks //root
         	'pass' => 'R3734srxAQzfkur',  //kux8zAJE //zagreb14
