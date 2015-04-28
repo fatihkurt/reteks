@@ -6,6 +6,11 @@
         {% if item.page.image1 != '' %}
         <div class="banner">
             <img src="/upload/page/{{ item.page.image1 }}" />
+            <div class="banner-txt">
+                <div class="banner-caption">
+                    {{ category.getName(lang) }}<br>
+                </div>
+            </div>
         </div>
         {% endif %}
         
