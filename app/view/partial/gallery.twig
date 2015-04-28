@@ -4,7 +4,7 @@
 {% for idx,image in gallery %}
 
     <div class="g-item g{{ idx+1 }}">
-        <a class="fancybox" rel="group" href="/upload/gallery/{{ image.image }}"><img src="/upload/gallery/{{ image.image }}" /></a>
+        <a class="fancybox" rel="group" href="/upload/gallery/{{ image.image }}"><img src="/upload/gallery/thumb/{{ image.image }}" /></a>
     </div>
     
 {% endfor %}

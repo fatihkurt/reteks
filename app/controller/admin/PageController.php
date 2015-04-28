@@ -219,6 +219,10 @@ class PageController extends App\Controller\Admin\ControllerBase
 
                 if (move_uploaded_file($file['tmp_name'],  $filePath) === true) {
 
+                    $thumbPath = PUB_DIR . $path . '/thumb/' . $name;
+
+                    copy($filePath, $thumbPath);
+
                     $img = array('name' => $name);
                 }
                 else {
