@@ -12,10 +12,13 @@ class ContactController extends ControllerBase
 
     public function form($lang, $seoUrl, $page) {
 
-        $this->app->render('contact_form.twig', [
+        $category = $page->page->category;
 
+        $this->app->render('contact_form.twig', [
+            'menu_id'   => $category->id,
             'item'      => $page,
-            'cpages'    => $page->page->category->pages,
+            'category'  => $category,
+            'cpages'    => $category->pages,
             'breadjump' => [
                 ['name' => $page->page->category->getName($this->lang), 'link' => ""],
                 ['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]
@@ -26,10 +29,13 @@ class ContactController extends ControllerBase
 
     public function info($lang, $seoUrl, $page) {
 
+        $category = $page->page->category;
+
         $this->app->render('contact_info.twig', [
-            'menu_id'   => 6,
+            'menu_id'   => $category->id,
             'item'      => $page,
-            'cpages'    => $page->page->category->pages,
+            'category'  => $category,
+            'cpages'    => $category->pages,
             'breadjump' => [
                 ['name' => $page->page->category->getName($this->lang), 'link' => ""],
                 ['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]

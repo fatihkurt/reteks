@@ -13,6 +13,9 @@ trait AppHelper
 
     function seoDesc($content, $offset=140) {
 
+        if ($content == '')
+            return '';
+
         $content = strip_tags($this->nlKill($content));
 
         $trimPos = strpos($content, '.', $offset)

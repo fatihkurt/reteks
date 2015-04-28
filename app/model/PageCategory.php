@@ -13,7 +13,7 @@ class PageCategory extends \Illuminate\Database\Eloquent\Model
 
     public function pages() {
 
-        return $this->hasMany('App\Model\Page', 'category_id');
+        return $this->hasMany('App\Model\Page', 'category_id')->orderBy('ordernum');
     }
 
     public function pageContent($pageId) {

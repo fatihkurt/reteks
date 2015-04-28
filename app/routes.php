@@ -84,6 +84,7 @@ $app->post('/newsletter/save',  '\App\Controller\IndexController:newsletterSave'
 $app->post('/search(/:query)',  '\App\Controller\SearchController:index');
 
 $app->post('/application/save',  '\App\Controller\CareerController:save');
+$app->post('/application/saveCv',  '\App\Controller\CareerController:saveCv');
 
 
 

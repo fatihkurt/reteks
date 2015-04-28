@@ -1,0 +1,587 @@
+<div class="career-form">
+
+    <form id="application_form" action="/application/save" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" >
+
+    <div class="section">
+        <div class="section-header">
+            <h4 class="section-title">{{ T.career_application_title }}</h4>
+        </div>
+        <div class="section-inner dblock">
+            <div class="form-row">
+                <label for="fname">{{ T.career_position }}*</label>
+                <div class="styled-select">
+                    <select class="form-item" type="text" name="position_id" >
+                        <option value="">{{ T.pick_one }}</option>
+                        {% for pos in positions %}
+                        <option value="{{ pos.id }}" {% if pos.id == posId %}selected{% endif %}>{{ pos.getName(lang) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <div class="section-header">
+            <h4 class="section-title">{{ T.career_personal_title }}</h4>
+        </div>
+        <div class="section-inner">
+
+        <div class="form-row half left">
+            <label for="fname">{{ T.form_name }}*</label>
+            <input class="form-item" type="text" name="name" value="" />
+        </div>
+        
+        <div class="form-row half right">
+            <label for="fname">{{ T.career_title }}*</label>
+            <input class="form-item" type="text" name="title" value="" />
+        </div>
+        
+        <div class="form-row half left">
+            <label for="fname">{{ T.career_birthplace }}*</label>
+            <input class="form-item" type="text" name="birthplace" value="" />
+        </div>
+        
+        <div class="form-row half right">
+            <label for="fname">{{ T.career_birthdate }}*</label>
+            <div class="styled-select">
+                <select class="form-item third"  name="birthdate_year" >
+                    <option value="">{{ T.year }}</option>
+                    {% for year in 1940..2015 %}
+                    <option value="{{ year }}">{{ year }}</option>
+                    {% endfor %}
+                </select>
+                <select class="form-item third"  name="birthdate_month" >
+                    <option value="">{{ T.month }}</option>
+                    {% for month in 1..12 %}
+                    <option value="{{ month }}">{{ T["month" ~ month] }}</option>
+                    {% endfor %}
+                </select>
+                <select class="form-item third"  name="birthdate_day" >
+                    <option value="">{{ T.day }}</option>
+                    {% for day in 1..7 %}
+                    <option value="{{ day }}">{{ T["day" ~ day] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-row half left">
+            <label for="fname">{{ T.career_nation }}*</label>
+            <input class="form-item" type="text" name="nation" value="" />
+        </div>
+        
+        <div class="form-row half right">
+            <label for="fname">{{ T.career_tc_number }}</label>
+            <input class="form-item" type="text" name="tc_number" value="" />
+        </div>
+        
+        <div class="form-row half left">
+        
+            <label for="fname">{{ T.career_gender }}*</label>
+            
+            <div class="form-row">
+                <input type="radio" name="gender" id="radio_male" class="css-checkbox" value="E" >
+                <label for="radio_male" class="css-label">{{ T.career_gender_male }}</label>
+                
+                <input type="radio" name="gender" id="radio_female" class="css-checkbox" value="K">
+                <label for="radio_female" class="css-label">{{ T.career_gender_female }}</label>
+            </div>
+
+        </div>
+        
+        <div class="form-row half right">
+            <label for="fname">{{ T.career_conditon }}*</label>
+
+            <div class="form-row">
+                <input type="radio" name="condition" id="radio_evl" class="css-checkbox" value="Evli" >
+                <label for="radio_evl" class="css-label">{{ T.career_conditon_couple }}</label>
+                
+                <input type="radio" name="condition" id="radio_bkar" class="css-checkbox" value="Bekar">
+                <label for="radio_bkar" class="css-label">{{ T.career_conditon_single }}</label>
+            </div>
+        </div>
+        
+        <div class="form-row half left">
+            <label for="fname">{{ T.career_children }}</label>
+            <div class="form-row">
+                <input type="radio" name="children" id="radio_cyok" class="css-checkbox" value="Var" >
+                <label for="radio_cyok" class="css-label">{{ T.exists }}</label>
+                
+                <input type="radio" name="children" id="radio_cvar" class="css-checkbox" value="Yok">
+                <label for="radio_cvar" class="css-label">{{ T.nope }}</label>
+            </div>
+        </div>
+        
+        <div class="form-row half right">
+            <label for="fname">{{ T.career_children_detail }}</label>
+            <input class="form-item" type="text" name="children_detail" value="" />
+        </div>
+        
+        <div class="form-row half left">
+            <label for="fname">{{ T.career_couple_name }}</label>
+            <input class="form-item" type="text" name="couple_name" value="" />
+        </div>
+        
+        <div class="form-row half right">
+            <label for="fname">{{ T.career_couple_job }}</label>
+            <input class="form-item" type="text" name="couple_job" value="" />
+        </div>
+        
+        <div class="form-row half left">
+            <label for="fname">{{ T.career_military }}</label>
+            <div class="form-row">
+                <input type="radio" name="military" id="radio_myes" class="css-checkbox" value="Yapıldı" >
+                <label for="radio_myes" class="css-label">{{ T.career_military_done }}</label>
+                
+                <input type="radio" name="military" id="radio_mnone" class="css-checkbox" value="Yapılmadı">
+                <label for="radio_mnone" class="css-label">{{ T.career_military_nope }}</label>
+                
+                <input type="radio" name="military" id="radio_mtec" class="css-checkbox" value="Tecilli">
+                <label for="radio_mtec" class="css-label">{{ T.career_military_late }}</label>
+            </div>
+        </div>
+        
+        <div class="form-row half right">
+            <label for="fname">{{ T.career_clean_record }}*</label>
+            <div class="form-row">
+                <input type="radio" name="clean_record" id="radio_cryok" class="css-checkbox" value="Var" >
+                <label for="radio_cryok" class="css-label">{{ T.exists }}</label>
+                
+                <input type="radio" name="clean_record" id="radio_crvar" class="css-checkbox" value="Yok">
+                <label for="radio_crvar" class="css-label">{{ T.nope }}</label>
+            </div>
+        </div>
+        
+        <div class="form-row half left">
+            <label for="fname">{{ T.career_driving_licence }}*</label>
+            <div class="form-row">
+                <input type="radio" name="driving_licence" id="radio_dryok" class="css-checkbox" value="Var" >
+                <label for="radio_dryok" class="css-label">{{ T.exists }}</label>
+                
+                <input type="radio" name="driving_licence" id="radio_drvar" class="css-checkbox" value="Yok">
+                <label for="radio_drvar" class="css-label">{{ T.nope }}</label>
+            </div>
+        </div>
+        
+        <div class="form-row half right">
+            <label for="fname">{{ T.career_driving_class }}</label>
+            <input class="form-item" type="text" name="driving_class" value="" />
+        </div>
+    </div>
+    </div>
+    
+    
+    
+    <div class="section">
+        <div class="section-header">
+            <h4 class="section-title">{{ T.career_contact_title }}</h4>
+        </div>
+        <div class="section-inner">
+            <div class="form-row">
+                <label for="fname">{{ T.career_adress }}</label>
+                <input class="form-item" type="text" name="adress" value="" />
+                <!--textaera class="form-item" type="text" name="adress" ></textarea-->
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_city }}*</label>
+                <div class="styled-select">
+                    <input class="form-item" type="text" name="city" value="" />
+                </div>
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_state }}*</label>
+                <input class="form-item" type="text" name="state" value="" />
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_gsm }}*</label>
+                <input class="form-item" type="text" name="gsm" value="" />
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_tel }}</label>
+                <input class="form-item" type="text" name="tel" value="" />
+            </div>
+            
+            <div class="form-row">
+                <label for="fname">{{ T.career_email }}*</label>
+                <input class="form-item" type="text" name="email" value="" />
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="section">
+        <div class="section-header">
+            <h4 class="section-title">{{ T.career_language_title }}</h4>
+        </div>
+        <div class="section-inner">
+    
+            {% for l in default_languages %}
+            
+        
+            <div class="sub-title">{{ l['title'] }}</div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_reading }}</label>
+                <div class="styled-select">
+                    <select class="form-item" name="language[{{ l['code'] }}][reading]" >
+                        <option value="">{{ T.pick_one }}</option>
+                        {% for level in language_levels %}
+                        <option>{{ level.getName(lang) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_writing }}</label>
+                <div class="styled-select">
+                    <select class="form-item" name="language[{{ l['code'] }}][writing]" >
+                        <option value="">{{ T.pick_one }}</option>
+                        {% for level in language_levels %}
+                        <option>{{ level.getName(lang) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_speaking }}</label>
+                <div class="styled-select">
+                    <select class="form-item" name="language[{{ l['code'] }}][speaking]" >
+                        <option value="">{{ T.pick_one }}</option>
+                        {% for level in language_levels %}
+                        <option>{{ level.getName(lang) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_meaning }}</label>
+                <div class="styled-select">
+                    <select class="form-item" name="meaning[{{ l['code'] }}]" >
+                        <option value="">{{ T.pick_one }}</option>
+                        {% for level in language_levels %}
+                        <option>{{ level.getName(lang) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            {% endfor %}
+        
+            <div class="sub-title">{{ T.career_other_language }}<a href="#" class="new-language">{{ T.career_new_languag }}</a></div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_language_pick }}</label>
+                <div class="styled-select">
+                    <select class="form-item" name="language[0][language_id]" >
+                        <option>{{ T.pick_one }}</option>
+                        {% for language in languages %}
+                        <option value="{{ language.id }}">{{ language.getName(lang) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row half right">
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_reading }}</label>
+                <div class="styled-select">
+                    <select class="form-item" name="language[0][reading]" >
+                        <option value="">{{ T.pick_one }}</option>
+                        {% for level in language_levels %}
+                        <option>{{ level.getName(lang) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_writing }}</label>
+                <div class="styled-select">
+                    <select class="form-item" name="language[0][writing]" >
+                        <option value="">{{ T.pick_one }}</option>
+                        {% for level in language_levels %}
+                        <option>{{ level.getName(lang) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_speaking }}</label>
+                <div class="styled-select">
+                    <select class="form-item" name="language[0][speaking]" >
+                        <option value="">{{ T.pick_one }}</option>
+                        {% for level in language_levels %}
+                        <option>{{ level.getName(lang) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_meaning }}</label>
+                <div class="styled-select">
+                    <select class="form-item" name="language[0][meaning]" >
+                        <option value="">{{ T.pick_one }}</option>
+                        {% for level in language_levels %}
+                        <option>{{ level.getName(lang) }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-header">
+                <h4 class="section-title">{{ T.career_graduate_title }}</h4>
+            </div>
+            <div class="section-inner">
+                <input type="hidden" name="education[5][level]" value="{{ T.career_graduate_title }}" />
+                
+                <div class="form-row half left">
+                    <label for="fname">{{ T.career_school }}</label>
+                    <input class="form-item" type="text" name="education[5][school]" value="" />
+                </div>
+                
+                <div class="form-row half right">
+                    <label for="fname">{{ T.career_faculty }}</label>
+                    <input class="form-item" type="text" name="education[5][faculty]" value="" />
+                </div>
+                
+                <div class="form-row half left">
+                    <label for="fname">{{ T.career_education }}</label>
+                    <input class="form-item" type="text" name="education[5][department]" value="" />
+                </div>
+                
+                <div class="form-row half right">
+                    <label for="fname">{{ T.career_education_city }}</label>
+                    <input class="form-item" type="text" name="education[5][city]" value="" />
+                </div>
+                
+                <div class="form-row half left">
+                    <label for="fname">{{ T.career_years }}</label>
+                    <input class="form-item" type="text" name="education[5][years]" value="" />
+                </div>
+                
+                <div class="form-row half right">
+                    <label for="fname">{{ T.career_degree }}</label>
+                    <input class="form-item" type="text" name="education[5][degree]" value="" />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="section">
+        <div class="section-header">
+            <h4 class="section-title">{{ T.career_licence_title }}</h4>
+        </div>
+        <div class="section-inner">
+            <input type="hidden" name="education[4][level]" value="{{ T.career_licence_title }}" />
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_school }}</label>
+                <input class="form-item" type="text" name="education[4][school]" value="" />
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_faculty }}</label>
+                <input class="form-item" type="text" name="education[4][faculty]" value="" />
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_education }}</label>
+                <input class="form-item" type="text" name="education[4][department]" value="" />
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_education_city }}</label>
+                <input class="form-item" type="text" name="education[4][city]" value="" />
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_years }}</label>
+                <input class="form-item" type="text" name="education[4][years]" value="" />
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_degree }}</label>
+                <input class="form-item" type="text" name="education[4][degree]" value="" />
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="section">
+        <div class="section-header">
+            <h4 class="section-title">{{ T.career_enterance_title }}</h4>
+        </div>
+        <div class="section-inner">
+            <input type="hidden" name="education[3][level]" value="{{ T.career_enterance_title }}" />
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_school }}</label>
+                <input class="form-item" type="text" name="education[3][school]" value="" />
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_faculty }}</label>
+                <input class="form-item" type="text" name="education[3][faculty]" value="" />
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_education }}</label>
+                <input class="form-item" type="text" name="education[3][department]" value="" />
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_education_city }}</label>
+                <input class="form-item" type="text" name="education[3][city]" value="" />
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_years }}</label>
+                <input class="form-item" type="text" name="education[3][years]" value="" />
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_degree }}</label>
+                <input class="form-item" type="text" name="education[3][degree]" value="" />
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="section">
+        <div class="section-header">
+            <h4 class="section-title">{{ T.career_highschool_title }}</h4>
+        </div>
+        <div class="section-inner">
+            <input type="hidden" name="education[2][level]" value="{{ T.career_highschool_title }}" />
+            
+            <div class="form-row">
+                <label for="fname">{{ T.career_school }}</label>
+                <input class="form-item" type="text" name="education[2][school]" value="" />
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_education }}</label>
+                <input class="form-item" type="text" name="education[2][department]" value="" />
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_education_city }}</label>
+                <input class="form-item" type="text" name="education[2][city]" value="" />
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_years }}</label>
+                <input class="form-item" type="text" name="education[2][years]" value="" />
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_degree }}</label>
+                <input class="form-item" type="text" name="education[2][degree]" value="" />
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="section">
+        <div class="section-header">
+            <h4 class="section-title">{{ T.career_firstschool_title }}</h4>
+        </div>
+        
+        <div class="section-inner">
+            <input type="hidden" name="education[1][level]" value="{{ T.career_firstschool_title }}" />
+            
+            <div class="form-row">
+                <label for="fname">{{ T.career_school }}</label>
+                <input class="form-item" type="text" name="education[1][school]" value="" />
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_education }}</label>
+                <input class="form-item" type="text" name="education[1][department]" value="" />
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_education_city }}</label>
+                <input class="form-item" type="text" name="education[1][city]" value="" />
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_years }}</label>
+                <input class="form-item" type="text" name="education[1][years]" value="" />
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_degree }}</label>
+                <input class="form-item" type="text" name="education[1][degree]" value="" />
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="section">
+        <div class="section-header">
+            <h4 class="section-title">{{ T.career_computer_title }}</h4>
+        </div>
+        
+        <div class="section-inner">
+            <div class="form-row">
+                <label for="fname">{{ T.career_skill_office_tools }}</label>
+                <input class="form-item" type="text" name="skill_office_tools" value="" />
+            </div>
+            
+            <div class="form-row half left">
+                <label for="fname">{{ T.career_skill_computer_grade }}</label>
+                <div class="styled-select">
+                    <select class="form-item" name="skill_computer_grade" >
+                        <option>{{ T.pick_one }}</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row half right">
+                <label for="fname">{{ T.career_skill_computer_os }}</label>
+                <input class="form-item" type="text" name="skill_computer_os" value="" />
+            </div>
+            
+            
+            <div class="form-row">
+                <label for="fname">{{ T.career_skill_computer_detail }}</label>
+                <input class="form-item" type="text" name="skill_computer_detail" value="" />
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+    
+        <div class="form-row">
+            <label for="fname">{{ T.career_cv_path }}</label>
+            <input class="form-item" type="file" name="cv"  />
+        </div>
+    </div>
+    
+    
+    <div class="section">
+        <div class="form-row">
+            <div class="form-required">* {{ T.form_required }}</div>
+            <button type="submit" class="form-btn">{{ T.form_send }}</button>
+        </div>
+    </div>
+    </form>
+</div>

@@ -105,6 +105,9 @@ class CareerController extends App\Controller\Admin\ControllerBase
 
         $position = Position::firstOrNew(['id' => $data['id']]);
 
+        $data['detail_tr'] = strip_tags($data['detail_tr']);
+        $data['detail_en'] = strip_tags($data['detail_en']);
+
         $position->bind($data);
 
         $success = $position->save();

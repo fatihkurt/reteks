@@ -262,7 +262,7 @@ nav ul.menu li {
             }
             
             .banner-text {
-                    width: 500px;
+                  width: 510px;
                   font-size: 56px;
                   font-family: "Ubuntu";
                   color: rgb(245, 245, 245);
@@ -320,7 +320,6 @@ nav ul.menu li {
 
     .banner-txt {
         position: absolute;
-        background: url(../img/diagonal_banner_bg.png) no-repeat;
         top:14px;
         left: 16px;
         z-index: 10;
@@ -467,15 +466,12 @@ nav ul.menu li {
     .company-info p, 
     .company-info h2, 
     .company-info h3 {
-
         font-size: 14px;
         padding: 0px 5px 0px 20px;
     }
-    
-    
-    
-    .company-info h2 {
 
+
+    .company-info h2 {
         font-size: 15px;
         font-weight: bold;
         line-height: 1.6em;
@@ -499,8 +495,7 @@ nav ul.menu li {
     }
 
     .btn-holder {
-        
-        margin-top: 20px;
+        margin-top: 43px;
         margin-left: 20px;
     }
 
@@ -678,6 +673,10 @@ nav ul.menu li {
         width: 270px;
         margin-right: 20px;
     }
+    .g1 img {
+        height: 400px;
+        width: 270px;
+    }
     
     .g2 {
         height: 170px;
@@ -737,9 +736,16 @@ nav ul.menu li {
           padding-top: 20px;
     }
     
+    .page-text  ul {
+          padding-left: 0px;
+    }
     .page-text  ul li{
-          list-style-image: url("../img/rarrow_list.png");
-          margin-bottom: 5px;
+          background: url(../img/list_arrow.png) no-repeat left top;
+          padding-left: 30px;
+          font-size: medium;
+          list-style: none;
+          margin: 0;
+          margin-bottom: 7px;
     }
     
     .page-list {
@@ -972,6 +978,7 @@ nav ul.menu li {
     .position-list li {
         list-style:  none;
         position: relative;
+        margin-bottom: 50px;
     }
 
     .position-text  {
@@ -979,6 +986,7 @@ nav ul.menu li {
       font-family: "Ubuntu";
       color: rgb(36, 35, 38);
       line-height: 1.467;
+      margin:0px;
     }
     
     .position-firm {
@@ -986,6 +994,8 @@ nav ul.menu li {
       font-family: "Ubuntu";
       color: rgb(36, 35, 38);
       line-height: 1.571;
+      
+      margin-bottom: 10px;
     }
 
     .position-list a.position-detail-btn {
@@ -999,13 +1009,15 @@ nav ul.menu li {
     .position-list a.position-btn {
         position: absolute;
         right : 20px;
-        top: 30px;
+        top: 20px;
         background: #e20a16;
         font-size: 14px;
         color: #fff;
         font-weight: bold;
         padding: 10px 20px;
     }
+    
+    
     
     .position-detail {
         display: none;
@@ -1058,7 +1070,12 @@ nav ul.menu li {
         margin-bottom: 10px;
     }
     
+    .section-inner {
+        display: none;
+    }
+    
     .section-title {
+        cursor: pointer;
         padding: 0px;
         margin: 0px;
         font-size: 15px;
@@ -1097,6 +1114,34 @@ nav ul.menu li {
         border-color: #fff transparent transparent transparent;
     }
     
+    
+    
+.application-steps {
+    
+    width: 620px;
+    margin: 60px auto;
+}
+    .appstep {
+          width: 290px;
+          height: 180px;
+          float:left;
+    }
+    
+    .appstep a {
+        color: #fff;
+        padding: 50px 5px 50px 130px;
+        display: inline-block;
+        font-size: 18px;
+    }
+    
+    .appstep.form {
+      background: url(../img/bg_form.png) 44px 55px no-repeat #525f68;
+      margin-right: 30px;
+    }
+    
+    .appstep.app {
+      background: url(../img/bg_app.png) 44px 55px no-repeat #525f68;
+    }
     
 
 /********* 404 ********/
@@ -1169,7 +1214,9 @@ footer {
 /* ==========================================================================
    Helper classes
    ========================================================================== */
-
+.dblock {
+    display: block !important;
+}
 .hidden {
     display: none !important;
     visibility: hidden;
@@ -1247,6 +1294,7 @@ input[type=radio].css-checkbox+label.css-label {
     vertical-align: middle;
     cursor: pointer;
     margin-right: 40px;
+    font-weight: normal;
 }
 label.css-label:last-child {
     margin-right: 0px !important;

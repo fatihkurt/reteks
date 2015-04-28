@@ -21,11 +21,10 @@
                 <ul class="position-list">
                     {% for position in positions %}
                         <li>
-                                <a class="position-btn" href="/{{ lang }}/{{ applicarion_url }}?is={{ position.id }}">{{ T.career_application }}</a>
+                                <a class="position-btn" href="/{{ lang }}/{{ applicarion_url }}">{{ T.career_application }}</a>
                                 <h4 class="position-text">{{ position.getName(lang) }}</h4>
-                                <div class="position-firm">R&E Teks</div>
-                                <a href="#" class="position-detail-btn">{{ T.career_detail_info }}</a>
-                                <div class="position-detail">{{ position.getDetail(lang)|raw }}</div>
+                                <div class="position-firm">{{ position.getDetail(lang) }}</div>
+                                <a href="{{ position.link }}" target="_blank" class="position-detail-btn">{{ T.career_detail_info }}</a>
                         </li>
                     {% endfor %}
                     </ul>

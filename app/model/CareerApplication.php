@@ -30,4 +30,16 @@ class CareerApplication extends \Illuminate\Database\Eloquent\Model
         'tc_number'     => 'digits:11',
         'driving_licence' => 'required',
     );
+
+    public function setRulesCv() {
+
+        $this->rules = array(
+            'position_id'   => 'required',
+            'name'          => 'required|min:3',
+            'city'          => 'required',
+            'state'         => 'required',
+            'gsm'           => 'required',
+            'email'         => 'required|email',
+        );
+    }
 }

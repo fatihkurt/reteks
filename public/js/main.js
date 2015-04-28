@@ -89,6 +89,15 @@ $(function() {
         navigation: {
             active: false,
             effect: "slide"
+        },
+        play: {
+            active: false,
+            effect: "slide",
+            interval: 7000,
+            auto: true,
+            swap: true,
+            pauseOnHover: false,
+            restartDelay: 3500
         }
     });
 
@@ -151,7 +160,7 @@ $(function() {
         });
         
         return false;
-    })
+    });
 });
 
 

@@ -44,6 +44,9 @@ class CareerController extends ControllerBase
         $category = $page->page->category;
 
         $this->app->render('career_application.twig', [
+
+            'step'      => $this->app->request->get('s'),
+
             'menu_id'   => $category->id,
             'item'      => $page,
             'cpages'    => $category->pages,
@@ -66,7 +69,7 @@ class CareerController extends ControllerBase
                 ['name' => $category->getName($this->lang), 'link' => ""],
                 ['name' => $page->title, 'link' => "/$this->lang/$page->seo_url"]
             ],
-            'footer_js' => ['main.js', 'vendor/jquery/jquery.form.min.js', 'application.js'],
+            'footer_js' => ['vendor/jquery/jquery.form.min.js', 'application.js'],
         ]);
     }
 
@@ -110,7 +113,66 @@ class CareerController extends ControllerBase
 
             $this->saveEducation($application->id, $data['education']);
 
-            $this->sendMail($data);
+            $this->sendMail($application->id, $data);
+
+            $this->msg = $this->app->t['validation.form.success'];
+        }
+        else {
+            $success = false;
+
+            if (isset($cvUpload) && isset($cvUpload['name']))
+                @unlink(PUB_DIR . 'upload/' .  $cvUpload['name']);
+
+            $feedback = $application->errors();
+
+            $this->msg = $this->app->t['validation.form.message'];
+        }
+
+
+        $this->jsonResponse($success, $feedback);
+    }
+
+
+    public function saveCv() {
+
+        $data = $this->app->request->post();
+
+
+        $application = new Application;
+
+        $application->setRulesCv();
+
+        $application->bind($data);
+
+        $application->sess_id = session_id();
+        $application->ip_addr = $this->app->request->getIp();
+
+        if (isset($_FILES['cv'])) {
+
+            $cvUpload = $this->cvUpload($_FILES['cv']);
+
+            if (isset($cvUpload['error']) && $result['error'] != '') {
+
+                $this->msg = $cvUpload['error'];
+
+                return $this->jsonResponse(false);
+            }
+
+            $application->cv_path = '';
+        }
+        else {
+            $this->msg = $this->app->t['validation.upload.file'];
+
+            return $this->jsonResponse(false);
+        }
+
+        if ($application->validate($data)) {
+
+            $success = $application->save();
+
+            $feedback = $application->id;
+
+            $this->sendMail($application->id, $data);
 
             $this->msg = $this->app->t['validation.form.success'];
         }
@@ -169,9 +231,9 @@ class CareerController extends ControllerBase
         }
     }
 
-    private function sendMail(& $data) {
+    private function sendMail($id, & $data) {
 
-        $link = rtrim($_SERVER['SERVER_NAME'], '/') . '/admin/application/form/' . $data['id'];
+        $link = rtrim($_SERVER['SERVER_NAME'], '/') . '/admin/application/form/' . $id;
 
         $to = 'ik@regrup.com.tr';
 

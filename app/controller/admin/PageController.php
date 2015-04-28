@@ -113,10 +113,13 @@ class PageController extends App\Controller\Admin\ControllerBase
 
             $pageContent = PageTranslation::firstOrCreate(['page_id' => $page->id, 'lang' => $content['lang']]);
 
+            $categorySeo= $this->urlTitle($page->category->getName($content['lang']));
+            $pageSeo    = $this->urlTitle($pageContent->title);
+
             $pageContent->page_id   = $page->id;
             $pageContent->lang      = $content['lang'];
             $pageContent->title     = html_entity_decode($content['title']);
-            $pageContent->seo_url   = $this->urlTitle($page->category->getName($content['lang']) . '-'. $pageContent->title);
+            $pageContent->seo_url   = $categorySeo != $pageSeo ? "$categorySeo-$pageSeo" : $pageSeo;
             $pageContent->content   = html_entity_decode($content['content']);
             $pageContent->description= $this->seoDesc($pageContent->content);
 

@@ -51,8 +51,6 @@
 
                         <h2>R & E TEKS</h2>
 
-                        <h3>{{ T.company_slogan|raw }}</h3>
-
                         <p>{{ substr(strip_tags(thePage.contents[0].content), 0, strpos(strip_tags(thePage.contents[0].content), '.', 300)) }}.</p>
                    
                         <div class="btn-holder"><a class="btn-devam" href="/{{ lang }}/{{ thePage.contents[0].seo_url }}">{{ T.company_button }}</a></div>
@@ -65,8 +63,7 @@
             
             <div class="right-col news">
                 <div class="r-header">{{ T.news }}</div>
-                
-                
+
                 <div class="news-slider">
                     <a class="arrows-up slidesjs-previous slidesjs-navigation"></a>
                     <a class="arrows-down slidesjs-next slidesjs-navigation"></a>

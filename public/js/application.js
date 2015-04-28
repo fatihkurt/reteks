@@ -2,15 +2,6 @@
 $(function() {
     
     
-    $('.position-detail-btn').click(function() {
-        
-        $(this).next().slideToggle('fast');
-        
-        $(this).hide();
-        
-        return false;
-    });
-    
     
     $('#application_form button[type=submit]').click(function() {
         
@@ -42,6 +33,17 @@ $(function() {
         });
         
         return false;
+    });
+    
+    
+    $('.section-title').click(function(){
+
+        $(this).parent().next().slideToggle();
+    });
+    
+    $('[name=position_id]').change(function() {
+        
+        $(this).parents('.section').next().find('.section-inner').slideDown();
     })
 
 });
