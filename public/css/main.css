@@ -742,7 +742,6 @@ nav ul.menu li {
     .page-text  ul li{
           background: url(../img/list_arrow.png) no-repeat left top;
           padding-left: 30px;
-          font-size: medium;
           list-style: none;
           margin: 0;
           margin-bottom: 7px;
@@ -976,9 +975,11 @@ nav ul.menu li {
 }
 
     .position-list li {
+        border-bottom: solid 1px #ebebeb;
         list-style:  none;
         position: relative;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
     }
 
     .position-text  {

@@ -46,7 +46,18 @@ function lowerTR($str) {
     return strtolower($str);
 }
 
-function upperFirstTR($str) {
+function upperFirstTR($str, $reqursive=false) {
+
+    $returnStr = '';
+
+    if ($reqursive == false) {
+        foreach (explode(' ', $str) as $word) {
+
+            $returnStr .= upperFirstTR($word, true) . ' ';
+        }
+
+        return rtrim($returnStr, ' ');
+    }
 
     return upperTR(substr($str, 0, 1)) . lowerTR(substr($str, 1));
 }

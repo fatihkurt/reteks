@@ -26,6 +26,8 @@ class CareerController extends ControllerBase
             'item'      => $page,
             'cpages'    => $category->pages,
 
+            'category'  => $category,
+
             'positions' => Position::all(),
 
             'applicarion_url' => Page::where('module', '=', 'Career:application')->first()->content($this->lang)->seo_url,
@@ -50,6 +52,8 @@ class CareerController extends ControllerBase
             'menu_id'   => $category->id,
             'item'      => $page,
             'cpages'    => $category->pages,
+
+            'category'  => $category,
 
             'posId'     => $this->app->request->get('is'),
 

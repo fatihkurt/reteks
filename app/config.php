@@ -3,6 +3,7 @@
 $app->config(array(
     'languages' => ['tr', 'en'],
     'languages.default' => 'tr',
+    'recaptcha_secret'  => '6Le8EwYTAAAAAEtGDKHXG1DnP912M930b5ImygKS',
 ));
 
 // Only invoked if mode is "production"

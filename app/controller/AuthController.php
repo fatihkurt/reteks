@@ -28,6 +28,7 @@ class AuthController extends ControllerBase
 
         $username = $this->app->request->post('username');
         $password = $this->app->request->post('password');
+        $captchaResponse = $this->app->request->post('g-recaptcha-response');
 
         if ($username == false || $password == false) {
 
@@ -42,6 +43,11 @@ class AuthController extends ControllerBase
 
         $password = hash('sha256', self::PASS_KEY . $password);
 
+        if ($this->captchaCheck($captchaResponse) == false) {
+
+            return $this->falseInput('Captcha girişini tekrar deneyiniz');
+        }
+        else
         if ($user == null || $password != $user['password']) {
 
             return $this->falseInput();
@@ -56,9 +62,35 @@ class AuthController extends ControllerBase
         }
     }
 
-    private function falseInput() {
 
-        $this->msg = 'Lütfen bilgileri kontrol ediniz.';
+    private function captchaCheck($response) {
+
+        if ($response == false)
+            return false;
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL,"https://www.google.com/recaptcha/api/siteverify");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "secret=" . $this->app->config('recaptcha_secret') . "&response=$response");
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $jsonResult = curl_exec ($ch);
+
+        curl_close ($ch);
+
+        if ($jsonResult == false)
+            return false;
+
+        $result = json_decode($jsonResult);
+
+        return isset($result->success) && $result->success;
+    }
+
+    private function falseInput($msg='Lütfen bilgileri kontrol ediniz.') {
+
+        $this->msg = $msg;
 
         return $this->jsonResponse(false);
     }

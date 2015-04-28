@@ -18,6 +18,12 @@ trait AppHelper
 
         $content = strip_tags($this->nlKill($content));
 
+        if ($content == '' || strlen($content) <= $offset) {
+
+            return $content;
+        }
+
+
         $trimPos = strpos($content, '.', $offset)
             or
         $trimPos = strpos($content, ' ', $offset);

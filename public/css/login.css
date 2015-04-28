@@ -131,7 +131,8 @@ body {
 
 #slick-login {
 	width: 220px;
-	height: 155px;
+	height: 355px;
+    overflow: hidden;
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -253,4 +254,9 @@ body {
 
 	-webkit-box-shadow: inset 0px 1px 0px #93a9e9;
 	box-shadow: inset 0px 1px 0px #93a9e9;
+}
+
+
+.g-recaptcha {
+    margin: 10px 0px;
 }

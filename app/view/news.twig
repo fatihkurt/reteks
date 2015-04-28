@@ -15,7 +15,7 @@
         {% endif %}
 
         <div class="news-content">
-                <h3 class="page-title">{{ content.title|upper }}</h3>
+                <h3 class="page-title">{{ upperTR(content.title) }}</h3>
 
                 {% include 'partial/breadjump.twig' %}
 

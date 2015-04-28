@@ -30,4 +30,9 @@ class PageCategory extends \Illuminate\Database\Eloquent\Model
 
         return $this->{"name_$lang"};
     }
+
+    public function getBannerName($lang) {
+
+        return $this->{"banner_name_$lang"} ?: $this->getName($lang);
+    }
 }

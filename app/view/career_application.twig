@@ -8,7 +8,7 @@
             <img src="/upload/page/{{ item.page.image1 }}" />
             <div class="banner-txt">
                 <div class="banner-caption">
-                    {{ category.getName(lang) }}<br>
+                    {{ category.getBannerName(lang) }}<br>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
             
             <div class="page-content">
         
-                <h3 class="page-title">{{ item.title|upper }}</h3>
+                <h3 class="page-title">{{ upperTR(item.title) }}</h3>
 
                 {% include 'partial/breadjump.twig' %}
                 
