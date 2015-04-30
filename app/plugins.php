@@ -53,7 +53,12 @@ function upperFirstTR($str, $reqursive=false) {
     if ($reqursive == false) {
         foreach (explode(' ', $str) as $word) {
 
-            $returnStr .= upperFirstTR($word, true) . ' ';
+            if (strlen($word) <= 2 || strpos($word, '&') != -1) {
+
+                $returnStr .= $word . ' ';
+            }
+            else
+                $returnStr .= upperFirstTR($word, true) . ' ';
         }
 
         return rtrim($returnStr, ' ');
