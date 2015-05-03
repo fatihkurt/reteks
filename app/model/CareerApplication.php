@@ -42,4 +42,20 @@ class CareerApplication extends \Illuminate\Database\Eloquent\Model
             'email'         => 'required|email',
         );
     }
+
+
+    public function position() {
+
+        return $this->belongsTo('App\Model\CareerPosition', 'position_id', 'id');
+    }
+
+    public function languages() {
+
+        return $this->hasMany('App\Model\CareerApplicationLanguage', 'application_id', 'id');
+    }
+
+    public function educations() {
+
+        return $this->hasMany('App\Model\CareerApplicationEducation', 'application_id', 'id');
+    }
 }

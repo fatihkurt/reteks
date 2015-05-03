@@ -43,8 +43,8 @@ $app->group('/admin', function () use ($app) {
     $app->delete('/category/delete',  '\App\Controller\Admin\PageCategoryController:delete');
 
 
-    $app->get('/application',  '\App\Controller\Admin\CareerController:index');
-    $app->get('/application/form/:id',  '\App\Controller\Admin\CareerController:form');
+    $app->get('/application',  '\App\Controller\Admin\CareerController:application');
+    $app->get('/application/form/:id',  '\App\Controller\Admin\CareerController:applicationForm');
 
     $app->get('/application/position',  '\App\Controller\Admin\CareerController:position');
     $app->get('/application/position/edit/:id',  '\App\Controller\Admin\CareerController:positionEdit');

@@ -11,7 +11,7 @@ $(function() {
 
         form.ajaxSubmit({
 
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            //contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             success: function(resp) { 
             
                 if (resp.message != null) {

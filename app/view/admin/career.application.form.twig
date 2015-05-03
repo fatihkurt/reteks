@@ -1,0 +1,128 @@
+{% extends "layout/admin.layout.twig" %} {% block content %}
+
+<ol class="breadcrumb">
+    <li>Kariyer</li>
+    <li><a href="/admin/application/position">Başvurular</a></li>
+    <li class="active">{{ app[0]['value'] }}</li>
+</ol>
+
+<div class="panel panel-default" style="margin-top: 5px;">
+    <div class="panel-heading">
+        <h4 class="panel-title">Başvuru Bilgileri</h4>
+    </div>
+    <div class="panel-body table-responsive">
+
+        <table class="table table-bordered table-striped">
+            <colgroup>
+                <col class="col-xs-2">
+                <col class="col-xs-7">
+            </colgroup>
+            <tbody>
+                {% for row in app %}
+                <tr>
+                    <th scope="row"><code>{{ row['label'] }}</code></th>
+                    <td>
+                    {% if row['field'] == 'cv_path' and row['value'] != '' %}
+                        <a href="/upload/{{ row['value'] }}" download>Cv İndir</a>
+                    {% else %}
+                        {{ row['value'] }}</td>
+                    {% endif %}
+                    </tr>
+                {% endfor %}
+                {% for language in languages %}
+                <tr>
+                    <th scope="row" colspan="2"><b>{{ language.list_language.name_tr }}</b></th>
+                </tr>
+                <tr>
+                    <th scope="row"><code>Okuma</code></th>
+                    <td>{{ language.reading }}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>Yazman</code></th>
+                    <td>{{ language.writing }}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>Anlama</code></th>
+                    <td>{{ language.meaning }}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>Konuşma</code></th>
+                    <td>{{ language.speaking }}</td>
+                </tr>
+                {% endfor %}
+                {% for education in educations %}
+                <tr>
+                    <th scope="row" colspan="2"><b>{{ education.level }}</b></th>
+                </tr>
+                <tr>
+                    <th scope="row"><code>Okul</code></th>
+                    <td>{{ education.school }}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>Fakülte</code></th>
+                    <td>{{ education.faculty }}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>Bölüm</code></th>
+                    <td>{{ education.department }}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>Şehir</code></th>
+                    <td>{{ education.city }}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>Tarih</code></th>
+                    <td>{{ education.years }}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>Derece</code></th>
+                    <td>{{ education.degree }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="2">
+
+                        <div class="col-md-2">
+                        <select class="form-control" id="application-action-select">
+                            <option value="">İşlem seçiniz</option>
+                            <option value="1">Onaylama E-postası Gönder</option>
+                            <option value="2">Red E-postası Gönder</option>
+                            <option value="3">Başvuruyu İptal Et</option>
+                        </select>
+                        </div>
+                        <button class="btn btn-primary" id="application-action-btn" >Uygula</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="application-action-modal" tabindex="-1" role="dialog" aria-labelledby="application-action-modal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <form action="">
+            <div class="form-group">
+                <label for="">Konu</label>
+                <input name="name_tr" type="text" class="form-control" placeholder="İsim" value="{{ position.name_tr }}" />
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Gönder</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

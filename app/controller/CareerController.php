@@ -86,6 +86,7 @@ class CareerController extends ControllerBase
 
         $application = new Application;
 
+
         $data['birthdate'] = $data['birthdate_year'] . '-' . $data['birthdate_month'] . '-' . $data['birthdate_day'];
 
         $application->bind($data);
@@ -162,7 +163,7 @@ class CareerController extends ControllerBase
                 return $this->jsonResponse(false);
             }
 
-            $application->cv_path = '';
+            $application->cv_path = $cvUpload['name'];
         }
         else {
             $this->msg = $this->app->t['validation.upload.file'];

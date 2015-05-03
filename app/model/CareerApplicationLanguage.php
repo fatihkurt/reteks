@@ -12,4 +12,9 @@ class CareerApplicationLanguage extends \Illuminate\Database\Eloquent\Model
     protected $guarded = array('id');
 
     public $timestamps = false;
+
+    public function list_language() {
+
+        return $this->hasOne('App\Model\ListLanguage', 'id', 'language_id');
+    }
 }

@@ -1,58 +1,47 @@
-{% extends "layout/main.layout.twig" %}
-
-
-{% block content %}
-
-        {% if item.page.image1 != '' %}
-        <div class="banner">
-            <img src="/upload/page/{{ item.page.image1 }}" />
-            <div class="banner-txt">
-                <div class="banner-caption">
-                    {{ category.getBannerName(lang) }}<br>
-                </div>
-            </div>
+{% extends "layout/main.layout.twig" %} {% block content %} {% if item.page.image1 != '' %}
+<div class="banner">
+    <img src="/upload/page/{{ item.page.image1 }}" />
+    <div class="banner-txt">
+        <div class="banner-caption">
+            {{ category.getBannerName(lang) }}<br>
         </div>
-        {% endif %}
-        
-        
-        <div class="middle-content">
+    </div>
+</div>
+{% endif %}
 
-            <div class="page-content">
-        
-                <h3 class="page-title">{{ upperTR(item.title) }}</h3>
 
-                {% include 'partial/breadjump.twig' %}
+<div class="middle-content">
 
-                <ul class="position-list">
-                    {% for position in positions %}
-                        <li>
-                                <a class="position-btn" href="/{{ lang }}/{{ applicarion_url }}">{{ T.career_application }}</a>
-                                <h4 class="position-text">{{ position.getName(lang) }}</h4>
-                                <div class="position-firm">{{ position.getDetail(lang) }}</div>
-                                <a href="{{ position.link }}" target="_blank" class="position-detail-btn">{{ T.career_detail_info }}</a>
-                        </li>
-                    {% endfor %}
-                    </ul>
+    <div class="page-content">
 
-            </div>
+        <h3 class="page-title">{{ upperTR(item.title) }}</h3>
 
-        </div> <!-- #middle-content -->
-        
-        
-        <div class="middle-right">
-            
-            <div class="right-col news page-list">
-                <ul>
-                    {% for cpage in cpages %}
-                    <li {% if item.page_id == cpage.id  %}class="s-cpage"{% endif %}>
-                        <a href="/{{lang}}/{{ cpage.content(lang).seo_url }}">{{ cpage.content(lang).title }}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        
-            {% include 'partial/video_play.twig' %}
-            
-            {% include 'partial/newsletter.twig' %}
-        </div>
+        {% include 'partial/breadjump.twig' %}
+
+        <ul class="position-list">
+            {% for position in positions %}
+            <li><a class="position-btn" href="/{{ lang }}/{{ applicarion_url }}">{{ T.career_application }}</a>
+                <h4 class="position-text">{{ position.getName(lang) }}</h4>
+                <div class="position-firm">{{ position.getDetail(lang) }}</div> <a href="{{ position.link }}" target="_blank" class="position-detail-btn">{{ T.career_detail_info }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+</div>
+<!-- #middle-content -->
+
+
+<div class="middle-right">
+
+    <div class="right-col news page-list">
+        <ul>
+            {% for cpage in cpages %}
+            <li  {% if item.page_id == cpage.id  %} class="s-cpage" {% endif %}><a href="/{{lang}}/{{ cpage.content(lang).seo_url }}">{{ cpage.content(lang).title }}</a></li> {% endfor %}
+        </ul>
+    </div>
+
+    {% include 'partial/video_play.twig' %} {% include 'partial/newsletter.twig' %}
+</div>
 {% endblock %}

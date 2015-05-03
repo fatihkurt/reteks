@@ -1,85 +1,74 @@
 <div class="career-form">
 
-    <form id="application_form" action="/application/saveCv" method="POST" enctype="multipart/form-data" accept-charset="UTF-8" >
+    <form id="application_form" action="/application/saveCv" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
 
-    <div class="section">
-        <div class="section-inner dblock">
-        
-            <div class="form-row half left">
-                <label for="fname">{{ T.form_name }}*</label>
-                <input class="form-item" type="text" name="name" value="" />
-            </div>
-        
-            <div class="form-row half right">
-                <label for="fname">{{ T.career_position }}*</label>
-                <div class="styled-select">
-                    <select class="form-item" type="text" name="position_id" >
-                        <option value="">{{ T.pick_one }}</option>
-                        {% for pos in positions %}
-                        <option value="{{ pos.id }}" {% if pos.id == posId %}selected{% endif %}>{{ pos.getName(lang) }}</option>
-                        {% endfor %}
-                    </select>
+        <input type="hidden" name="type" value="form" />
+        <div class="section">
+            <div class="section-inner dblock">
+
+                <div class="form-row half left">
+                    <label for="fname">{{ T.form_name }}*</label> <input class="form-item" type="text" name="name" value="" />
                 </div>
-            </div>
-            
-            
-            
-            <div class="form-row">
-                <label for="fname">{{ T.career_adress }}</label>
-                <input class="form-item" type="text" name="adress" value="" />
-                <!--textaera class="form-item" type="text" name="adress" ></textarea-->
-            </div>
-            
-            
-            <div class="form-row half left">
-                <label for="fname">{{ T.career_city }}*</label>
-                <div class="styled-select">
-                    <input class="form-item" type="text" name="city" value="" />
+
+                <div class="form-row half right">
+                    <label for="fname">{{ T.career_position }}*</label>
+                    <div class="styled-select">
+                        <select class="form-item" type="text" name="position_id">
+                            <option value="">{{ T.pick_one }}</option> {% for pos in positions %}
+                            <option value="{{ pos.id }}"  {% if pos.id == posId %} selected {% endif %}>{{ pos.getName(lang) }}</option> {% endfor %}
+                        </select>
+                    </div>
                 </div>
+
+
+
+                <div class="form-row">
+                    <label for="fname">{{ T.career_adress }}</label> <input class="form-item" type="text" name="adress" value="" />
+                    <!--textaera class="form-item" type="text" name="adress" ></textarea-->
+                </div>
+
+
+                <div class="form-row half left">
+                    <label for="fname">{{ T.career_city }}*</label>
+                    <div class="styled-select">
+                        <input class="form-item" type="text" name="city" value="" />
+                    </div>
+                </div>
+
+                <div class="form-row half right">
+                    <label for="fname">{{ T.career_state }}*</label> <input class="form-item" type="text" name="state" value="" />
+                </div>
+
+                <div class="form-row half left">
+                    <label for="fname">{{ T.career_gsm }}*</label> <input class="form-item" type="text" name="gsm" value="" />
+                </div>
+
+                <div class="form-row half right">
+                    <label for="fname">{{ T.career_tel }}</label> <input class="form-item" type="text" name="tel" value="" />
+                </div>
+
+
+                <div class="form-row">
+                    <label for="fname">{{ T.career_email }}*</label> <input class="form-item" type="text" name="email" value="" />
+                </div>
+
             </div>
-            
-            <div class="form-row half right">
-                <label for="fname">{{ T.career_state }}*</label>
-                <input class="form-item" type="text" name="state" value="" />
-            </div>
-            
-            <div class="form-row half left">
-                <label for="fname">{{ T.career_gsm }}*</label>
-                <input class="form-item" type="text" name="gsm" value="" />
-            </div>
-            
-            <div class="form-row half right">
-                <label for="fname">{{ T.career_tel }}</label>
-                <input class="form-item" type="text" name="tel" value="" />
-            </div>
-            
-            
+        </div>
+
+        <div class="section">
+
             <div class="form-row">
-                <label for="fname">{{ T.career_email }}*</label>
-                <input class="form-item" type="text" name="email" value="" />
+                <label for="fname">{{ T.career_cv_path }}</label> <input class="form-item" type="file" name="cv" />
             </div>
-            
-            
-            
-            
         </div>
-    </div>
-    
-    <div class="section">
-    
-        <div class="form-row">
-            <label for="fname">{{ T.career_cv_path }}</label>
-            <input class="form-item" type="file" name="cv"  />
+
+        <div class="section">
+            <div class="form-row">
+                <div class="form-required">* {{ T.form_required }}</div>
+                <button type="submit" class="form-btn">{{ T.form_send }}</button>
+            </div>
         </div>
-    </div>
-    
-    <div class="section">
-        <div class="form-row">
-            <div class="form-required">* {{ T.form_required }}</div>
-            <button type="submit" class="form-btn">{{ T.form_send }}</button>
-        </div>
-    </div>
-    
+
     </form>
-    
+
 </div>

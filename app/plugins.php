@@ -46,19 +46,21 @@ function lowerTR($str) {
     return strtolower($str);
 }
 
-function upperFirstTR($str, $reqursive=false) {
+function upperFirstTR($str, $splitWords=true) {
 
     $returnStr = '';
 
-    if ($reqursive == false) {
+    if ($splitWords) {
         foreach (explode(' ', $str) as $word) {
 
-            if (strlen($word) <= 2 || strpos($word, '&') != -1) {
+            if (strlen($word) <= 3 && strpos($word, '&') !== false) {
 
                 $returnStr .= $word . ' ';
             }
-            else
-                $returnStr .= upperFirstTR($word, true) . ' ';
+            else {
+
+                $returnStr .= upperFirstTR($word, false) . ' ';
+            }
         }
 
         return rtrim($returnStr, ' ');

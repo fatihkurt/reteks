@@ -16,27 +16,76 @@ class CareerController extends App\Controller\Admin\ControllerBase
     use AjaxResponse;
 
 
-    public function index() {
+    public function application() {
 
-        $selectedCategory = $this->app->request->get('cat');
+        $status = $this->app->request->get('status') ?: 0;
 
-        $pages = Page::where(function($q) use($selectedCategory) {
-
-                if ($selectedCategory > 0) {
-
-                    $q->where('category_id', '=', $selectedCategory);
-                }
-            })
-            ->with('contents')
-            ->orderBy('ordernum')
+        $applications = Application::where('status', '=', $status)
+            ->with('position')
+            ->with('languages')
+            ->with('languages')
+            ->orderBy('created_at', 'desc')
             ->get();
 
-        $this->app->render('admin/page.twig', [
+        $this->app->render('admin/career.application.twig', [
 
-            'menu_item' => 'page',
-            'pages'     => $pages,
-            'categories'=> PageCategory::all(),
-            'category'  => $selectedCategory,
+            'menu_item'     => 'career',
+            'applications'  => $applications,
+        ]);
+    }
+
+    public function applicationForm($id) {
+
+        $application = Application::where('id', '=', $id)
+            ->with('position')
+            ->with('languages')
+            ->with('languages')
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+        if ($application == false) {
+            $this->app->response->redirect('/admin');
+        }
+
+        switch ($application->status) {
+
+            case 2:
+                $application->status = 'Reddedildi';
+                break;
+            case 1:
+                $application->status = 'Onaylandı';
+                break;
+
+            case 0:
+                $application->status = 'Yeni Başvuru';
+        }
+
+
+        $app = [];
+        foreach ($this->getAppMapArr() as $key => $val) {
+
+            $app[] = [
+                'field' => $key,
+                'label' => $val,
+                'value' => $application->{$key},
+            ];
+        }
+
+        $languages = ApplicationLanguage
+                    ::where('application_id', '=', $id)
+                    ->with('list_language')
+                    ->get();
+
+        $educations = ApplicationEducation
+                    ::where('application_id', '=', $id)
+                    ->get();
+
+        $this->app->render('admin/career.application.form.twig', [
+
+            'menu_item' => 'career',
+            'app'       => $app,
+            'languages' => $languages,
+            'educations'=> $educations,
         ]);
     }
 
@@ -46,7 +95,7 @@ class CareerController extends App\Controller\Admin\ControllerBase
         $positions = Position::orderBy('ordernum')
             ->get();
 
-        $this->app->render('admin/application.position.twig', [
+        $this->app->render('admin/career.position.twig', [
 
             'menu_item' => 'career',
             'positions' => $positions,
@@ -67,7 +116,7 @@ class CareerController extends App\Controller\Admin\ControllerBase
             return $this->app->response->redirect('/admin/application/position');
         }
 
-        $this->app->render('admin/application.position.form.twig',
+        $this->app->render('admin/career.position.form.twig',
                 [
                     'menu_item' => 'career',
                     'position'  => $position,
@@ -187,5 +236,41 @@ class CareerController extends App\Controller\Admin\ControllerBase
         }
 
         return $img;
+    }
+
+
+    private function getAppMapArr() {
+
+        return [
+            //'position_id' int(10) unsigned => '',
+            'name' => 'İsim',
+            'title' => 'Ünvan',
+            'birthplace' => 'Doğum Yeri',
+            'birthdate' => 'Doğum Tarihi',
+            'nation' => 'Uyruk',
+            'tc_number' => 'Tc No',
+            'gender'   => 'Cinsiyet',
+            'conditon'   => 'Medeni Durum',
+            'children'  => 'Çocuk Sayısı',
+            'children_detail'   => 'Çocuk Detay',
+            'couple_name' => 'Eş İsmi',
+            'couple_job' => 'Eş MEsleği',
+            'military'   => 'Askerlik Durumu',
+            'clean_record'  => 'Adli Sicil Kaydı',
+            'driving_licence'  => 'Ehliyet',
+            'driving_class'  => 'Ehliyet Sınıfı',
+            'adress' => 'Adres',
+            'city' => 'İlçe',
+            'state' => 'İl',
+            'gsm'   => 'Gsm',
+            'tel'   => 'Tel',
+            'email' => 'E-posta',
+            'skill_office_tools'  => 'Ofis Gereçleri',
+            'skill_computer_grade' => 'Bilgisayar Derecesi',
+            'skill_computer_os' => 'İşletim Sistemi Derecesi',
+            'skill_computer_detail'  => 'Bilgisayar Becerisi Detayı',
+            'status' => 'Başvuru Durumu',
+            'cv_path' => 'CV',
+        ];
     }
 }

@@ -31,7 +31,28 @@ $(function() {
                     alert('İşlem gerçekleştirilemedi');
                 }
             }
-        })
+        });
         
     });
+    
+    
+    $('#application-action-btn').click(function() {
+        
+        var status = $('#application-action-select').val();
+        
+        if (isNaN(status)) {
+            
+            return alert('Lütfen bir aksiyon seçiniz..')
+        }
+       
+        
+        $.ajax('/admin/application/getStatus/' + status, {
+            method  : 'GET',
+            dataType: 'json',
+            success : function(resp) {
+                
+                $('#application-action-modal').modal('show')
+            }
+        });
+    })
 });

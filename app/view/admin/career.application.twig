@@ -1,0 +1,49 @@
+{% extends "layout/admin.layout.twig" %}
+
+
+{% block content %}
+
+<table class="table">
+      <caption>
+
+        <ol class="breadcrumb">
+            <li>Kariyer</li>
+            <li>Başvurular</li>
+        </ol>
+
+    </caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Pozisyon</th>
+          <th>İsim</th>
+          <th>E-mail</th>
+          <th>Durum</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for index,app in applications %}
+        <tr>
+          <th scope="row">{{ index+1 }}</th>
+          <td>{{ app.position.name_tr }}</td>
+          <td><a href="/admin/application/form/{{ app.id }}">{{ app.name }}</a></td>
+          <td>{{ app.email }}</td>
+          <td>{% if app.status == 0 %}Yeni Başvuru{% elseif app.status == 1 %}Çağrıldı{% elseif app.status == 2 %}Çağrılmadı{% endif %}</td>
+          <td><a href="/admin/application/form/{{ app.id }}" class="btn btn-success" >Düzenle</a></td>
+        </tr>
+        
+        {% else %}
+        
+        <tr>
+          <td colspan="5">Kayıt bulunamadı.</th>
+        </tr>
+        
+        {% endfor %}
+      </tbody>
+      
+      <tfoot>
+      </tfoot>
+    </table>
+{% endblock %}
