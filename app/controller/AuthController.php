@@ -65,7 +65,7 @@ class AuthController extends ControllerBase
 
     private function captchaCheck($response) {
 
-        if ($this->app->config('mode') == 'development')
+        if ($this->app->config('mode') == 'development' || $this->app->config('mode') == 'aws')
             return  true;
 
         if ($response == false)
