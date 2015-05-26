@@ -272,7 +272,7 @@ nav ul.menu li {
 
 /* Main Area */
 
-.main-banner { position: relative; overflow: auto;  }
+.main-banner { position: relative; overflow: auto; }
 .main-banner ul { margin: 0px; padding: 0px; }
     .main-banner li { list-style: none; }
         .main-banner ul li { float: left; }
@@ -295,19 +295,19 @@ nav ul.menu li {
                   z-index: 999;
                 }
         
-        .slidesjs-pagination {
+        .main-banner .slidesjs-pagination {
             position: absolute;
             top: 310px;
             left: 80px;
             z-index: 999;
         }
         
-        .slidesjs-pagination li {
+        .main-banner .slidesjs-pagination li {
         
           margin-right: 10px;
         }
         
-        .slidesjs-pagination a {
+        .main-banner .slidesjs-pagination a {
         
           font-size: 22px;
           color: rgb(245, 245, 245);
@@ -315,11 +315,11 @@ nav ul.menu li {
           line-height: 2.909;
           padding-bottom: 5px;
         }
-        .slidesjs-pagination a:before {
+        .main-banner .slidesjs-pagination a:before {
         
           content: '0';
         }
-        .slidesjs-pagination a.active {
+        .main-banner .slidesjs-pagination a.active {
         
           border-bottom: 4px solid #fff;
         }
@@ -552,6 +552,87 @@ nav ul.menu li {
     .video-col {
         position: relative;
     }
+    .users-slider {
+        position: relative;
+        overflow: hidden;
+        height: 200px;
+    }
+    
+        .users-slider .slidesjs-pagination {
+            
+            position: absolute;
+            top: 170px;
+            left: 17px;
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+            z-index: 999;
+        }
+        
+
+        .users-slider .slidesjs-pagination li {
+          float: left;
+          margin: 0 1px;
+          font-weight: 400;
+          color: #fff;
+        }
+    
+    
+    /*
+        .users-slider .slidesjs-pagination li a:hover {
+            background-position: 0 -26px;
+        }*/
+        
+        .users-slider .slidesjs-pagination li a.active, .slidesjs-pagination li a:hover.active {
+          background-position: 0 -13px;
+        }
+        
+        .users-slider .slidesjs-pagination li a {
+          display: block;
+          width: 13px;
+          height: 0;
+          padding-top: 13px;
+          background-image: url(../img/pagination.png);
+          background-position: 0 0;
+          float: left;
+          overflow: hidden;
+        }
+
+        .users-slider img {
+            float: right;
+            height: 200px;
+            width: 120px;
+        }
+        
+        .user-info {
+            float: left;
+            width: 165px;
+            height: 200px;
+            background-color: rgb(167, 167, 167);
+        }
+        
+        
+        
+        .brand-opinion {
+          font-size: 16px;
+          color: #fff;
+          font-weight: bold;
+          line-height: 1.3;
+          margin-left: 17px;
+          margin-top: 20px;
+        }
+        
+        .user-opinion {
+          font-size: 13px;
+          color: #fff;
+          font-weight: bold;
+          line-height: 1.3;
+          margin-left: 17px;
+          margin-top: 20px;
+        }
+        
+        
+        
     
     .video-title {
         font-size: 15px;

@@ -57,11 +57,36 @@ $(function() {
 
 
 
+    $('.users-slider').slidesjs({
+        width: 285,
+        height: 200,
+        play: {            
+            auto: true,
+            interval: 6000,
+            effect: "slide"
+        },
+        navigation: false,
+        pagination: {
+            active: true,
+            effect: "fade"
+        },
+        effect: {
+            fade: {
+              speed: 200,
+              crossfade: false
+            }
+        }
+    });
+    
     $('.news-slider').slidesjs({
         width: 1060,
         height: 450,
         start: 1,
-        auto: true,
+        play: {            
+            auto: true,
+            interval: 10000,
+            effect: "slide"
+        },
         navigation: {
             active: false,
             effect: "fade"
@@ -71,16 +96,16 @@ $(function() {
         },
         effect: {
             fade: {
-              speed: 200,
-              crossfade: true
+                speed: 200,
+                crossfade: true
             }
-          },
-          callback: {
-              loaded: function(number) {
-                  if ($('.slider-item').length == 1)
-                      $('.slidesjs-next').trigger('click'); // fix
-              }
-          }
+        },
+        callback: {
+            loaded: function(number) {
+                if ($('.slider-item').length == 1)
+                    $('.slidesjs-next').trigger('click'); // fix
+            }
+        }
     });
     
     $('.main-banner').slidesjs({

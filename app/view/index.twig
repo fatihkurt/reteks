@@ -1,86 +1,85 @@
-{% extends "layout/main.layout.twig" %}
+{% extends "layout/main.layout.twig" %} {% block content %}
 
 
-{% block content %}
 
-    
-    
-        <div class="banner main-banner">
-        
-<div class="banner-inner">
-<img src="/img/promo_1.jpg" />
-<div class="banner-text">{{ T.banner_text1|raw }}</div>
+<div class="banner main-banner">
+    <div class="banner-inner">
+        <img src="/img/promo_1.jpg" />
+        <div class="banner-text">{{ T.banner_text1|raw }}</div>
+    </div>
+
+    <div class="banner-inner">
+        <img src="/img/promo_2.jpg" />
+        <div class="banner-text">{{ T.banner_text2|raw }}</div>
+    </div>
+
+    <div class="banner-inner">
+        <img src="/img/promo_3.jpg" />
+        <div class="banner-text">{{ T.banner_text3|raw }}</div>
+    </div>
 </div>
 
-<div class="banner-inner">
-<img src="/img/promo_2.jpg" />
-<div class="banner-text">{{ T.banner_text2|raw }}</div>
-</div>
 
-<div class="banner-inner">
-<img src="/img/promo_3.jpg" />
-<div class="banner-text">{{ T.banner_text3|raw }}</div>
-</div>
-        
-            
-        </div>
-        
-        <div class="middle-content">
-            <div class="m-row">
-            
-            {% for idx,page in pages %}
-            
-                <div class="m{{ idx + 1 }} m-item">
-                <img src="/upload/page/{{ page.image2 }}" />
-                <div class="m-badget mb{{ idx + 1 }}">
-                    <div class="goto">
-                        <a href="/{{ lang ~ '/' ~ page.content(lang).seo_url }}">{{ page.content(lang).title }}</a> <br />
-                        <a href="/{{ lang ~ '/' ~ page.content(lang).seo_url }}" class="detail">{{ T.detail_info }}</a>
-                    </div>
+<div class="middle-content">
+    <div class="m-row">
+
+        {% for idx,page in pages %}
+
+        <div class="m{{ idx + 1 }} m-item">
+            <img src="/upload/page/{{ page.image2 }}" />
+            <div class="m-badget mb{{ idx + 1 }}">
+                <div class="goto">
+                    <a href="/{{ lang ~ '/' ~ page.content(lang).seo_url }}">{{ page.content(lang).title }}</a> <br /> <a href="/{{ lang ~ '/' ~ page.content(lang).seo_url }}" class="detail">{{
+                        T.detail_info }}</a>
                 </div>
             </div>
-            
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="m-row mt30">
+        <div class="extra-content">
+            <img class="company-present-img" src="/img/m_company.png" />
+            <div class="company-info">
+
+                <h2>R & E TEKS</h2>
+
+                <p>{{ substr(strip_tags(thePage.contents[0].content), 0, strpos(strip_tags(thePage.contents[0].content), '.', 300)) }}.</p>
+
+                <div class="btn-holder">
+                    <a class="btn-devam" href="/{{ lang }}/{{ thePage.contents[0].seo_url }}">{{ T.company_button }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="middle-right">
+
+    <div class="right-col news">
+        <div class="r-header">{{ T.news }}</div>
+
+        <div class="news-slider">
+            <a class="arrows-up slidesjs-previous slidesjs-navigation"></a> <a class="arrows-down slidesjs-next slidesjs-navigation"></a> {% for item in news %}
+            <div class="slider-item">
+                <label>{{ item.start_date|date("d.m.Y") }}</label>
+                <h4>
+                    <a href="/{{ lang }}/{{ item.content.seo_url }}">{{ item.content.title }}
+
+                </h4>
+                </a>
+                <div>
+                    <p>{{ item.content.content|truncate(50, true, '') }}</p>
+                </div>
+            </div>
             {% endfor %}
-
         </div>
+    </div>
 
-            <div class="m-row mt30">
-                <div class="extra-content">
-                    <img class="company-present-img" src="/img/m_company.png" />
-                    <div  class="company-info">
 
-                        <h2>R & E TEKS</h2>
-
-                        <p>{{ substr(strip_tags(thePage.contents[0].content), 0, strpos(strip_tags(thePage.contents[0].content), '.', 300)) }}.</p>
-                   
-                        <div class="btn-holder"><a class="btn-devam" href="/{{ lang }}/{{ thePage.contents[0].seo_url }}">{{ T.company_button }}</a></div>
-                   </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="middle-right">
-            
-            <div class="right-col news">
-                <div class="r-header">{{ T.news }}</div>
-
-                <div class="news-slider">
-                    <a class="arrows-up slidesjs-previous slidesjs-navigation"></a>
-                    <a class="arrows-down slidesjs-next slidesjs-navigation"></a>
-                {% for item in news %}
-                    <div class="slider-item">
-                        <label>{{ item.start_date|date("d.m.Y") }}</label>
-                        <h4><a href="/{{ lang }}/{{ item.content.seo_url }}">{{ item.content.title }}</h4></a>
-                        <div><p>{{ item.content.content|truncate(50, true, '') }}</p></div>
-                    </div>
-                {% endfor %}
-                </div>
-            </div>
-        
-            
-            {% include 'partial/video_play.twig' %}
-            
-            {% include 'partial/newsletter.twig' %}
-        </div>
+    {% include 'partial/video_play.twig' %} {% include 'partial/newsletter.twig' %}
+</div>
 
 {% endblock %}
