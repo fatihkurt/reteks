@@ -129,6 +129,29 @@ header, nav {
         float: left;
     }
     
+        .lang-holder {
+            display: inline-block;
+            float: left;
+            width: 35px;
+            height: 40px;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 13px;
+            font-family: "Ubuntu";
+            text-align: center;
+        }
+        
+        .lang-holder.sel {
+            
+            background-color: #e20a16;
+            color: #fff;
+        }
+        
+        .lang-holder span {
+            line-height: 40px;
+        }  
+    
+    
     .social-hub {
         margin-top: 6px;
     }

@@ -7,8 +7,12 @@
 
             <div class="site-tools">
                 <div class="langs-hub">
-                    <a href="/tr" style="margin-right: -4px;"><img src="/img/language_tr.png" /></a>
-                    <a href="/en"><img src="/img/language_en.png" /></a>
+                    <a class="lang-holder{% if lang == 'tr' %} sel{% endif %}" href="/tr">
+                        <span>TR</span>
+                    </a>
+                    <a class="lang-holder{% if lang == 'en' %} sel{% endif %}" href="/en">
+                        <span >EN</span>
+                    </a>
                 </div>
             </div>
 
@@ -16,4 +20,3 @@
         </nav>
     </header>
 </div>
-        
