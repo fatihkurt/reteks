@@ -37,12 +37,22 @@ $authenticateForRole = function ($role = 'admin') {
 
 
 function upperTR($str) {
-    $str = str_replace(array('i', 'ı', 'ü', 'ğ', 'ş', 'ö', 'ç'), array('İ', 'I', 'Ü', 'Ğ', 'Ş', 'Ö', 'Ç'), $str);
+
+    if ($_SESSION['lang'] == 'tr') {
+
+        $str = str_replace(array('i', 'ı', 'ü', 'ğ', 'ş', 'ö', 'ç'), array('İ', 'I', 'Ü', 'Ğ', 'Ş', 'Ö', 'Ç'), $str);
+    }
+
     return strtoupper($str);
 }
 
 function lowerTR($str) {
-    $str = str_replace(array('İ', 'I', 'Ü', 'Ğ', 'Ş', 'Ö', 'Ç'), array('i', 'ı', 'ü', 'ğ', 'ş', 'ö', 'ç'), $str);
+
+    if ($_SESSION['lang'] == 'tr') {
+
+        $str = str_replace(array('İ', 'I', 'Ü', 'Ğ', 'Ş', 'Ö', 'Ç'), array('i', 'ı', 'ü', 'ğ', 'ş', 'ö', 'ç'), $str);
+    }
+
     return strtolower($str);
 }
 
