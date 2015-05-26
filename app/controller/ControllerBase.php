@@ -26,7 +26,7 @@ abstract class ControllerBase
 
         $menus = [];
 
-        foreach (\App\Model\PageCategory::orderBy('ordernum')->get() as $cat) {
+        foreach (\App\Model\PageCategory::where('status', '=', 1)->orderBy('ordernum')->get() as $cat) {
 
             $menus[] = [
                 'id'   => $cat->id,

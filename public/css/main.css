@@ -234,33 +234,33 @@ nav ul.menu li {
     .menu li.ml3.active {
         background: #c3bcbc;
     }
-    .menu li.ml4 {
+    /*.menu li.ml4 {
         border-color: #0a86e6;
         width: 200px;
     }
     .menu li.ml4.active {
         background: #0a86e6;
-    }
-    .menu li.ml5 {
+    }*/
+    .menu li.ml4 {
         border-color: #7d47c7;
         width: 135px;
     }
-    .menu li.ml5.active {
+    .menu li.ml4.active {
         background: #7d47c7;
     }
-    .menu li.ml6 {
+    .menu li.ml5 {
         border-color: #fdb709;
         width: 80px;
     }
-    .menu li.ml6.active {
+    .menu li.ml5.active {
         background: #fdb709;
     }
-    .menu li.ml7 {
+    .menu li.ml6 {
         border-color: #f7605b;
         width: 98px;
         margin-right: 0px;
     }
-    .menu li.ml7.active {
+    .menu li.ml6.active {
         background: #f7605b;
     }
     

@@ -15,7 +15,8 @@ class PageCategoryController extends App\Controller\Admin\ControllerBase
 
     public function index() {
 
-        $items = PageCategory::with('pages')
+        $items = PageCategory::where('status', '=', 1)
+            ->with('pages')
             ->orderBy('ordernum')
             ->get();
 
