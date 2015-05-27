@@ -583,7 +583,8 @@ nav ul.menu li {
             background-position: 0 -26px;
         }*/
         
-        .users-slider .slidesjs-pagination li a.active, .slidesjs-pagination li a:hover.active {
+        .users-slider .slidesjs-pagination li a.active, 
+        .users-slider .slidesjs-pagination li a:hover.active {
           background: #a7a7a7;
         }
         
