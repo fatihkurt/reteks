@@ -146,7 +146,13 @@ $(function() {
                 
                 if (resp.success == false) {
                     
-                    alert(resp.message);
+                    swal({
+                        confirmButtonText : LANG == 'tr' ? 'Tamam' : 'OK',
+                        cancelButtonText  : LANG == 'tr' ? 'İptal' : 'Cancel',
+                        title : '',
+                        text  : resp.message,
+                        type  : 'error'
+                    })
                 }
                 else {
                     $('.contact-form').html(resp.message);
@@ -173,13 +179,26 @@ $(function() {
             success: function(resp) {
                 
                 if (resp.success == false) {
-                    
-                    alert(resp.message);
+
+                    swal({
+                        confirmButtonText : LANG == 'tr' ? 'Tamam' : 'OK',
+                        cancelButtonText  : LANG == 'tr' ? 'İptal' : 'Cancel',
+                        title : '',
+                        text  : resp.message,
+                        type  : 'error'
+                    })
                     
                     $('.ebulten-input').select();
                 }
                 else {
-                    alert(resp.message);
+                    
+                    swal({
+                        confirmButtonText : LANG == 'tr' ? 'Tamam' : 'OK',
+                        cancelButtonText  : LANG == 'tr' ? 'İptal' : 'Cancel',
+                        title : '',
+                        text  : resp.message,
+                        type  : 'success'
+                    })
                 }
             }
         });
@@ -350,7 +369,7 @@ var app = (function () {
 
             if (messages != '') {
 
-                uzmanApp.alert(messages);
+                swal(messages);
             }
         },
         addScrollTopBtn: function () {
@@ -610,10 +629,6 @@ $('body').on('hidden.bs.popover', function() {
     $('.popover:not(.in)').hide().detach();
 });
 
-// phpfox radio,checkbox fix
-$(function() {
-    $('.lvuzman input:radio, .lvuzman input:checkbox').change(function(){var c="checked-flat-"+this.type; if(this.checked) $(this).addClass(c); else $(this).removeClass(c)});
-});
 
 function isEquivalent(a, b) {
     // Create arrays of property names
