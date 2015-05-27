@@ -572,7 +572,7 @@ nav ul.menu li {
 
         .users-slider .slidesjs-pagination li {
           float: left;
-          margin: 0 1px;
+          margin-right: 7px;
           font-weight: 400;
           color: #fff;
         }
@@ -584,18 +584,19 @@ nav ul.menu li {
         }*/
         
         .users-slider .slidesjs-pagination li a.active, .slidesjs-pagination li a:hover.active {
-          background-position: 0 -13px;
+          background: #a7a7a7;
         }
         
         .users-slider .slidesjs-pagination li a {
-          display: block;
-          width: 13px;
+          width: 7px;
+          border: solid 3px #fff;
           height: 0;
-          padding-top: 13px;
-          background-image: url(../img/pagination.png);
-          background-position: 0 0;
-          float: left;
+          padding-top: 7px;
+          display: inline-block;
+          border-radius: 100%;
+          background: #fff;
           overflow: hidden;
+          opacity: 0.8;
         }
 
         .users-slider img {
