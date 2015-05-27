@@ -272,7 +272,7 @@ nav ul.menu li {
 
 /* Main Area */
 
-.main-banner { position: relative; overflow: auto; }
+.main-banner { position: relative; overflow: hidden; height: 450px; }
 .main-banner ul { margin: 0px; padding: 0px; }
     .main-banner li { list-style: none; }
         .main-banner ul li { float: left; }

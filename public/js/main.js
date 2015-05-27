@@ -55,6 +55,24 @@ $(function() {
         }
     });
 
+    
+    $('.main-banner').slidesjs({
+        width: 1060,
+        height: 450,
+        navigation: {
+            active: false,
+            effect: "slide"
+        },
+        play: {
+            active: false,
+            effect: "slide",
+            interval: 7000,
+            auto: true,
+            swap: true,
+            pauseOnHover: false,
+            restartDelay: 3500
+        }
+    });
 
 
     $('.users-slider').slidesjs({
@@ -107,27 +125,6 @@ $(function() {
             }
         }
     });
-    
-    $('.main-banner').slidesjs({
-        width: 1060,
-        height: 450,
-        navigation: {
-            active: false,
-            effect: "slide"
-        },
-        play: {
-            active: false,
-            effect: "slide",
-            interval: 7000,
-            auto: true,
-            swap: true,
-            pauseOnHover: false,
-            restartDelay: 3500
-        }
-    });
-
-
-
     
 
 
