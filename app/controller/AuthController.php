@@ -41,7 +41,7 @@ class AuthController extends ControllerBase
             ->first();
 
 
-        $password = hash('sha256', self::PASS_KEY . $password);
+        $password = $this->generateSecurePassword($password);
 
         if ($this->captchaCheck($captchaResponse) == false) {
 
@@ -50,7 +50,7 @@ class AuthController extends ControllerBase
         else
         if ($user == null || $password != $user['password']) {
 
-            return $this->falseInput();
+            return $this->falseInput('Lütfen bilgileri kontrol ediniz.', ['f' => true]);
         }
         else {
 
@@ -60,6 +60,128 @@ class AuthController extends ControllerBase
 
             return $this->jsonResponse(true, $user['name']);
         }
+    }
+
+
+    public function generateForgotLink() {
+
+        $username = $this->app->request->post('username');
+
+        if ($username == false) {
+
+            return $this->falseInput();
+        }
+
+        $user = \App\Model\User::select('id','password','username','name')
+            ->where('username', '=', $username)
+            ->take(1)
+            ->first();
+
+        if ($user == false) {
+
+            return $this->falseInput();
+        }
+        else {
+
+            $uid = $user['id'];
+
+            $hash = $this->getForgotAuthKey($user);
+
+            $link = "http://" . $_SERVER['SERVER_NAME'] .  "/login/forgot?uid=$uid&auth=$hash";
+
+            $message = 'Şifreyi yeniden almak için <a href="' . $link . '">tıklayınız</a>';
+
+            mail($user, 'Re-teks Admin Şifre Yenileme', $message);
+
+            $this->msg = 'Sayın ' . $user['name'] . ', e-posta adresinize gelen bağlantıyla şifrenizi yenileyebilirsiniz..';
+
+            return $this->jsonResponse(true, $link);
+        }
+    }
+
+
+    public function forgot() {
+
+        if ($this->app->request->isPost()) {
+
+
+            $uid = $this->app->request->post('uid');
+            $key = $this->app->request->post('auth');
+
+            $pass1 = $this->app->request->post('password');
+            $pass2 = $this->app->request->post('password_repeat');
+
+
+            $user = $this->checkUserByAuthKey($uid, $key);
+
+            if ($user === false) {
+
+                return $this->falseInput();
+            }
+
+
+            if ($pass1 != $pass2) {
+
+                return $this->falseInput('Şifreler uyuşmuyor. Lütfen kontrol ediniz..');
+            }
+
+            if (strlen($pass1) < 5) {
+
+                return $this->falseInput('Lütfen en az 5 karakter giriniz..');
+            }
+
+            $user->password = $this->generateSecurePassword($pass1);
+
+
+            return $this->jsonResponse($user->save());
+        }
+        else {
+
+            $uid = $this->app->request->get('uid');
+            $key = $this->app->request->get('auth');
+
+
+            if ($this->checkUserByAuthKey($uid, $key) === false) {
+
+                $this->app->flash('error', 'Geçersiz deneme');
+
+                $this->app->redirect('/');
+
+                return false;
+            }
+
+
+            $this->app->render('admin/login_forgot.twig', [
+                'uid' => $uid,
+                'auth'=> $key,
+            ]);
+        }
+    }
+
+
+    private function checkUserByAuthKey($uid, $key) {
+
+        $user = \App\Model\User::find($uid, ['id','username']);
+
+        if ($user == false) {
+
+            return false;
+        }
+
+        $authKey = $this->getForgotAuthKey($user->toArray());
+
+        if ($key != $authKey) {
+
+            return false;
+        }
+
+        return $user;
+    }
+
+
+    private function getForgotAuthKey($user) {
+
+        return hash('sha256', $user['id'] . self::PASS_KEY . $user['username']);
     }
 
 
@@ -91,11 +213,17 @@ class AuthController extends ControllerBase
         return isset($result->success) && $result->success;
     }
 
-    private function falseInput($msg='Lütfen bilgileri kontrol ediniz.') {
+    private function falseInput($msg='Lütfen bilgileri kontrol ediniz.', $data=null) {
 
         $this->msg = $msg;
 
-        return $this->jsonResponse(false);
+        return $this->jsonResponse(false, $data);
+    }
+
+
+    private function generateSecurePassword($password) {
+
+        return hash('sha256', self::PASS_KEY . $password);
     }
 
     public function logout()

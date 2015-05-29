@@ -1,0 +1,17 @@
+{% extends "layout/login.layout.twig" %}
+
+
+{% block content %}
+<form id="slick-login">
+<label for="username">Şifre</label><input type="password" name="password" class="placeholder" placeholder="Şifre">
+<label for="password">Şifre (Tekrar)</label><input type="password" name="password_repeat" class="placeholder" placeholder="Şifre Tekrar">
+
+<input type="submit" id="forgot_btn" value="Şifremi Yenile">
+
+
+<input type="hidden" name="uid" value="{{ uid }}" />
+<input type="hidden" name="auth" value="{{ auth }}" />
+
+<div id="login_msg" style="color: #d99; margin-top: 20px;">{{ flash.error }}</div>
+</form>
+{% endblock %}

@@ -8,6 +8,13 @@ $app->get('/login',  '\App\Controller\AuthController:login')->name('login');
 
 $app->post('/login', '\App\Controller\AuthController:auth');
 
+
+$app->get('/login/forgot', '\App\Controller\AuthController:forgot');
+
+$app->post('/login/forgot', '\App\Controller\AuthController:forgot');
+
+$app->post('/login/forgotLink', '\App\Controller\AuthController:generateForgotLink');
+
 $app->get('/logout', '\App\Controller\AuthController:logout')->name('logout');
 
 

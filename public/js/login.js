@@ -11,6 +11,8 @@ $(function()
         
         $('#login_msg').html("");
         
+        $('#forgot').hide();
+        
         $.ajax({
             url : '/login',
             type: 'POST',
@@ -24,12 +26,62 @@ $(function()
                     
                     location.reload();
                 }
+                else
+                if (typeof resp.data.f != 'undefined') {
+                    
+                    $('#forgot').show();
+                }
             }
         });
         
         return false;
         
     });
+    
+    
+    $('#forgot_btn').click(function() {
+        
+        $('#login_msg').html("");
+        
+        $.ajax({
+            url : '/login/forgot',
+            type: 'POST',
+            dataType: 'json',
+            data: $('form').serialize(),
+            success: function(resp) {
+
+                if (resp.success == true) {
+
+                    location.href = '/login';
+                }
+                else {
+                    $('#login_msg').html(resp.message);
+                }
+            }
+        });
+        
+        return false;
+        
+    });
+    
+    
+    $('#forgot a').click(function() {
+        
+        var $btn = $(this);
+        
+        $.ajax({
+            url : '/login/forgotLink',
+            type: 'POST',
+            dataType: 'json',
+            data: $('form').serialize(),
+            success: function(resp) {
+                
+                alert(resp.message);
+                
+                $btn.fadeOut();
+            }
+        });
+    })
     
     
     
