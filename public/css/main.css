@@ -608,8 +608,9 @@ nav ul.menu li {
         
         .user-info {
             float: left;
-            width: 165px;
+            width: 160px;
             height: 200px;
+            padding-right: 5px;
             background-color: rgb(167, 167, 167);
         }
         
