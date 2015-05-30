@@ -30,7 +30,7 @@ class AuthController extends ControllerBase
         $password = $this->app->request->post('password');
         $captchaResponse = $this->app->request->post('g-recaptcha-response');
 
-        if ($username == false || $password == false) {
+        if ($username == false) {
 
             return $this->falseInput();
         }
